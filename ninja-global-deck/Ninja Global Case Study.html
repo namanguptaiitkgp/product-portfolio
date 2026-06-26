@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case Study — Ninja Global · Cross-border agri-trade lending</title>
+  <meta name="description" content="A cinematic case study of Ninja Global — building a cross-border agri-trade lending business 0→1, with full P&L ownership. Told as Situation, Task, Action, Result." />
+  <link rel="stylesheet" href="cinematic/cinematic-light.css" />
+  <link rel="stylesheet" href="cinematic/selfie-light.css" />
+  <link rel="stylesheet" href="ninjaglobal.css" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body data-screen-label="Case Study · Ninja Global · Cross-border lending 0→1">
+  <a id="back-home" href="../index.html" aria-label="Back to home">
+    <span class="bh-arr" aria-hidden="true">←</span><span class="bh-label">Home</span>
+  </a>
+  <div id="root"></div>
+  <script>
+    /* Robustness net: if the document timeline never advances (print/PDF,
+       throttled/offscreen tabs), force the reveal elements visible so content
+       never stays stuck at opacity:0. Live browsers animate normally. */
+    (function () {
+      function forceVisible() {
+        var s = document.createElement('style');
+        s.id = '__reveal_fallback';
+        s.textContent =
+          '.a-rise,.a-fade,.a-slide,.a-pop{opacity:1!important;transform:none!important;filter:none!important}' +
+          '.scene-track{transition:none!important}';
+        document.head.appendChild(s);
+      }
+      setTimeout(function () {
+        var t = document.timeline && document.timeline.currentTime;
+        if (!t) forceVisible();
+      }, 500);
+    })();
+  </script>
+  <script type="text/babel" src="cinematic/stage.jsx"></script>
+  <script type="text/babel" src="ninjaglobal-scenes.jsx"></script>
+  <script type="text/babel" src="ninjaglobal-app.jsx"></script>
+</body>
+</html>

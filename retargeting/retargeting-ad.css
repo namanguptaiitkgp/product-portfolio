@@ -1,0 +1,97 @@
+/* ========================================================================
+   RETARGETING · A+D THEME OVERRIDE  ("Studio Blue")
+   Layered last, over cinematic-light.css + selfie-light.css + retargeting.css.
+   - Type from variant A:  Hanken Grotesk · Newsreader italic · JetBrains Mono
+   - Color from variant D: white ground, navy ink, teal->blue gradient accent
+   The base deck is fully token-driven, so remapping :root reskins every scene.
+   ===================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap");
+
+:root {
+  /* Cool editorial ground (was warm off-whites) */
+  --ink-0: #FFFFFF;
+  --ink-1: #F4F8FD;
+  --ink-2: #E9F0F9;
+  --ink-3: #FFFFFF;
+
+  /* Primary accent = Digio blue — drives eyebrow numerals, scene dots,
+     foot accents, mandate indices, recap labels, chrome brand dot. */
+  --amber:        #2563EB;
+  --amber-soft:   rgba(37, 99, 235, 0.30);
+  --amber-glow:   rgba(37, 99, 235, 0.10);
+  --gold:         #1391C9;
+
+  /* Loss / drop-off semantic — kept warm so leaks read as "bad". */
+  --coral:        #E5544B;
+  --coral-soft:   rgba(229, 84, 75, 0.30);
+
+  /* Cool secondary = teal (the other end of the brand gradient). */
+  --teal:         #0FB6BD;
+  --teal-soft:    rgba(15, 182, 189, 0.32);
+  --teal-glow:    rgba(15, 182, 189, 0.10);
+
+  /* Navy inks on white (was warm purple-ink) */
+  --paper:        #0E1A30;
+  --paper-2:      #243149;
+  --paper-dim:    #46546E;
+  --paper-quiet:  #8893A8;
+  --hairline:     rgba(14, 26, 48, 0.10);
+  --hairline-2:   rgba(14, 26, 48, 0.18);
+
+  /* Type — variant A's system. Serif + mono already match the base. */
+  --grotesk: "Hanken Grotesk", "Geist", -apple-system, system-ui, sans-serif;
+}
+
+::selection { background: var(--amber); color: #FFFFFF; }
+
+/* ---- Teal->blue gradient on every italic emphasis word ---------------- */
+.cine-hero .it,
+.cine-headline .it,
+.cine-headline-2 .it,
+.s-hero h1 .it,
+.s-cover h1 .it {
+  background: linear-gradient(100deg, #0FB6BD 0%, #2563EB 72%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Foot strip accent line → gradient to match */
+.scene-foot .accent {
+  background: linear-gradient(100deg, #0FB6BD, #2563EB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Recolor the hardcoded ambient glows (oklch amber/coral) ---------- */
+.s-cover .bg-amber,
+.s-task .bg-amber,
+.s-close .bg-amber {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16), transparent 62%) !important;
+}
+.s-cover .bg-teal,
+.s-close .bg-teal {
+  background: radial-gradient(circle, rgba(15, 182, 189, 0.18), transparent 62%) !important;
+}
+.s-funnel .bg-coral {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16), transparent 60%) !important;
+}
+
+/* ---- Funnel bars: brand gradient instead of amber->orange ------------- */
+.funnel-step .bar {
+  background: linear-gradient(90deg, #0FB6BD 0%, #2563EB 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Cover STAR-strip letters use the serif italic + amber → render as blue;
+   give them the gradient for a touch of brand polish. */
+.s-cover .star-strip .step .n { color: var(--amber); }
+.s-cover .star-strip .step .t {
+  background: linear-gradient(100deg, #0FB6BD 0%, #2563EB 72%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

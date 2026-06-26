@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cinematic — Light · Decks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink-0: #FFFFFF;
+      --ink-1: #F6F3EC;
+      --ink-2: #EFEBE1;
+      --letterbox: #ECE8E0;
+
+      --paper:        #221C30;
+      --paper-2:      #322A44;
+      --paper-dim:    #5C5468;
+      --paper-quiet:  #8B8498;
+
+      --hairline:     rgba(34, 28, 48, 0.10);
+      --hairline-2:   rgba(34, 28, 48, 0.18);
+
+      --amber: oklch(58% 0.15 65);
+      --coral: oklch(55% 0.19 28);
+      --teal:  oklch(52% 0.13 200);
+
+      --grotesk: "Geist", -apple-system, system-ui, sans-serif;
+      --serif:   "Newsreader", Georgia, serif;
+      --mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+      --ease-cine: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--letterbox);
+      color: var(--paper);
+      font-family: var(--grotesk);
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "ss01", "ss02", "cv01";
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    .frame {
+      width: min(1280px, 100%);
+      background: var(--ink-0);
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      padding: 64px 72px 72px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 40px 80px -40px rgba(0,0,0,0.18);
+    }
+    .frame::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(120% 90% at 50% 115%, oklch(94% 0.025 60 / 0.55), transparent 70%),
+        radial-gradient(70% 60% at 50% -10%, oklch(96% 0.02 250 / 0.45), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .frame > * { position: relative; z-index: 1; }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--hairline);
+      margin-bottom: 40px;
+    }
+    .brand {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--paper-dim);
+    }
+    .brand b { color: var(--paper); font-weight: 500; }
+    .meta {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--paper-quiet);
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--paper-quiet);
+      margin-bottom: 14px;
+    }
+    .eyebrow .num { color: var(--amber); margin-right: 10px; }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      font-weight: 500;
+      margin: 0 0 14px;
+      max-width: 18ch;
+    }
+    h1 em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--amber);
+    }
+    .lede {
+      font-size: 19px;
+      line-height: 1.55;
+      color: var(--paper-dim);
+      max-width: 56ch;
+      margin: 0 0 48px;
+    }
+
+    .decks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 1000px) { .decks { grid-template-columns: 1fr; } }
+
+    .deck {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--ink-1);
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      padding: 28px 28px 24px;
+      transition: transform 600ms var(--ease-cine), border-color 600ms var(--ease-cine), background 600ms var(--ease-cine);
+      position: relative;
+    }
+    .deck:hover {
+      transform: translateY(-2px);
+      border-color: var(--hairline-2);
+      background: var(--ink-0);
+    }
+    .deck:hover .arrow { transform: translateX(4px); color: var(--paper); }
+
+    .deck-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      color: var(--paper-quiet);
+      margin-bottom: 18px;
+    }
+    .deck-num .dot { display: inline-block; width: 6px; height: 6px; border-radius: 100px; vertical-align: middle; margin-right: 10px; }
+    .deck.amber .deck-num .dot { background: var(--amber); }
+    .deck.coral .deck-num .dot { background: var(--coral); }
+    .deck.teal  .deck-num .dot { background: var(--teal); }
+    .deck.blue  .deck-num .dot { background: #2563EB; }
+
+    .deck-title {
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      font-weight: 500;
+      margin: 0 0 8px;
+    }
+    .deck-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--paper-dim);
+      font-size: 17px;
+      line-height: 1.4;
+      margin: 0 0 20px;
+    }
+    .deck-meta {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--paper-quiet);
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .arrow {
+      font-family: var(--mono);
+      font-size: 18px;
+      color: var(--paper-quiet);
+      transition: transform 300ms var(--ease-cine), color 300ms var(--ease-cine);
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--hairline);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    footer .note {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--paper-quiet);
+      letter-spacing: 0.06em;
+    }
+    footer code {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: var(--ink-2);
+      color: var(--paper-2);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main class="frame">
+    <header>
+      <div class="brand"><b>Cinematic</b> · Light Theme</div>
+      <div class="meta">4 decks</div>
+    </header>
+
+    <div class="eyebrow"><span class="num">00</span>Cinematic decks — light edition</div>
+    <h1>Fixed-canvas slide experiences,<br/>built to read like <em>film</em>.</h1>
+    <p class="lede">
+      Three React decks rendered on a 1920×1080 stage that scales to fit any window.
+      Navigate with <strong>←&nbsp;/&nbsp;→</strong>, <strong>Space</strong>, or the
+      number keys. Each deck shares the same Stage engine and light token set —
+      Geist on warm white, deepened amber, coral, and teal.
+    </p>
+
+    <section class="decks">
+
+      <a class="deck amber" href="cinematic/index_light.html">
+        <div class="deck-num"><span class="dot"></span>DECK 01 · PROLOGUE</div>
+        <h2 class="deck-title">The Endowed Progress Effect</h2>
+        <p class="deck-sub">A UX-psychology lesson, in ten cinematic scenes.</p>
+        <div class="deck-meta">
+          <span>10 scenes · 08:42</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="deck coral" href="cinematic/index_2_light.html">
+        <div class="deck-num"><span class="dot"></span>DECK 02 · DIGIO</div>
+        <h2 class="deck-title">Selfie Service — case study</h2>
+        <p class="deck-sub">KYC liveness, anti-spoof, and the configurable console.</p>
+        <div class="deck-meta">
+          <span>11 scenes · For business team</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="deck teal" href="counter-intuitive.html">
+        <div class="deck-num"><span class="dot"></span>DECK 03 · CONTACT SHEET</div>
+        <h2 class="deck-title">Counter-Intuitive</h2>
+        <p class="deck-sub">A listing remix — every scene as a single contact sheet.</p>
+        <div class="deck-meta">
+          <span>Standalone bundle</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="deck blue" href="retargeting/Retargeting%20Case%20Study%20Studio%20Blue.html">
+        <div class="deck-num"><span class="dot"></span>DECK 04 · DIGIO · STUDIO BLUE</div>
+        <h2 class="deck-title">The Retargeting Module</h2>
+        <p class="deck-sub">Winning back the almost-customers — Situation, Task, Action, Result.</p>
+        <div class="deck-meta">
+          <span>11 slides · For business team</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+    </section>
+
+    <footer>
+      <div class="note">Built on the cinematic-light handoff · React 18 · in-browser Babel</div>
+      <div class="note">Run: <code>npx serve .</code> · then visit <code>localhost:3000</code></div>
+    </footer>
+  </main>
+</body>
+</html>

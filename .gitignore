@@ -1,0 +1,14 @@
+# OS cruft
+.DS_Store
+**/.DS_Store
+
+# Heavy source material — raw gukhan.in mirrors (~245MB), not part of the live site.
+# The pruned copies in ninja-credit/ and ninja-connect/ are what ship.
+downloaded-sites/
+
+# Superseded single-page Framer exports, kept locally only
+_archive/
+
+# Node / tooling (none today, but safe)
+node_modules/
+*.log

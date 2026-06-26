@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ninja Credit — Case Study</title>
+<meta name="description" content="Ninja Credit — Ninjacart's lending platform. A product case study told as Situation, Task, Action, Result.">
+<script>document.documentElement.className="anim";</script>
+<style>
+@font-face { font-family:"Neue Montreal"; src:url("https://framerusercontent.com/assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Neue Montreal"; src:url("https://framerusercontent.com/assets/vEydk8LUwvYV3ZJtsQhKLqsza0.woff2"); font-weight:500; font-display:swap; }
+@font-face { font-family:"SF Pro Display"; src:url("https://framerusercontent.com/assets/dTVfXNKgID7VXkl9c6QSFxH4c.woff2"); font-weight:500; font-display:swap; }
+@font-face { font-family:"Joane"; src:url("https://framerusercontent.com/assets/s7QBt6TrbwZwxnd8WeMUW0iXFw.woff2"); font-weight:900; font-style:italic; font-display:swap; }
+
+:root{
+  /* ===== THEME (default: Sage + forest). The switcher overrides this whole
+     group on document.documentElement; everything below derives from it. ===== */
+  --bg:linear-gradient(180deg,#e9f1e6,#dde8d9);   /* page background gradient */
+  --bg-solid:#e4ecdf;                              /* solid base for color-mix (sticky header) */
+  --title-grad:linear-gradient(100deg,#1f5c3a,#2f7d4f); /* .title via background-clip */
+  --ink:#1c2a22;            /* primary text / title fallback */
+  --muted:#5d6b60;          /* subtitle + nav links */
+  --faint:#8a9488;          /* CONTENTS label, captions */
+  --line:rgba(28,42,34,0.13); /* hairlines, Back pill border */
+  --accent:#2f7d4f;         /* eyebrows, numbers, dots */
+  --panel:#fbfdf9;          /* cards / result / figure ground (kept light for white mockups) */
+
+  /* derived — recompute automatically when the theme group changes */
+  --ink-2:color-mix(in srgb, var(--ink) 74%, var(--muted));
+  --line-soft:color-mix(in srgb, var(--ink) 7%, transparent);
+  --pill:color-mix(in srgb, var(--ink) 6%, transparent);  /* Back pill bg, per theme */
+
+  --shadow:0 1px 2px rgba(25,23,19,.04), 0 24px 60px -28px rgba(25,23,19,.30);
+  --grotesk:"Neue Montreal","SF Pro Display",-apple-system,system-ui,sans-serif;
+  --serif:"Joane",Georgia,serif;
+  --mono:"SF Pro Display",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+html{scroll-behavior:smooth;}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--grotesk);font-weight:500;line-height:1.5;transition:background-color .4s ease,color .4s ease;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
+
+/* ---------- entrance reveals (blur-to-focus rise) — JS-gated via html.anim, so content stays visible if JS is off ---------- */
+html.anim :is(.hero h1,.hero .lede,.meta-row,.star-strip a,.hl-head,.hl,.beat h2,.beat .sub,.beat > p,.card,.principle,.plate,.cap,.stat,.cert,.cert-cap){
+  opacity:0;filter:blur(10px);transform:translateY(16px);
+  transition:opacity .7s ease, filter .7s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+  will-change:opacity,filter,transform;
+}
+html.anim .in{opacity:1 !important;filter:none !important;transform:none !important;}
+@media (prefers-reduced-motion:reduce){
+  html.anim :is(.hero h1,.hero .lede,.meta-row,.star-strip a,.hl-head,.hl,.beat h2,.beat .sub,.beat > p,.card,.principle,.plate,.cap,.stat,.cert,.cert-cap){
+    opacity:1;filter:none;transform:none;transition:none;
+  }
+}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg-solid) 88%,transparent);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s ease, background-color .4s ease;}
+header.scrolled{border-bottom-color:var(--line);}
+.bar{display:flex;align-items:center;justify-content:space-between;height:74px;}
+.brand{display:flex;align-items:baseline;gap:12px;font-size:18px;}
+.brand b{font-weight:500;}
+.brand .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);transform:translateY(-1px);}
+.hdr-right{display:flex;align-items:center;gap:18px;}
+.back{font-size:14px;color:var(--muted);display:inline-flex;align-items:center;gap:7px;
+  background:var(--pill);border:1px solid var(--line);padding:7px 15px;border-radius:999px;
+  transition:color .25s ease, background-color .4s ease, border-color .4s ease;}
+.back:hover{color:var(--ink);}
+
+/* theme switcher */
+.themes{display:inline-flex;align-items:center;gap:9px;}
+.swatch{width:21px;height:21px;border-radius:50%;border:1px solid var(--line);padding:0;cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;}
+.swatch:hover{transform:scale(1.12);}
+.swatch[aria-pressed="true"]{box-shadow:0 0 0 2px var(--bg-solid),0 0 0 3px var(--ink);}
+
+/* ---------- hero / overview ---------- */
+.hero{padding:64px 0 40px;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);}
+.hero .kicker{margin-bottom:22px;}
+.hero h1{font-size:clamp(40px,7vw,86px);line-height:.98;letter-spacing:-.03em;font-weight:500;margin:0;}
+.hero h1 .it,.beat h2 .it{
+  font-family:var(--serif);font-style:italic;font-weight:900;
+  background:var(--title-grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:var(--accent); /* fallback if clip unsupported */
+}
+.hero .lede{margin-top:26px;max-width:680px;font-size:20px;line-height:1.55;color:var(--ink-2);}
+.hero .lede b{font-weight:500;}
+.meta-row{display:flex;gap:48px;flex-wrap:wrap;margin-top:40px;padding-top:26px;border-top:1px solid var(--line);}
+.meta-row .k{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:8px;}
+.meta-row .v{font-size:15px;color:var(--ink-2);max-width:320px;}
+
+/* STAR strip */
+.star-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;border-top:1px solid var(--line);}
+.star-strip a{padding:20px 24px 0 0;border-right:1px solid var(--line);transition:opacity .2s;}
+.star-strip a:last-child{border-right:0;}
+.star-strip a:hover{opacity:.6;}
+.star-strip .L{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--accent);line-height:1;}
+.star-strip .n{display:block;margin-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);}
+.star-strip .s{display:block;margin-top:5px;font-size:13px;color:var(--muted);}
+
+/* highlights band */
+.highlights{margin-top:8px;}
+.highlights .hl-head{font-size:clamp(24px,3.4vw,34px);line-height:1.1;letter-spacing:-.02em;max-width:620px;margin:0 0 26px;}
+.hl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.hl{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 18px;font-size:15px;color:var(--ink-2);box-shadow:var(--shadow);}
+.hl .num{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--accent);display:block;margin-bottom:12px;}
+
+/* ---------- layout: content + sticky TOC ---------- */
+.case-grid{display:grid;grid-template-columns:1fr 190px;gap:64px;align-items:start;padding:30px 0 40px;}
+.case-grid > .beats{grid-column:1;grid-row:1;min-width:0;}
+nav.toc{grid-column:2;grid-row:1;position:sticky;top:96px;}
+nav.toc .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-bottom:16px;}
+nav.toc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;}
+nav.toc a{font-size:14px;color:var(--muted);transition:color .2s;display:flex;gap:9px;align-items:baseline;}
+nav.toc a .ix{font-family:var(--serif);font-style:italic;color:var(--accent);width:14px;flex:none;opacity:.55;}
+nav.toc a:hover,nav.toc a.active{color:var(--ink);}
+nav.toc a.active .ix{opacity:1;}
+
+/* ---------- STAR beats ---------- */
+.beat{padding:56px 0;border-top:1px solid var(--line);scroll-margin-top:90px;}
+.beat:first-child{border-top:0;}
+.beat-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.beat-eyebrow .L{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--accent);line-height:1;}
+.beat-eyebrow .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);}
+.beat h2{font-size:clamp(28px,4vw,46px);line-height:1.05;letter-spacing:-.025em;font-weight:500;margin:0 0 22px;max-width:760px;}
+.beat p{font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px;margin:0 0 18px;}
+.beat p b{font-weight:500;color:var(--ink);}
+.sub{margin-top:40px;}
+.sub-h{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.sub h3{font-size:23px;line-height:1.15;letter-spacing:-.015em;font-weight:500;margin:0 0 14px;}
+
+/* cards / lists */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0 8px;}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 20px;box-shadow:var(--shadow);}
+.card .ct{font-weight:500;margin-bottom:8px;}
+.card .cd{font-size:14.5px;color:var(--muted);line-height:1.55;}
+@media(max-width:680px){.cards{grid-template-columns:1fr;}}
+
+.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px;}
+.principle{display:flex;gap:16px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);}
+.principle .pn{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--accent);line-height:1;flex:none;}
+.principle .pt{font-weight:500;margin-bottom:6px;}
+.principle .pd{font-size:14.5px;color:var(--muted);line-height:1.55;}
+@media(max-width:680px){.principles{grid-template-columns:1fr;}}
+
+/* image placeholder frame (drop real screenshots later) */
+/* ===== product showcase — centered device stage ===== */
+.stage{margin:30px 0 6px;padding:clamp(24px,4vw,48px) 22px;border-radius:22px;border:1px solid var(--line);
+  background:color-mix(in srgb,var(--accent) 6%, var(--panel));
+  display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,34px);justify-content:center;align-items:flex-end;}
+.plate{border-radius:20px;overflow:hidden;background:#fff;box-shadow:var(--shadow);border:1px solid var(--line);
+  transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease;}
+.plate img{display:block;width:100%;height:auto;}
+.plate.phone{width:clamp(220px,26vw,282px);}   /* single portrait device — kept device-scale, never a full-width wall */
+.plate.wide{width:100%;max-width:780px;}         /* multi-phone composites & diagrams */
+.plate.photo{width:100%;max-width:560px;}
+.stage:hover .plate{transform:translateY(-5px);}
+.stage .plate:hover{transform:translateY(-13px);box-shadow:0 1px 2px rgba(25,23,19,.05),0 36px 70px -30px rgba(25,23,19,.42);}
+.cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:14px 0 32px;text-align:center;}
+
+/* ---------- result ---------- */
+.beat.result{background:var(--panel);border-radius:22px;border:1px solid var(--line);padding:52px 44px;margin-top:30px;box-shadow:var(--shadow);}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:18px 0 30px;border-top:1px solid var(--line);}
+.stat{padding:24px 22px 24px 0;border-right:1px solid var(--line);}
+.stat:nth-child(3n){border-right:0;}
+.stat .num{font-size:clamp(30px,4.4vw,46px);line-height:1;letter-spacing:-.02em;color:var(--ink);}
+.stat .num.green{color:var(--accent);}
+.stat .num.tbd{color:var(--faint);}
+.stat .lbl{margin-top:10px;font-size:14px;color:var(--muted);line-height:1.4;}
+.stat .lbl .fill{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-top:4px;}
+@media(max-width:680px){.stats{grid-template-columns:1fr 1fr;}.stat:nth-child(3n){border-right:1px solid var(--line);}.stat:nth-child(2n){border-right:0;}}
+
+.cert{margin:34px auto 0;max-width:660px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#fff;}
+.cert img{width:100%;height:auto;}
+.cert-cap{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);text-align:center;margin-top:14px;}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);margin-top:30px;}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;padding:48px 0 70px;}
+.foot .next{font-size:14px;color:var(--muted);}
+.foot .next b{display:block;font-size:24px;color:var(--ink);font-weight:500;margin-top:6px;letter-spacing:-.01em;}
+.foot .next .arr{color:var(--accent);}
+.foot .sig{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.06em;text-align:right;}
+
+@media(max-width:900px){
+  .wrap{padding:0 22px;}
+  .case-grid{grid-template-columns:1fr;gap:0;}
+  nav.toc{display:none;}
+  .star-strip,.hl-grid{grid-template-columns:repeat(2,1fr);}
+  .beat.result{padding:36px 22px;}
+}
+</style>
+</head>
+<body id="top">
+
+<header id="hdr">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html"><span class="dot"></span><b>Ninja Credit</b></a>
+    <div class="hdr-right">
+      <div class="themes" role="group" aria-label="Color theme">
+        <button class="swatch" data-theme="sage"  title="Sage + forest"     aria-label="Sage and forest theme"     style="background:linear-gradient(135deg,#dde8d9 52%,#2f7d4f 52%)"></button>
+        <button class="swatch" data-theme="cream" title="Warm cream + navy"  aria-label="Warm cream and navy theme"  style="background:linear-gradient(135deg,#f3ece0 52%,#22335c 52%)"></button>
+        <button class="swatch" data-theme="ivory" title="Ivory + indigo"     aria-label="Ivory and indigo theme"     style="background:linear-gradient(135deg,#eef0f8 52%,#2a5db0 52%)"></button>
+        <button class="swatch" data-theme="cool"  title="Cool paper + slate" aria-label="Cool paper and slate theme" style="background:linear-gradient(135deg,#e9edf1 52%,#536170 52%)"></button>
+      </div>
+      <a class="back" href="../index.html">← All work</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== HOOK / OVERVIEW ===================== -->
+  <section class="hero wrap" id="overview">
+    <div class="eyebrow kicker">Ninjacart '24 · Lending · Design owner</div>
+    <h1>Lending, made as simple as a<br><span class="it">personal-loan app.</span></h1>
+    <p class="lede">
+      Ninja Credit is Ninjacart's own lending platform, giving working-capital loans to small and
+      medium businesses across the country. I owned the end-to-end design strategy — and built a flow
+      so clean it was <b>adopted by other PODs across the company</b> and has disbursed
+      <b>₹2,800+ Cr</b> since launch.
+    </p>
+
+    <div class="meta-row">
+      <div>
+        <div class="k">My role</div>
+        <div class="v">Design Owner — strategy, research, flows, interaction &amp; visual design, prototyping and testing.</div>
+      </div>
+      <div>
+        <div class="k">Timeline</div>
+        <div class="v">2 months (and some sunsets).</div>
+      </div>
+      <div>
+        <div class="k">Recognition</div>
+        <div class="v">Marvel Award — Q4 FY 2023–24, for exceeding delivery targets.</div>
+      </div>
+    </div>
+
+    <!-- STAR navigation -->
+    <div class="star-strip">
+      <a href="#situation"><span class="L">S</span><span class="n">Situation</span><span class="s">The gap in lending</span></a>
+      <a href="#task"><span class="L">T</span><span class="n">Task</span><span class="s">One open, fast flow</span></a>
+      <a href="#action"><span class="L">A</span><span class="n">Action</span><span class="s">Onboard · disburse · repay</span></a>
+      <a href="#result"><span class="L">R</span><span class="n">Result</span><span class="s">₹2,800+ Cr, reused org-wide</span></a>
+    </div>
+  </section>
+
+  <!-- highlights -->
+  <section class="wrap highlights" style="padding-bottom:10px;">
+    <h2 class="hl-head">A loan for your business in just a few clicks.</h2>
+    <div class="hl-grid">
+      <div class="hl"><span class="num">01</span>Seamless access to everything loans</div>
+      <div class="hl"><span class="num">02</span>Track, manage and repay your loans</div>
+      <div class="hl"><span class="num">03</span>Get disbursal in an instant</div>
+      <div class="hl"><span class="num">04</span>A lending friend to grow your business</div>
+    </div>
+  </section>
+
+  <div class="wrap case-grid">
+    <!-- sticky contents -->
+    <nav class="toc">
+      <div class="lbl">Contents</div>
+      <ul>
+        <li><a href="#overview"><span class="ix">·</span>Overview</a></li>
+        <li><a href="#situation"><span class="ix">S</span>Situation</a></li>
+        <li><a href="#task"><span class="ix">T</span>Task</a></li>
+        <li><a href="#action"><span class="ix">A</span>Action</a></li>
+        <li><a href="#result"><span class="ix">R</span>Result</a></li>
+        <li><a href="#retro"><span class="ix">·</span>Retrospective</a></li>
+      </ul>
+    </nav>
+
+    <div class="beats">
+      <!-- ===================== SITUATION ===================== -->
+      <section class="beat" id="situation">
+        <div class="beat-eyebrow"><span class="L">S</span><span class="lbl">Situation · The gap</span></div>
+        <h2>Not another lending product — <span class="it">a missing experience.</span></h2>
+        <p>
+          In Q3 2023, Ninjacart decided to digitise a lending business that had run as a pilot for over a
+          year. The pilot was gaining traction, so the company brought every version under one product —
+          and crucially, it had to be <b>open and adaptable</b>, so any team could plug it into their own
+          business module once launched.
+        </p>
+        <p>
+          Nearly <b>99% of Ninjacart's loans go to MSMEs</b> — farmers, retailers, importers and exporters —
+          a user base spanning the highly educated to the barely literate. Designing for that range up front
+          set the true scale of the product's potential impact.
+        </p>
+
+        <div class="sub">
+          <div class="sub-h">Why they borrow</div>
+          <h3>The Operational Capital Cycle</h3>
+          <p>
+            On a market visit to Huskur, the team found the primary reason MSMEs seek credit: keeping their
+            operating-capital cycle alive. A business sells its inventory, but payment for those goods arrives
+            a week or two later — a temporal gap. To keep running in between, they take a loan.
+          </p>
+          <div class="stage"><div class="plate photo"><img src="images/4RhT202S4mudxYsJV3XvVPs.png" alt="Huskur market visit"></div></div>
+          <div class="cap">Huskur market visit — meeting the MSMEs we'd serve</div>
+        </div>
+
+        <div class="sub">
+          <div class="sub-h">The lender landscape</div>
+          <h3>Everyone lends. Nobody does it well.</h3>
+          <div class="cards">
+            <div class="card"><div class="ct">Banks</div><div class="cd">Average UX, plenty of hassle — branch visits, paperwork, high interest rates.</div></div>
+            <div class="card"><div class="ct">Local lenders</div><div class="cd">Fast but unprofessional. Extreme interest rates and an unwelcoming, fear-driven repayment experience.</div></div>
+            <div class="card"><div class="ct">NBFCs</div><div class="cd">Sector-specialised; experience varies widely. Business loans, in particular, are rarely good.</div></div>
+          </div>
+          <p style="margin-top:18px;"><b>The gap:</b> a clean, trustworthy, genuinely fast digital lending experience — built for businesses, not borrowed from personal finance.</p>
+        </div>
+      </section>
+
+      <!-- ===================== TASK ===================== -->
+      <section class="beat" id="task">
+        <div class="beat-eyebrow"><span class="L">T</span><span class="lbl">Task · The mandate</span></div>
+        <h2>One credit flow, <span class="it">open to the whole org.</span></h2>
+        <p>
+          Build a single lending flow — as seamless as a personal-loan app — that any Ninjacart POD could
+          adopt and adapt to its own personas and use-cases. The guiding philosophy:
+          <b>break the journey into pieces and optimise each part</b>, end to end.
+        </p>
+
+        <div class="sub">
+          <div class="sub-h">The design principles · NorthStar</div>
+          <div class="principles">
+            <div class="principle"><span class="pn">1</span><div><div class="pt">Optimise for speed</div><div class="pd">Get the user to money as fast as possible — without making them overthink the steps.</div></div></div>
+            <div class="principle"><span class="pn">2</span><div><div class="pt">Earn trust through transparency</div><div class="pd">Set honest expectations early — never surprise the user with a smaller number at the end.</div></div></div>
+            <div class="principle"><span class="pn">3</span><div><div class="pt">Clarity over clutter</div><div class="pd">Surface only what matters at each step; everything else gets out of the way.</div></div></div>
+            <div class="principle"><span class="pn">4</span><div><div class="pt">One flow, many use-cases</div><div class="pd">Keep it open and modular so other PODs can plug it in without rebuilding it.</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ACTION ===================== -->
+      <section class="beat" id="action">
+        <div class="beat-eyebrow"><span class="L">A</span><span class="lbl">Action · The build</span></div>
+        <h2>Get the user, set the limit, <span class="it">hand over the cash.</span></h2>
+        <p>The journey breaks into three optimised modules — onboarding &amp; underwriting, disbursal, and repayment — each step thought through for speed and clarity.</p>
+
+        <!-- ---- Module 01 · Onboarding & Underwriting ---- -->
+        <div class="sub">
+          <div class="sub-h">01 · Onboarding &amp; Underwriting</div>
+          <h3>Getting the user, and setting the limit</h3>
+          <p>
+            <b>A clean, simple entry point.</b> Credit is a core offering, so it sits straight up on a clean
+            spot — without making the user navigate too much. This same entry was followed across Ninjacart's
+            platforms to surface credit consistently.
+          </p>
+          <p>
+            <b>A friendly, trustworthy landing.</b> Once onboarding is done, the user lands directly in a
+            section designed to focus only on the important parts — clearing out any cluttered details.
+          </p>
+          <p>
+            <b>Knowing the user — let's take a selfie.</b> Understanding the applicant's persona drives the
+            flow, so document collection splits in two: <b>Self Upload</b> for users savvy enough to handle the
+            documents and business info themselves, and <b>Assisted Doc Upload</b> — an assisted flow with an
+            agent, powered by The TradeDesk — for the less tech-savvy.
+          </p>
+          <p>
+            <b>The KYC.</b> One of the most tedious parts of any onboarding — it asks the most input from the
+            user — so it got the most optimisation for speed and clarity.
+          </p>
+          <p>
+            <b>A few more business details.</b> A handful of business documents and details are needed to
+            assess the user's business and arrive at the actual limit and creditworthiness.
+          </p>
+          <div class="stage">
+            <div class="plate wide"><img src="images/PVmTpTS8QQBHqbX6hLP5RiNDIk.png" alt="Onboarding — clean entry, potential limit and friendly landing screens"></div>
+            <div class="plate wide"><img src="images/mmJnTpV5aUCk366k0a8FnPaaVkk.png" alt="Selfie capture and KYC screens"></div>
+            <div class="plate wide"><img src="images/j3DOW5SLo6FI2lpEvIgLClbw8.png" alt="Document upload and additional business details"></div>
+          </div>
+          <div class="cap">Clean entry · potential limit &amp; friendly landing · selfie &amp; KYC · document upload</div>
+          <div class="stage"><div class="plate wide"><img src="images/B91p7QLEdl7CNRojlL05n1oZIBc.png" alt="Splitting the flows — Self Upload vs Assisted Doc Upload"></div></div>
+          <div class="cap">Splitting the flows — Self Upload vs Assisted doc upload</div>
+        </div>
+
+        <!-- limit reveal — the signature trust mechanic -->
+        <div class="sub">
+          <div class="sub-h">Unlocking your potential limit</div>
+          <h3>Know your potential limit — in a click</h3>
+          <p>
+            A/B testing showed that revealing the final rule-engine limit at the <em>end</em> of onboarding
+            disappointed users: it's usually below the maximum, and the late reveal felt untrustworthy. So we
+            reset expectations at the start — showing a <b>potential limit based on income level</b>. Setting
+            the expectation straight from the start built a sense of trust and transparency from click one.
+          </p>
+        </div>
+
+        <!-- ---- Module 02 · Disbursal ---- -->
+        <div class="sub">
+          <div class="sub-h">02 · Disbursal</div>
+          <h3>Sign and take away the cash</h3>
+          <p>
+            The journey is done and the limit is set — the user can simply sign and take away the money in a
+            few clicks. The whole flow is <b>4 screens, 6 clicks and disbursed.</b>
+          </p>
+          <p>
+            <b>Comparing it with the NorthStar principles —</b> the disbursal flow was designed around the
+            primary focus: help the user take a loan as quickly as possible, without having to think too much
+            about the steps. Speed, made the default.
+          </p>
+          <div class="stage"><div class="plate wide"><img src="images/3wO5CFwW8dw37F8dqo4C995jr6w.png" alt="Disbursal — sign and take away the cash"></div></div>
+          <div class="cap">4 screens, 6 clicks — sign &amp; take away the cash</div>
+        </div>
+
+        <!-- ---- Module 03 · Repayment ---- -->
+        <div class="sub">
+          <div class="sub-h">03 · Repayment</div>
+          <h3>The behaviour that decides a loan's fate</h3>
+          <p>
+            Repayment is the most crucial part of a lending cycle — it's the main behaviour that determines the
+            success of a loan. So it got its own first-class surface.
+          </p>
+          <p>
+            <b>Track and manage all your payments in one place.</b> A user may hold multiple loans at once,
+            each with different due dates and timelines. The Payment Section gives them one page to see all
+            upcoming payments, segmented by filters and dates — an essential tool for staying on top of dues.
+          </p>
+          <p>
+            <b>Everything payments, in one place.</b> Beyond loans, once a user enters the Ninjacart ecosystem
+            they also have payments, trades and orders — all folded into the section, giving an overall view of
+            everything payments in Ninjacart at one place, with <b>multiple entry points</b> to reach it.
+          </p>
+          <div class="stage">
+            <div class="plate phone"><img src="images/5aXxhF5uLYoh2ZAfJfvxOJDqG5E.png" alt="Payments section — all dues in one place"></div>
+            <div class="plate phone"><img src="images/ml8peHKGaKd2u6hTC60ZuCqgS3o.png" alt="Loans and payments dashboard"></div>
+          </div>
+          <div class="cap">The Payments section — every due, every loan, in one place</div>
+        </div>
+      </section>
+
+      <!-- ===================== RESULT ===================== -->
+      <section class="beat result" id="result">
+        <div class="beat-eyebrow"><span class="L">R</span><span class="lbl">Result · It paid off</span></div>
+        <h2>A hit with customers — and <span class="it">reused across the org.</span></h2>
+
+        <div class="stats">
+          <div class="stat"><div class="num green">₹2,800+ Cr</div><div class="lbl">disbursed since launch</div></div>
+          <div class="stat"><div class="num">Multi-POD</div><div class="lbl">adopted &amp; adapted by other Ninjacart business units</div></div>
+          <div class="stat"><div class="num">6 clicks</div><div class="lbl">from start to cash in hand</div></div>
+          <div class="stat"><div class="num tbd">—</div><div class="lbl">NPA / portfolio quality<span class="fill">add your number</span></div></div>
+          <div class="stat"><div class="num tbd">—</div><div class="lbl">onboarding → disbursal conversion<span class="fill">add your number</span></div></div>
+          <div class="stat"><div class="num tbd">—</div><div class="lbl">disbursal TAT vs. baseline<span class="fill">add your number</span></div></div>
+        </div>
+
+        <p>
+          The product became a hit and was welcomed by Ninjacart's customers. As intended, the flow was
+          <b>adopted by other business units and products across Ninjacart</b> — tweaked to each team's design
+          system and use-cases — turning Ninja Credit into the company's reusable credit primitive rather than
+          a one-off product.
+        </p>
+        <p>
+          The up-front limit reveal built durable trust, and the six-click disbursal made <em>speed</em> the
+          default expectation for lending inside the ecosystem.
+        </p>
+
+        <div class="cert">
+          <img src="images/sOFZTUfT03wnxZmCGIPWPswm6Vo.png" alt="Certificate of Achievement — Marvel Award, Q4 FY 2023–24">
+        </div>
+        <div class="cert-cap">Marvel Award · Q4 FY 2023–24 · some happy moments</div>
+      </section>
+
+      <!-- ===================== RETROSPECTIVE ===================== -->
+      <section class="beat" id="retro">
+        <div class="beat-eyebrow"><span class="L">·</span><span class="lbl">Retrospective</span></div>
+        <h2>I gained a lot.</h2>
+        <p>First-hand experience collaborating with talented PMs, engineers and partners from across the country.</p>
+        <p>First-hand experience designing for users at scale who aren't tech-savvy — and the discipline that demands.</p>
+        <p>First-hand experience shipping inside a fintech product, where trust and speed are the whole game.</p>
+        <p>Personally, deeply satisfying — being the sole designer on a project this impactful was a rare and grounding opportunity.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="next" href="../ninja-connect/tradedesk.html">Next project
+      <b>Ninja Connect <span class="arr">↗</span></b>
+    </a>
+    <div class="sig">Naman · Ninja Credit case study<br>Made with love, movie nights and sunsets</div>
+  </div>
+</footer>
+
+<script>
+  // ===== coordinated color themes — each sets the whole group on <html> =====
+  const THEMES={
+    sage:{ '--bg':'linear-gradient(180deg,#e9f1e6,#dde8d9)','--bg-solid':'#e4ecdf','--title-grad':'linear-gradient(100deg,#1f5c3a,#2f7d4f)','--ink':'#1c2a22','--muted':'#5d6b60','--faint':'#8a9488','--line':'rgba(28,42,34,0.13)','--accent':'#2f7d4f','--panel':'#fbfdf9' },
+    cream:{ '--bg':'linear-gradient(180deg,#faf6ee,#f3ece0)','--bg-solid':'#f5efe4','--title-grad':'linear-gradient(100deg,#16223f,#2a3c66)','--ink':'#1a2238','--muted':'#5f6678','--faint':'#9a96a0','--line':'rgba(26,34,56,0.12)','--accent':'#22335c','--panel':'#fffdf8' },
+    ivory:{ '--bg':'linear-gradient(180deg,#fbfbfe,#eef0f8)','--bg-solid':'#f2f3fa','--title-grad':'linear-gradient(100deg,#1e2a6b,#2a5db0 55%,#15b6bd)','--ink':'#23284d','--muted':'#5a5f7e','--faint':'#9396b0','--line':'rgba(35,40,77,0.12)','--accent':'#2a5db0','--panel':'#ffffff' },
+    cool:{  '--bg':'linear-gradient(180deg,#f4f6f8,#e8edf1)','--bg-solid':'#eef1f4','--title-grad':'linear-gradient(100deg,#33414f,#586676)','--ink':'#2b3540','--muted':'#5f6b76','--faint':'#919aa3','--line':'rgba(43,53,64,0.12)','--accent':'#4a5a6a','--panel':'#fcfdfe' },
+  };
+  function applyTheme(name){
+    const t=THEMES[name]||THEMES.sage;
+    for(const k in t) document.documentElement.style.setProperty(k,t[k]);
+    document.querySelectorAll('.swatch').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.theme===name)));
+    try{ localStorage.setItem('nc-theme',name); }catch(e){}
+  }
+  let saved=null; try{ saved=localStorage.getItem('nc-theme'); }catch(e){}
+  applyTheme(saved && THEMES[saved] ? saved : 'sage');
+  document.querySelectorAll('.swatch').forEach(b=>b.addEventListener('click',()=>applyTheme(b.dataset.theme)));
+
+  // sticky header border on scroll
+  const hdr=document.getElementById('hdr');
+  const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>10);
+  onScroll();addEventListener('scroll',onScroll,{passive:true});
+
+  // scroll-spy: highlight the active TOC item
+  const links=[...document.querySelectorAll('nav.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(a=>a.classList.remove('active'));
+        const a=map.get(e.target.id); if(a) a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  ['overview','situation','task','action','result','retro'].forEach(id=>{
+    const el=document.getElementById(id); if(el) io.observe(el);
+  });
+
+  // entrance reveals: blur-to-focus rise, with a small stagger between siblings
+  const SEL='.hero h1,.hero .lede,.meta-row,.star-strip a,.hl-head,.hl,.beat h2,.beat .sub,.beat > p,.card,.principle,.plate,.cap,.stat,.cert,.cert-cap';
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce){
+    const groups=new Map();
+    document.querySelectorAll(SEL).forEach(el=>{
+      const arr=groups.get(el.parentElement)||[]; arr.push(el); groups.set(el.parentElement,arr);
+      const i=arr.length-1;
+      el.style.transitionDelay=(Math.min(i,6)*0.08)+'s';  // stagger within each parent
+    });
+    const ro=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -10% 0px'});
+    document.querySelectorAll(SEL).forEach(el=>ro.observe(el));
+  }
+</script>
+
+</body>
+</html>

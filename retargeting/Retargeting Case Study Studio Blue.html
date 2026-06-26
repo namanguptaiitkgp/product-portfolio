@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case Study — DigiStudio Retargeting Module</title>
+  <meta name="description" content="A cinematic case study of the DigiStudio Retargeting Module — converting dropped-off customers during KYC onboarding. Told as Situation, Task, Action, Result." />
+  <link rel="stylesheet" href="cinematic/cinematic-light.css" />
+  <link rel="stylesheet" href="cinematic/selfie-light.css" />
+  <link rel="stylesheet" href="retargeting.css" />
+  <link rel="stylesheet" href="retargeting-ad.css" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body data-screen-label="Case Study · Retargeting Module · Studio Blue">
+  <!-- Back to home (portfolio landing) -->
+  <a id="back-home" href="../index.html" aria-label="Back to home">
+    <span class="bh-arr" aria-hidden="true">←</span><span class="bh-label">Home</span>
+  </a>
+  <style>
+    #back-home{
+      position:fixed; top:18px; left:18px; z-index:2147483000;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 14px 8px 11px;
+      font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size:12px; letter-spacing:.04em; text-transform:uppercase; font-weight:500;
+      color:#221C30; text-decoration:none;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(34,28,48,.14); border-radius:999px;
+      -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+      box-shadow:0 1px 2px rgba(34,28,48,.06), 0 6px 18px rgba(34,28,48,.08);
+      opacity:.72;
+      transition:opacity .32s cubic-bezier(.2,.8,.2,1), transform .32s cubic-bezier(.2,.8,.2,1),
+                 border-color .32s cubic-bezier(.2,.8,.2,1), color .32s cubic-bezier(.2,.8,.2,1);
+    }
+    #back-home:hover, #back-home:focus-visible{
+      opacity:1; transform:translateX(-2px);
+      color:oklch(58% 0.15 65); border-color:oklch(58% 0.15 65 / .45); outline:none;
+    }
+    #back-home .bh-arr{ font-size:14px; line-height:1; transform:translateY(-.5px); }
+    #back-home .bh-label{ line-height:1; }
+    @media print{ #back-home{ display:none; } }
+  </style>
+  <div id="root"></div>
+  <script>
+    /* Robustness net: the cinematic entrance animations rely on a running
+       document timeline. In contexts where the timeline never advances
+       (print / PDF export, deeply throttled or offscreen tabs), the reveal
+       elements would otherwise stay stuck at their pre-animation opacity:0.
+       Live browsers animate normally; only the frozen case forces content
+       visible. Reduced-motion is handled in CSS. */
+    (function () {
+      function forceVisible() {
+        var s = document.createElement('style');
+        s.id = '__reveal_fallback';
+        s.textContent =
+          '.a-rise,.a-fade,.a-slide,.a-pop{opacity:1!important;transform:none!important;filter:none!important}' +
+          '.funnel-step .bar{transform:none!important}' +
+          '.scene-track{transition:none!important}';
+        document.head.appendChild(s);
+      }
+      setTimeout(function () {
+        var t = document.timeline && document.timeline.currentTime;
+        if (!t) forceVisible();   // timeline frozen → guarantee content shows
+      }, 500);
+    })();
+  </script>
+  <script src="image-slot.js"></script>
+  <script type="text/babel" src="cinematic/stage.jsx"></script>
+  <script type="text/babel" src="retargeting-scenes.jsx"></script>
+  <script type="text/babel" src="retargeting-app.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+/* ========================================================================
+   NINJA GLOBAL — cinematic case-study deck
+   Centered layouts only (no left/right split). Product mobile screens sit
+   in the CENTER of the stage; copy is arranged above/below/around them.
+   Extends cinematic-light.css (tokens, Stage chrome, type, a-* animations)
+   and selfie-light.css (.scene-foot, .it emphasis).
+   --------------------------------------------------------------------- */
+
+/* ---- centered narrative scene (story / data slides) ---- */
+.s-narr{
+  position:relative;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 200px;
+}
+/* ---- centered product showcase scene (mobile screens in the middle) ---- */
+.s-show{
+  position:relative;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:60px 120px;
+}
+.s-narr .eyebrow,.s-show .eyebrow{justify-content:center;margin-bottom:22px;}
+
+/* headline + lede (centered) */
+.ng-h{
+  font-family:var(--grotesk);font-weight:600;
+  font-size:60px;line-height:1.03;letter-spacing:-.025em;color:var(--paper);
+  margin:0;text-wrap:balance;max-width:1320px;
+}
+.s-show .ng-h{font-size:54px;}
+.ng-h .it{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--amber);letter-spacing:-.01em;}
+.ng-lede{
+  font-family:var(--grotesk);font-weight:400;font-size:25px;line-height:1.45;
+  color:var(--paper-dim);max-width:980px;margin:24px auto 0;
+}
+.s-show .ng-lede{font-size:21px;max-width:920px;margin-top:18px;}
+.ng-small{font-family:var(--grotesk);font-size:17px;line-height:1.55;color:var(--paper-dim);max-width:860px;margin:24px auto 0;}
+.ng-small b{color:var(--paper);font-weight:500;}
+/* footer chrome uses the engine default: scene meta (left) · dots (centre) · arrows (right) */
+
+/* ---- centered device showcase ---- */
+.ng-stage{display:flex;flex-wrap:wrap;gap:38px;justify-content:center;align-items:center;margin-top:34px;width:100%;}
+.ng-plate{
+  border-radius:22px;overflow:hidden;background:#fff;
+  border:1px solid var(--hairline-2);
+  box-shadow:0 55px 110px -55px rgba(34,28,48,.6), 0 1px 2px rgba(34,28,48,.05);
+  transition:transform .55s var(--ease-cine), box-shadow .4s ease;
+}
+.ng-plate img{display:block;width:100%;height:auto;}
+.ng-plate.wide{width:100%;max-width:860px;}
+.ng-plate.phone{width:300px;}
+.ng-plate:hover{transform:translateY(-12px);}
+
+/* annotation chips arranged around the screens */
+.ng-notes{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
+.ng-note{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:13.5px;letter-spacing:.04em;color:var(--paper);
+  background:var(--ink-3);border:1px solid var(--amber-soft);border-radius:100px;
+  padding:9px 16px;box-shadow:0 12px 28px -16px rgba(34,28,48,.45);
+}
+.ng-note .pip{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber-soft);}
+
+/* ---- metric tiles (cover / results) ---- */
+.ng-tiles{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:42px;}
+.ng-tile{
+  background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:18px;
+  padding:26px 34px;min-width:236px;box-shadow:0 30px 70px -45px rgba(34,28,48,.5);
+}
+.ng-tile .n{font-family:var(--grotesk);font-weight:600;font-size:46px;line-height:1;letter-spacing:-.02em;color:var(--amber);}
+.ng-tile .n.teal{color:var(--teal);}
+.ng-tile .l{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim);margin-top:10px;line-height:1.4;}
+
+/* ---- number chips (problem) ---- */
+.ng-chips{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+.ng-chip{background:var(--ink-3);border:1px solid var(--hairline);border-radius:14px;padding:18px 24px;}
+.ng-chip .n{font-family:var(--grotesk);font-weight:600;font-size:30px;color:var(--paper);}
+.ng-chip .l{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-dim);margin-top:6px;}
+
+/* ---- stacked funnel (market TAM/SAM/SOM) ---- */
+.ng-funnel{display:flex;flex-direction:column;align-items:center;gap:14px;margin:34px auto 0;width:100%;max-width:1000px;}
+.ng-fbar{
+  height:78px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+}
+.ng-fbar .k{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;}
+.ng-fbar .v{font-family:var(--grotesk);font-weight:600;font-size:26px;}
+.ng-fbar.tam{background:linear-gradient(90deg,var(--amber),oklch(62% 0.14 55));}
+.ng-fbar.sam{background:linear-gradient(90deg,oklch(58% 0.13 90),oklch(55% 0.13 120));width:72%;}
+.ng-fbar.som{background:linear-gradient(90deg,var(--teal),oklch(48% 0.12 200));width:44%;}
+
+/* ---- 2x2 matrix (prioritisation) ---- */
+.ng-matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:840px;margin:32px auto 0;width:100%;}
+.ng-cell{background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:16px;padding:24px 26px;text-align:left;}
+.ng-cell.kill{border-color:var(--coral-soft);background:linear-gradient(160deg,var(--ink-3),oklch(96% 0.02 28));}
+.ng-cell .t{font-family:var(--grotesk);font-weight:600;font-size:21px;color:var(--paper);display:flex;align-items:center;gap:10px;}
+.ng-cell .t .mk{font-family:var(--mono);font-size:16px;}
+.ng-cell .t .mk.ok{color:var(--teal);} .ng-cell .t .mk.no{color:var(--coral);}
+.ng-cell .d{font-size:16px;color:var(--paper-dim);line-height:1.5;margin-top:8px;}
+
+/* ---- horizontal step timeline (insight / risk iteration) ---- */
+.ng-tl{display:flex;align-items:stretch;justify-content:center;gap:0;margin:34px auto 0;flex-wrap:nowrap;max-width:1280px;}
+.ng-step{flex:1;background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:16px;padding:24px 22px;text-align:left;max-width:340px;}
+.ng-step .v{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);}
+.ng-step .t{font-family:var(--grotesk);font-weight:600;font-size:20px;color:var(--paper);margin:8px 0 6px;}
+.ng-step .d{font-size:15px;color:var(--paper-dim);line-height:1.5;}
+.ng-arrow{display:flex;align-items:center;color:var(--paper-quiet);font-size:26px;padding:0 14px;flex:none;}
+.ng-result-flag{font-family:var(--grotesk);font-weight:600;font-size:30px;color:var(--teal);margin-top:30px;}
+.ng-result-flag .down{color:var(--coral);}
+
+/* ---- constraint chips (each with a response) ---- */
+.ng-cons{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:1000px;margin:32px auto 0;width:100%;}
+.ng-con{background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:14px;padding:20px 24px;text-align:left;}
+.ng-con .c{font-family:var(--grotesk);font-weight:600;font-size:18px;color:var(--paper);}
+.ng-con .r{font-size:15px;color:var(--paper-dim);line-height:1.5;margin-top:6px;}
+.ng-con .r b{color:var(--teal);font-weight:500;}
+
+/* ---- ownership / metric-family rows ---- */
+.ng-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+.ng-pill{font-family:var(--mono);font-size:14px;letter-spacing:.06em;color:var(--paper);background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:100px;padding:11px 20px;}
+
+/* ---- STAR strip on cover ---- */
+.ng-star{display:flex;justify-content:center;gap:0;margin-top:46px;border-top:1px solid var(--hairline);max-width:900px;width:100%;}
+.ng-star .step{flex:1;padding:20px 24px 0 0;border-right:1px solid var(--hairline);text-align:left;}
+.ng-star .step:last-child{border-right:0;}
+.ng-star .step .n{font-family:var(--mono);font-size:13px;letter-spacing:.22em;color:var(--amber);}
+.ng-star .step .t{display:block;margin-top:9px;font-family:var(--serif);font-style:italic;font-size:21px;color:var(--paper);}
+
+/* badge */
+.ng-badge{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:oklch(96% 0.03 200 / .6);border:1px solid var(--teal-soft);border-radius:100px;padding:9px 18px;margin-top:24px;}
+
+/* ---- cover: text left, screens right (slide 1 only) ---- */
+.s-cover-split{
+  position:relative;height:100%;
+  display:grid;grid-template-columns:46fr 54fr;align-items:center;gap:56px;padding:0 130px;
+}
+.s-cover-split .cv-left{position:relative;z-index:2;text-align:left;}
+.s-cover-split .cv-right{display:flex;align-items:center;justify-content:center;}
+.s-cover-split .ng-h{text-align:left;max-width:none;font-size:62px;}
+.s-cover-split .ng-tiles{justify-content:flex-start;margin-top:44px;gap:16px;}
+.s-cover-split .ng-tile{min-width:0;padding:22px 24px;}
+.s-cover-split .ng-tile .n{font-size:40px;}
+.s-cover-split .ng-trio{margin-top:0;}
+
+/* ---- two-column scene: text left, visual right ---- */
+.s-2col{position:relative;height:100%;display:grid;grid-template-columns:47fr 53fr;align-items:center;gap:80px;padding:0 110px;}
+.s-2col .c-left{text-align:left;}
+.s-2col .c-left .eyebrow{justify-content:flex-start;font-size:15px;}
+.s-2col .c-left .ng-h{text-align:left;max-width:none;font-size:60px;line-height:1.02;}
+.s-2col .c-left .ng-lede{margin:22px 0 0;max-width:700px;font-size:19.5px;line-height:1.5;}
+.s-2col .c-left .ng-small{margin:26px 0 0;text-align:left;max-width:680px;}
+.s-2col .c-right{display:flex;align-items:center;justify-content:center;}
+
+/* ---- strategy scene (slide 03): roadmap + scatter + rails ---- */
+.s-strategy{position:relative;height:100%;display:flex;flex-direction:column;padding:92px 84px 96px;}
+.s-strategy .eyebrow{justify-content:flex-start;}
+.s-strategy .ng-h{text-align:left;font-size:46px;max-width:none;margin-top:6px;}
+.strat-sub{font-family:var(--grotesk);font-size:19px;line-height:1.5;color:var(--paper-dim);max-width:1280px;margin:14px 0 0;text-align:left;}
+.strat-sub b{color:var(--paper);font-weight:500;}
+.strat-body{display:grid;grid-template-columns:1.04fr 0.96fr;gap:54px;align-items:stretch;margin-top:26px;flex:1;min-height:0;}
+.strat-left{display:flex;flex-direction:column;justify-content:space-between;gap:22px;}
+.panel-h{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-quiet);margin-bottom:12px;}
+/* roadmap */
+.roadmap{display:flex;flex-direction:column;gap:12px;}
+.rm-row{display:grid;grid-template-columns:124px 1fr;gap:16px;align-items:center;background:var(--ink-3);border:1px solid var(--hairline);border-radius:12px;padding:15px 18px;}
+.rm-row .ph{font-family:var(--grotesk);font-weight:600;font-size:16px;color:var(--amber);}
+.rm-row .ph.done{color:var(--paper-quiet);}
+.rm-row .sh{font-size:15.5px;color:var(--paper-dim);line-height:1.45;}
+.rm-row .ex{font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--teal);margin-top:5px;}
+/* rails */
+.rails{margin-top:0;display:flex;flex-direction:column;gap:16px;}
+.rail .rl{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:9px;}
+.rail .chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-family:var(--mono);font-size:13px;color:var(--paper);background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:100px;padding:7px 13px;}
+/* effort/impact scatter */
+.scatter-wrap{display:flex;flex-direction:column;align-items:stretch;}
+.scatter{position:relative;flex:1;width:100%;min-height:0;border:1px solid var(--hairline-2);border-radius:18px;background:linear-gradient(160deg,var(--ink-3),var(--ink-1));}
+.scatter .cross-v{position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed var(--hairline-2);}
+.scatter .cross-h{position:absolute;top:50%;left:0;right:0;border-top:1px dashed var(--hairline-2);}
+.scatter .quad{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper-quiet);}
+.scatter .quad.tl{top:12px;left:14px;} .scatter .quad.tr{top:12px;right:14px;color:var(--teal);}
+.scatter .quad.br{bottom:12px;right:14px;color:var(--coral);} .scatter .quad.bl{bottom:12px;left:14px;}
+.scatter .dot{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column-reverse;align-items:center;gap:5px;}
+.scatter .dot .d{width:20px;height:20px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 6px color-mix(in srgb,var(--teal) 20%,transparent);}
+.scatter .dot.kill .d{background:var(--coral);box-shadow:0 0 0 6px color-mix(in srgb,var(--coral) 20%,transparent);}
+.scatter .dot .lab{font-family:var(--grotesk);font-weight:500;font-size:14px;color:var(--paper);white-space:nowrap;}
+.scatter .axis-x{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-quiet);}
+.scatter .axis-y{position:absolute;left:10px;top:0;bottom:0;display:flex;align-items:center;}
+.scatter .axis-y span{transform:rotate(-90deg);white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-quiet);}
+.strat-foot{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--paper-dim);text-align:left;margin-top:22px;}
+
+/* ---- two-persona scene (slide 02) ---- */
+.s-personas{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:48px 110px;}
+.s-personas .eyebrow{justify-content:center;}
+.s-personas .ng-h{font-size:54px;}
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;width:100%;margin-top:38px;align-items:stretch;}
+.persona-card{background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:18px;padding:36px 42px;text-align:left;box-shadow:0 30px 70px -45px rgba(34,28,48,.5);position:relative;display:flex;flex-direction:column;}
+.persona-card::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:3px;border-radius:3px;background:var(--amber);}
+.persona-card.imp::before{background:var(--teal);}
+.persona-card .phead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px;}
+.persona-card .pname{font-family:var(--grotesk);font-weight:600;font-size:30px;color:var(--amber);letter-spacing:-.01em;}
+.persona-card.imp .pname{color:var(--teal);}
+.persona-card .proute{font-family:var(--mono);font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-quiet);}
+.persona-list{display:flex;flex-direction:column;gap:21px;justify-content:space-between;flex:1;}
+.persona-list .pi{font-size:20px;color:var(--paper-dim);line-height:1.52;}
+.persona-list .pi b{color:var(--paper);font-weight:500;}
+.persona-foot{display:flex;align-items:center;gap:38px;margin-top:54px;max-width:1320px;}
+.persona-foot .mkt{width:264px;height:300px;border-radius:18px;object-fit:cover;border:1px solid var(--hairline-2);box-shadow:0 22px 48px -24px rgba(34,28,48,.5);flex:none;}
+.persona-foot .ft{font-size:21px;color:var(--paper-dim);line-height:1.6;text-align:left;}
+.persona-foot .ft b{color:var(--paper);font-weight:500;}
+
+/* ---- narrowing "opportunity" funnel: TAM → constraint gates → SAM ---- */
+.ng-ofunnel{display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;max-width:660px;}
+.ng-ob{border-radius:16px;padding:24px 30px;color:#fff;text-align:center;box-shadow:0 30px 60px -30px rgba(34,28,48,.5);}
+.ng-ob .k{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.92;}
+.ng-ob .v{display:block;font-family:var(--grotesk);font-weight:600;font-size:42px;line-height:1;margin-top:6px;}
+.ng-ob.tam{background:linear-gradient(90deg,var(--amber),oklch(62% 0.14 55));width:100%;}
+.ng-ob.sam{background:linear-gradient(90deg,var(--teal),oklch(48% 0.12 200));width:82%;}
+.ng-gate{text-align:center;margin:0 auto;}
+.ng-gate .gk{display:block;font-family:var(--mono);font-size:14.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);}
+.ng-gate .gd{display:block;font-size:16px;color:var(--paper-dim);margin-top:5px;line-height:1.5;}
+
+/* ---- rotated-overlap phone trio (ported from the portfolio index .trio) ----
+   Each device is wrapped in an .a-rise element for entrance; the rotation/offset
+   lives on .ng-dev so it isn't clobbered by the rise animation. */
+.ng-trio{display:flex;justify-content:center;align-items:flex-end;gap:0;margin-top:34px;}
+.ng-dev{
+  border-radius:30px;overflow:hidden;background:#fff;border:1px solid var(--hairline-2);
+  box-shadow:0 55px 110px -50px rgba(34,28,48,.6), 0 1px 2px rgba(34,28,48,.05);
+  transition:transform .5s var(--ease-cine);
+}
+.ng-dev img{display:block;width:100%;height:auto;}
+.ng-dev.side{width:296px;}
+.ng-dev.left{transform:translateX(42px) rotate(-3deg);z-index:1;}
+.ng-dev.right{transform:translateX(-42px) rotate(3deg);z-index:1;}
+.ng-dev.mid{width:344px;z-index:2;margin-bottom:36px;}
+.ng-trio:hover .ng-dev.left{transform:translateX(10px) rotate(-4deg);}
+.ng-trio:hover .ng-dev.right{transform:translateX(-10px) rotate(4deg);}
+.ng-trio:hover .ng-dev.mid{transform:translateY(-10px);}
+/* a single centred device (e.g. the selfie/underwriting scene) */
+.ng-solo{display:flex;justify-content:center;margin-top:34px;}
+.ng-solo .ng-dev{width:330px;}
+/* a centred pair (doc-collection scene) */
+.ng-pair{display:flex;justify-content:center;align-items:center;gap:34px;flex-wrap:wrap;margin-top:30px;}
+.ng-pair .ng-plate{max-width:560px;}
+/* height-capped plate so tall screenshots never overflow the 1080 canvas */
+.ng-plate.tall{width:auto;max-width:94%;}
+.ng-plate.tall img{width:auto;height:560px;max-width:100%;}
+
+/* ---- animated trade corridor (India ↔ SE-Asia) ---- */
+.ng-corridor{display:block;margin:6px auto 0;width:min(900px,72%);height:90px;overflow:visible;}
+.ng-corridor path{fill:none;stroke:var(--amber);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;}
+.ng-corridor .dot{fill:var(--teal);opacity:0;}
+.scene[data-active="true"] .ng-corridor path{animation:ng-draw 1700ms var(--ease-cine) .25s forwards;}
+.scene[data-active="true"] .ng-corridor .dot{animation:ng-dot 500ms ease .25s forwards;}
+.scene[data-active="true"] .ng-corridor .dot.b{animation-delay:1.6s;}
+@keyframes ng-draw{to{stroke-dashoffset:0;}}
+@keyframes ng-dot{to{opacity:1;}}
+
+/* ---- funnel bars grow on activate (TAM→SAM→SOM) ---- */
+.scene[data-active="true"] .ng-funnel .ng-fbar{transform-origin:left center;animation:ng-grow 900ms var(--ease-cine) both;}
+.ng-funnel .ng-fbar:nth-child(1){animation-delay:.35s;}
+.ng-funnel .ng-fbar:nth-child(2){animation-delay:.55s;}
+.ng-funnel .ng-fbar:nth-child(3){animation-delay:.75s;}
+@keyframes ng-grow{from{transform:scaleX(0);opacity:0;}to{transform:scaleX(1);opacity:1;}}
+
+/* tighter stacking for the dense merged "opportunity" scene */
+.s-narr.dense{padding:0 160px;}
+.s-narr.dense .ng-lede{margin-top:16px;font-size:22px;}
+.s-narr.dense .ng-funnel{margin-top:24px;}
+
+/* =========================================================================
+   SLIDE 05 — THE PRODUCT FLOW (minimal intro + scrollable product world)
+   The scene itself is the scroll container (data-scroll-capture in stage.jsx).
+   ========================================================================= */
+.s-flow{position:relative;height:100%;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;}
+.s-flow::-webkit-scrollbar{width:8px;}
+.s-flow::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--ink-1) 22%,transparent);border-radius:100px;}
+.s-flow::-webkit-scrollbar-track{background:transparent;}
+
+/* ---- intro panel: exactly one screenful ---- */
+.flow-intro{position:relative;height:1080px;display:flex;flex-direction:column;justify-content:center;padding:0 140px;overflow:hidden;}
+.flow-intro .eyebrow{justify-content:flex-start;}
+.flow-intro .ng-h{text-align:left;font-size:74px;line-height:1.04;max-width:1320px;margin-top:8px;}
+.flow-chips{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+.flow-chip{font-family:var(--grotesk);font-size:18px;color:var(--paper-dim);background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:100px;padding:11px 22px;}
+.flow-chip b{color:var(--paper);font-weight:600;}
+.flow-sub{font-family:var(--serif);font-style:italic;font-size:23px;color:var(--paper-dim);margin-top:30px;}
+.flow-scrollcue{margin-top:54px;display:inline-flex;align-items:center;gap:13px;background:none;border:none;cursor:pointer;padding:0;
+  font-family:var(--mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);}
+.flow-scrollcue svg{width:30px;height:30px;color:var(--amber);animation:flowbob 1.8s var(--ease-cine) infinite;}
+.flow-scrollcue:hover svg{color:var(--paper);}
+@keyframes flowbob{0%,100%{transform:translateY(0);opacity:.65;}50%{transform:translateY(7px);opacity:1;}}
+
+/* The global atmosphere overlay (.stage-scaler::before) is a warm radial glow
+   at the bottom + a cool one at the top. It's invisible on the light scenes but
+   reads as golden semicircles over the dark product composites in the flow
+   scenes — 5 "The flow" (idx 4) and 6 "Underwriting" (idx 5). Suppress it just
+   for those two; every other scene keeps the vignette. Fade so scene-to-scene
+   transitions don't pop the glow on/off. */
+.stage-scaler::before{transition:opacity .5s var(--ease-cine);}
+.stage-root[data-scene="4"] .stage-scaler::before,
+.stage-root[data-scene="5"] .stage-scaler::before{opacity:0;}
+
+/* ---- 07 · Repayment — points beside the payments surface ---- */
+.repay-points{display:flex;flex-direction:column;gap:16px;max-width:540px;text-align:left;}
+.repay-point{background:var(--ink-3);border:1px solid var(--hairline-2);border-radius:16px;padding:20px 24px;
+  box-shadow:0 18px 40px -30px rgba(34,28,48,.4);}
+.repay-point .rp-n{font-family:var(--grotesk);font-weight:600;font-size:21px;color:var(--paper);letter-spacing:-.01em;}
+.repay-point .rp-l{font-family:var(--grotesk);font-size:16px;line-height:1.5;color:var(--paper-dim);margin-top:7px;}
+
+/* ---- the product world ---- */
+.flow-world{padding:0 120px 160px;background:#dde8d9;}
+.flow-band{font-family:var(--mono);font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);
+  padding:64px 0 10px;margin-top:64px;border-top:1px solid var(--hairline);}
+.flow-world .flow-band:first-child{margin-top:8px;border-top:none;}
+
+/* ---- step grid: copy beside phone, generous gap ---- */
+.flow-step{display:grid;grid-template-columns:minmax(360px,0.85fr) 1.15fr;gap:96px;align-items:center;
+  padding:96px 0;border-bottom:1px solid var(--hairline);}
+.flow-step.flip{grid-template-columns:1.15fr minmax(360px,0.85fr);}
+.flow-step.flip .flow-copy{order:2;}
+.flow-step.flip .flow-shot{order:1;}
+
+/* ---- copy column ---- */
+.flow-copy .flow-n{font-family:var(--mono);font-size:14px;color:var(--paper-quiet);letter-spacing:.08em;}
+.flow-copy .flow-kicker{display:block;margin-top:10px;font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:oklch(44% 0.11 200);}
+.flow-title{font-family:var(--grotesk);font-weight:600;font-size:42px;line-height:1.08;letter-spacing:-.025em;color:var(--paper);margin:14px 0 20px;}
+.flow-body{font-family:var(--grotesk);font-size:20px;line-height:1.6;color:var(--paper-dim);max-width:560px;}
+
+/* ---- the device card: one consistent frame for every shot ---- */
+.flow-shot{display:flex;justify-content:center;align-items:center;}
+.flow-shot > img,
+.flow-shot > video{display:block;width:auto;height:auto;max-width:100%;
+  background:#FCFAF4;padding:10px;border-radius:30px;border:1px solid var(--hairline-2);
+  box-shadow:0 2px 4px rgba(34,28,48,.05), 0 50px 100px -40px rgba(34,28,48,.45);}
+
+/* shots carrying a dark baked-in background → dark frame so the bezel matches */
+.flow-shot.dark > img,
+.flow-shot.dark > video{background:#15131C;border-color:rgba(255,255,255,.06);
+  box-shadow:0 2px 4px rgba(34,28,48,.06), 0 50px 110px -38px rgba(21,19,28,.55);}
+
+/* ---- per-shape sizing (large = premium) ---- */
+.flow-shot.tall > img,
+.flow-shot.tall > video{max-height:820px;}
+.flow-shot.portrait > img{max-height:780px;}
+/* fill the (now wider) main column for big readable baked text, but cap height
+   to the viewport so near-square composites don't overflow — aspect preserved */
+.flow-shot.wide > img{width:auto;height:auto;max-width:100%;max-height:1020px;border-radius:24px;padding:14px;}
+.flow-shot.video > video{max-height:780px;}
+
+/* ---- realistic iPhone device frame + 3D perspective tilt (single-phone shots) ----
+   The phone BODY (.ng-iphone) is the tilted element: a brushed-titanium rim
+   (layered gradient + inset edge highlights), a black antenna bezel, a clipped
+   glass screen, a dynamic-island pill with a camera lens, and side-button
+   slivers — built to match the pre-rendered loan-calculator render so a raw
+   screenshot reads as the same high-quality device. The rotateY tilt lives on
+   the body (mirrored for flipped steps) so island + buttons tilt with it. */
+.flow-shot.device{perspective:2600px;}
+.flow-shot.device .ng-iphone{
+  position:relative;display:inline-block;
+  padding:13px;border-radius:62px;
+  background:linear-gradient(135deg,#48484e 0%,#1d1d21 16%,#0c0c0e 50%,#1d1d21 84%,#4a4a50 100%);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.55),
+    inset 0 1px 1px rgba(255,255,255,.24),
+    inset 0 -1px 1px rgba(255,255,255,.10),
+    0 8px 18px rgba(0,0,0,.32),
+    0 90px 150px -44px rgba(0,0,0,.64);
+  transform:rotateY(-10deg) rotateX(2deg);transform-origin:center center;
+  transition:transform .6s var(--ease-cine);}
+.flow-step.flip .flow-shot.device .ng-iphone{transform:rotateY(10deg) rotateX(2deg);}
+
+/* black antenna bezel + clipped glass */
+.flow-shot.device .ng-iphone-screen{
+  position:relative;border-radius:50px;overflow:hidden;background:#000;
+  box-shadow:inset 0 0 0 3px #050506;}
+.flow-shot.device .ng-iphone-screen > img,
+.flow-shot.device .ng-iphone-screen > video{
+  display:block;width:auto;height:auto;max-width:100%;border-radius:50px;}
+/* faint glass sheen on the top-left of the screen (matches the loan-calc render);
+   kept low-opacity and corner-confined so it reads as glass, not a glow over text */
+.flow-shot.device .ng-iphone-screen::after{
+  content:"";position:absolute;inset:0;border-radius:50px;pointer-events:none;z-index:2;
+  background:linear-gradient(122deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,0) 24%);}
+
+/* dynamic island floating at the top-centre of the glass */
+.flow-shot.device .ng-iphone-island{
+  position:absolute;top:24px;left:50%;transform:translateX(-50%);
+  width:32%;max-width:122px;height:30px;border-radius:16px;background:#000;
+  box-shadow:0 0 0 1px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.5);z-index:3;pointer-events:none;}
+.flow-shot.device .ng-iphone-island > i{
+  position:absolute;right:13px;top:50%;transform:translateY(-50%);
+  width:9px;height:9px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#33445e 0%,#0a0d14 72%);
+  box-shadow:inset 0 0 1px rgba(120,150,200,.5);}
+
+/* side-button slivers on the rim (left: volume pair · right: power) */
+.flow-shot.device .ng-iphone::before,
+.flow-shot.device .ng-iphone::after{content:"";position:absolute;border-radius:2px;z-index:1;}
+.flow-shot.device .ng-iphone::before{left:-2px;top:26%;width:3px;height:116px;
+  background:linear-gradient(90deg,#050506,#3a3a40);}
+.flow-shot.device .ng-iphone::after{right:-2px;top:32%;width:3px;height:74px;
+  background:linear-gradient(270deg,#050506,#3a3a40);}
+
+/* sizing: constrain the screenshot; the rim wraps it (was on .flow-shot.X > img) */
+.flow-shot.tall.device .ng-iphone-screen > img,
+.flow-shot.tall.device .ng-iphone-screen > video{max-height:792px;}
+.flow-shot.portrait.device .ng-iphone-screen > img{max-height:752px;}
+.flow-shot.video.device .ng-iphone-screen > video{max-height:752px;}
+
+/* ---- bare mockup: image is already a rendered 3D device (e.g. loan calc).
+   drop-shadow (not box-shadow) so the shadow hugs the phone's alpha silhouette
+   instead of tracing the transparent image's rectangular bounding box. ---- */
+.flow-shot.bare > img,
+.flow-shot.bare > video{background:transparent;border:none;padding:0;border-radius:26px;
+  filter:drop-shadow(0 40px 70px rgba(0,0,0,.55));}
+
+/* WIDE steps break the grid: copy stacked above a full-width hero composite */
+.flow-step.wide-step{grid-template-columns:1fr;gap:40px;padding:104px 0;}
+.flow-step.wide-step .flow-copy{order:1;max-width:920px;}
+.flow-step.wide-step .flow-shot{order:2;}
+.flow-step.wide-step .flow-body{max-width:760px;}
+
+/* inline metric badge under a step's copy */
+.flow-badge{display:inline-block;margin-top:24px;font-family:var(--grotesk);font-weight:600;font-size:16px;
+  color:var(--teal);background:color-mix(in srgb,var(--teal) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--teal) 34%,transparent);border-radius:100px;padding:9px 18px;}
+
+/* full-width pull-quote between steps */
+.flow-quote{font-family:var(--serif);font-size:31px;line-height:1.42;color:var(--paper);
+  max-width:1180px;margin:24px auto;padding:64px 0;text-align:center;border-bottom:1px solid var(--hairline);}
+.flow-quote b{color:var(--coral);font-weight:600;font-style:normal;}
+
+/* ---- end / transition to next slide ---- */
+.flow-end{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:100px 0 30px;}
+.flow-end-k{font-family:var(--mono);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-quiet);}
+.flow-end-h{font-family:var(--grotesk);font-weight:600;font-size:40px;line-height:1.12;letter-spacing:-.02em;color:var(--paper);max-width:820px;}
+.flow-next{margin-top:14px;display:inline-flex;align-items:center;gap:12px;cursor:pointer;
+  font-family:var(--grotesk);font-weight:600;font-size:19px;color:#fff;
+  background:var(--amber);border:none;border-radius:100px;padding:17px 30px;
+  box-shadow:0 18px 40px -16px var(--amber-soft);transition:transform .25s var(--ease-cine),box-shadow .25s var(--ease-cine);}
+.flow-next svg{width:22px;height:22px;}
+.flow-next:hover{transform:translateY(-3px);box-shadow:0 26px 54px -16px var(--amber-soft);}
+
+/* =========================================================================
+   SLIDES 05 & 06 — DARK product world (.s-flow--dark)
+   Per design, the flow-world sits on near-black. The whole palette flips by
+   redefining the theme vars in this one scope, so every existing flow component
+   (.flow-title/.flow-body/.flow-band/.flow-chip/.flow-end/.flow-quote …)
+   recolors automatically. Accent hues (amber/teal/coral) are left intact — they
+   read fine on black. Product composites already carry dark/transparent frames,
+   so they sit cleanly on the black ground. Layout adds a sticky right-hand
+   CONTENTS index that scroll-spies the sections; scene 5's first step is rebuilt
+   as the `entry-hero` block to match the case-study mock.
+   ========================================================================= */
+.s-flow--dark{
+  --paper:#F4F4F6; --paper-2:#E6E6EA; --paper-dim:#9B9BA4; --paper-quiet:#6E6E78;
+  --ink-1:#0e0e0e; --ink-3:#161617;
+  --hairline:rgba(255,255,255,.10); --hairline-2:rgba(255,255,255,.16);
+  background:#0a0a0b;
+}
+.s-flow--dark .flow-intro{background:#0a0a0b;}
+.s-flow--dark .flow-intro .glow{display:none;}              /* clean black — no warm bloom */
+.s-flow--dark .flow-copy .flow-kicker{color:#6FB6B6;}       /* dark-teal kicker → readable teal */
+
+/* two-column content + sticky right-hand index rail */
+.s-flow--dark .flow-world{
+  background:#0a0a0b;
+  display:grid; grid-template-columns:minmax(0,1fr) 150px; gap:56px; align-items:start;}
+.s-flow--dark .flow-main{min-width:0;}
+
+/* ---- interactive CONTENTS index (right rail, scroll-spy) ---- */
+.flow-index{position:sticky; top:120px; align-self:start; padding-top:4px;}
+.flow-index-title{font-family:var(--grotesk); font-size:14px; letter-spacing:.16em;
+  text-transform:uppercase; color:#6E6E78; margin-bottom:24px;}
+.flow-index-list{display:flex; flex-direction:column;}
+.flow-index-item{display:block; width:100%; text-align:left; background:none; border:none;
+  cursor:pointer; font-family:var(--grotesk); font-size:16px; line-height:1.25; color:#6E6E78;
+  padding:11px 0; transition:color .25s var(--ease-cine);}
+.flow-index-item:hover{color:#C7C7CE;}
+.flow-index-item.active{color:#FFFFFF;}
+
+/* ---- 01 · ENTRY HERO — rebuilt to match the dark case-study mock ---- */
+.entry-hero{padding:56px 0 92px;}
+.entry-eyebrow{display:inline-flex; align-items:center; gap:14px; font-family:var(--mono);
+  font-size:15px; letter-spacing:.2em; text-transform:uppercase; color:#8A8A92;}
+.entry-eyebrow .dot{width:9px; height:9px; border-radius:50%;
+  background:#9A9AA2; box-shadow:0 0 0 6px rgba(255,255,255,.04);}
+.entry-title{font-family:var(--grotesk); font-weight:600; font-size:80px; line-height:1.02;
+  letter-spacing:-.03em; color:#fff; margin:26px 0 70px; max-width:1340px;}
+.entry-grid{display:grid; grid-template-columns:560px 1fr; gap:84px; align-items:center;}
+.entry-card{position:relative; height:600px; overflow:hidden; border-radius:46px;
+  background:linear-gradient(180deg,#232325 0%,#101011 60%,#0b0b0c 100%);
+  box-shadow:0 50px 110px -55px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.05);}
+.entry-card-label{position:relative; z-index:2; text-align:center; padding:42px 48px 0;
+  font-family:var(--grotesk); font-size:23px; letter-spacing:-.01em; color:#8E8E95;}
+.entry-card-phone{position:absolute; left:0; right:0; top:104px; display:flex; justify-content:center;}
+.entry-card-phone img{width:80%; height:auto; max-width:none; display:block;
+  filter:drop-shadow(0 24px 50px rgba(0,0,0,.5));}
+.entry-copy{display:flex; flex-direction:column; gap:28px;}
+.entry-copy p{font-family:var(--grotesk); font-size:25px; line-height:1.52; color:#9B9BA4; margin:0;}
+.entry-copy p b{color:#fff; font-weight:600;}
+
+/* ---- "Know your potential limit" — phone-with-video showcase ----
+   ninja-credit-screen.mp4 ALREADY has the iPhone frame baked in, so the video is
+   dropped straight into the dark showcase card (a CSS phone wrapper would
+   double-frame it). Card carries the top label; the copy sits alongside. */
+.limit-section{padding:36px 0 92px;}
+.limit-grid{display:grid; grid-template-columns:600px 1fr; gap:84px; align-items:center;}
+/* flat #000 — the video's margins are pure black, so a gradient card left a
+   visible seam at the corners. Matching the card to the video keeps it uniform;
+   the soft shadow still reads the card as a panel against the #0a0a0b scene. */
+.limit-card{position:relative; border-radius:46px; padding:48px 40px 50px;
+  background:#000;
+  box-shadow:0 50px 110px -55px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.04);
+  display:flex; flex-direction:column; align-items:center; gap:34px;}
+.limit-card-label{font-family:var(--grotesk); font-size:23px; letter-spacing:-.01em;
+  color:#8E8E95; text-align:center;}
+.limit-video{display:block; height:780px; width:auto; max-width:100%;}
+/* ========================================================================= */
+
+/* =========================================================================
+   SLIDE 07 — RISK, ITERATION & SCALE
+   3 insight→fix→outcome cards · collections band · scale levers · metric strip
+   ========================================================================= */
+.s-ris{position:relative;height:100%;display:flex;flex-direction:column;padding:78px 84px 76px;}
+.s-ris .eyebrow{justify-content:flex-start;}
+.s-ris .ng-h{text-align:left;font-size:45px;max-width:none;margin-top:4px;line-height:1.08;}
+.ris-sub{font-family:var(--grotesk);font-size:18px;line-height:1.5;color:var(--paper-dim);max-width:1240px;margin:12px 0 0;}
+.ris-sub b{color:var(--paper);font-weight:600;}
+
+/* three insight cards (the hero) */
+.ris-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px;}
+.ris-card{background:var(--ink-3);border:1px solid var(--hairline);border-radius:16px;padding:19px 22px;
+  display:flex;flex-direction:column;gap:12px;}
+.rc-head{display:flex;align-items:center;gap:11px;padding-bottom:11px;border-bottom:1px solid var(--hairline);}
+.rc-no{font-family:var(--grotesk);font-size:23px;color:var(--amber);font-weight:600;line-height:1;}
+.rc-ttl{font-family:var(--grotesk);font-weight:600;font-size:18.5px;color:var(--paper);line-height:1.15;}
+.rc-row{display:flex;flex-direction:column;gap:4px;}
+.rc-k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
+.rc-row.insight .rc-k{color:var(--coral);}
+.rc-row.fix .rc-k{color:var(--amber);}
+.rc-row.out .rc-k{color:var(--teal);}
+.rc-v{font-family:var(--grotesk);font-size:15px;line-height:1.45;color:var(--paper-dim);}
+.rc-row.out .rc-v{color:var(--paper);font-weight:500;}
+
+/* collections band */
+.ris-collections{margin-top:20px;display:flex;align-items:baseline;gap:20px;background:var(--ink-2);
+  border:1px solid var(--hairline);border-radius:14px;padding:15px 22px;}
+.rcol-k{flex:0 0 auto;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);}
+.rcol-v{font-family:var(--grotesk);font-size:15px;line-height:1.5;color:var(--paper-dim);}
+.rcol-v b{color:var(--paper);font-weight:600;}
+
+/* scale levers */
+.ris-scale{margin-top:18px;}
+.rs-lead{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--paper-quiet);margin-bottom:10px;}
+.rs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.rs-item{display:flex;flex-direction:column;gap:5px;}
+.rs-k{font-family:var(--grotesk);font-weight:600;font-size:16px;color:var(--teal);}
+.rs-v{font-family:var(--grotesk);font-size:14.5px;line-height:1.46;color:var(--paper-dim);}
+
+/* bottom metric strip */
+.ris-metrics{margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  border-top:1px solid var(--hairline-2);padding-top:18px;}
+.rm{display:flex;flex-direction:column;gap:3px;}
+.rm-v{font-family:var(--grotesk);font-weight:600;font-size:22px;color:var(--paper);letter-spacing:-.01em;line-height:1.12;}
+.rm-l{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--paper-quiet);}
+
+/* ---- Back-to-home button (fixed in letterbox, outside the scaled stage) ---- */
+#back-home{
+  position:fixed; top:18px; left:18px; z-index:1000;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 14px 8px 11px;
+  font-family:"JetBrains Mono", ui-monospace, monospace;
+  font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--paper); text-decoration:none;
+  background:color-mix(in srgb, var(--ink-0) 88%, transparent);
+  border:1px solid color-mix(in srgb, var(--paper) 14%, transparent);
+  border-radius:999px;
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 1px 2px rgba(34,28,48,.06), 0 6px 18px rgba(34,28,48,.08);
+  opacity:.72;
+  transition:opacity 320ms var(--ease-cine), transform 320ms var(--ease-cine),
+             border-color 320ms var(--ease-cine), color 320ms var(--ease-cine);
+}
+#back-home:hover, #back-home:focus-visible{
+  opacity:1; transform:translateX(-2px);
+  color:var(--amber);
+  border-color:color-mix(in srgb, var(--amber) 45%, transparent);
+  outline:none;
+}
+#back-home .bh-arr{ font-size:14px; line-height:1; transform:translateY(-.5px); }
+#back-home .bh-label{ line-height:1; }
+@media print{ #back-home{ display:none; } }
