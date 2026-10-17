@@ -4,7 +4,7 @@ A cinematic, light-themed portfolio site for **Naman Gupta (Sr. Product Manager)
 A landing page ("front door") links out to four product case studies, three of which
 are animated, slide-based "cinematic decks" built in React (no build step).
 
-- **Live site:** https://namanguptaiitkgp.github.io/product-portfolio/
+- **Live site:** https://namanbuilds.com/ (custom domain via CNAME; GitHub Pages origin is namanguptaiitkgp.github.io/product-portfolio/)
 - **Repo:** `git@github.com:namanguptaiitkgp/product-portfolio.git` (GitHub Pages, public)
 - **Local path:** `~/Documents/Claude/Projects/cinematic-light`
 - **Hosting:** GitHub Pages (free, project site), served from `main` branch `/root`
