@@ -3,7 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Naman — Sr. Product Manager</title>
+<title>Naman Gupta — Product Owner, KYC &amp; Applied AI @ Digio</title>
+<meta name="description" content="I build AI products where mistakes are expensive — KYC fraud detection at 2L+ verifications a day, 0→1 lending at ~$350M/yr, and a US patent in deep learning. Available for AI product consulting.">
+<link rel="canonical" href="https://namanguptaiitkgp.github.io/product-portfolio/">
+
+<!-- Open Graph / LinkedIn / WhatsApp previews -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://namanguptaiitkgp.github.io/product-portfolio/">
+<meta property="og:title" content="Naman Gupta — Product Owner, KYC &amp; Applied AI @ Digio">
+<meta property="og:description" content="AI products where mistakes are expensive: KYC fraud detection at 2L+ verifications a day, 0→1 lending at ~$350M/yr, a US patent in deep learning.">
+<meta property="og:image" content="https://namanguptaiitkgp.github.io/product-portfolio/assets/og-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Naman Gupta — Product Owner, KYC &amp; Applied AI @ Digio">
+<meta name="twitter:description" content="AI products where mistakes are expensive: KYC fraud detection at 2L+ verifications a day, 0→1 lending at ~$350M/yr, a US patent in deep learning.">
+<meta name="twitter:image" content="https://namanguptaiitkgp.github.io/product-portfolio/assets/og-preview.png">
+
+<!-- Favicon: inline "N" monogram, no extra file to host -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23191713'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-weight='bold' font-size='40' fill='%23f4f2ec' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <style>
 /* ---- Faithful fonts from the original ---- */
 @font-face { font-family:"Neue Montreal"; src:url("https://framerusercontent.com/assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2"); font-weight:400; font-display:swap; }
@@ -16,7 +34,7 @@
   --paper:rgb(187, 210, 190);  /* page background — sage (was #101010) */
   --panel:#fffdf9;       /* showcase band    (was #1c1c1c) */
   --ink:#191713;         /* primary text     (was #ffffff) */
-  --muted:#8b8678;       /* secondary text   (was #969696) */
+  --muted:#5f5a4e;       /* secondary text — darkened from #8b8678 for AA contrast on light paper */
   --line:rgba(25,23,19,0.10);
   --accent:#191713;      /* link / arrow accent */
   --shadow:0 1px 2px rgba(25,23,19,.04), 0 18px 48px -22px rgba(25,23,19,.28);
@@ -57,6 +75,7 @@ header.scrolled{border-bottom-color:var(--line);}
 .brand .role{font-size:16px;color:var(--muted);}
 nav{display:flex;gap:34px;}
 nav a{display:inline-flex;align-items:center;gap:6px;font-size:16px;position:relative;}
+nav a::before{content:"";position:absolute;inset:-13px -6px;}
 nav a .arr{transition:transform .25s ease;}
 nav a:hover .arr{transform:translate(2px,-2px);}
 nav a::after{content:"";position:absolute;left:0;right:18px;bottom:-3px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
@@ -91,6 +110,11 @@ nav a:hover::after{transform:scaleX(1);}
     radial-gradient(120% 90% at 18% 30%, color-mix(in srgb,var(--accent) 7%, transparent), transparent 60%),
     var(--panel);
 }
+.hero-copy{display:flex;flex-direction:column;width:100%;}
+/* The frame keeps its cinematic aspect on desktop; on small screens it grows with the copy. */
+@media(max-width:900px){
+  .win-body{aspect-ratio:auto;padding:40px 7% 44px;}
+}
 .hero-head{
   font-family:"Neue Montreal",sans-serif;font-weight:500;
   font-size:clamp(26px,4.8vw,54px);line-height:1.04;letter-spacing:-.02em;
@@ -107,6 +131,7 @@ nav a:hover::after{transform:scaleX(1);}
 .project{padding:34px 0 26px;}
 .intro{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:8px;}
 .titles{position:relative;}
+.title-link{display:inline-block;color:inherit;}
 .title-stack{position:relative;display:inline-grid;}
 .title-stack > *{grid-area:1/1;transition:opacity .35s ease,transform .35s ease;}
 .t-name{font-size:30px;letter-spacing:-.015em;}
@@ -163,6 +188,7 @@ nav a:hover::after{transform:scaleX(1);}
   display:inline-flex;align-items:center;gap:6px;margin-top:16px;
   font-size:15px;color:var(--accent);position:relative;width:fit-content;
 }
+.case-cta::before{content:"";position:absolute;inset:-12px -6px;}
 .case-cta .arr{transition:transform .25s ease;}
 .case-cta:hover .arr{transform:translate(2px,-2px);}
 .case-cta::after{content:"";position:absolute;left:0;right:18px;bottom:-3px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
@@ -194,10 +220,20 @@ nav a:hover::after{transform:scaleX(1);}
   background:linear-gradient(100deg,#0FB6BD,#2563EB);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.deckcover .dc-note{font-size:13px;color:var(--muted);}
+.deckcover .dc-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px;}
+.deckcover .chip{
+  font-family:"SF Pro Display",sans-serif;font-size:12.5px;
+  border:1px solid color-mix(in srgb,#2563EB 32%, transparent);
+  color:#2563EB;border-radius:999px;padding:6px 13px;background:color-mix(in srgb,#2563EB 7%, transparent);
+}
+.deckcover .chip.on{
+  border-color:color-mix(in srgb,#0FB6BD 42%, transparent);
+  color:#0a7f85;background:color-mix(in srgb,#0FB6BD 12%, transparent);
+}
+.deckcover .chip-arr{color:var(--muted);font-size:13px;}
 
 /* ===== KYC device ecosystem (laptop + tablet + phone) — self-contained, literal colors ===== */
-.kyc-devices{position:relative;display:flex;align-items:center;justify-content:center;max-width:1160px;margin:0 auto;padding:46px 30px 54px;}
+.kyc-devices{overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;max-width:1160px;margin:0 auto;padding:46px 30px 54px;}
 .kyc-devices .laptop{flex:none;width:608px;max-width:45%;transition:transform .4s cubic-bezier(.2,.7,.2,1);}
 .kyc-devices .laptop-lid{background:#16161b;border-radius:20px;padding:12px;box-shadow:0 1px 2px rgba(25,23,19,.04),0 18px 48px -22px rgba(25,23,19,.28);position:relative;}
 .kyc-devices .laptop-lid::before{content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:#33333c;}
@@ -267,10 +303,185 @@ nav a:hover::after{transform:scaleX(1);}
   .kyc-devices .capture-phone{width:230px;}
 }
 
+/* ---- Hero subhead + CTAs ---- */
+.hero-sub{
+  margin:22px 0 0;max-width:640px;
+  font-size:clamp(15px,1.5vw,18px);line-height:1.5;color:var(--muted);
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"Neue Montreal",sans-serif;font-size:15px;font-weight:500;
+  border-radius:999px;padding:13px 22px;border:1px solid var(--ink);
+  transition:transform .25s ease, background-color .25s ease, color .25s ease;
+}
+.btn .arr{transition:transform .25s ease;}
+.btn:hover{transform:translateY(-2px);}
+.btn:hover .arr{transform:translate(2px,-2px);}
+.btn-primary{background:var(--ink);color:var(--panel);}
+.btn-primary:hover{background:#2e2a22;}
+.btn-ghost{background:transparent;color:var(--ink);}
+.btn-ghost:hover{background:color-mix(in srgb,var(--ink) 7%, transparent);}
+
+/* ---- Proof bar ---- */
+.proof{padding:6px 0 54px;}
+.proof .stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  border:1px solid var(--line);border-radius:18px;background:var(--panel);
+  box-shadow:var(--shadow);padding:28px 30px;
+}
+.proof .stat-item .n{
+  font-family:"Joane",serif;font-weight:900;font-style:italic;
+  font-size:clamp(24px,3vw,34px);line-height:1;letter-spacing:-.01em;color:var(--ink);
+}
+.proof .stat-item .l{margin-top:9px;font-size:14px;line-height:1.35;color:var(--muted);}
+.proof .logos{
+  margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;
+  font-size:14px;color:var(--muted);
+}
+.proof .logos b{font-weight:500;color:var(--ink);}
+.proof .logos .sep{opacity:.45;}
+
+/* ---- Section heading (shared by Work with me / How I work / Earlier work) ---- */
+.sec-head{padding:16px 0 4px;}
+.sec-head .eyebrow{
+  font-family:"SF Pro Display",sans-serif;font-size:12.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);
+}
+.sec-head h2{
+  margin:10px 0 0;font-family:"Neue Montreal",sans-serif;font-weight:500;
+  font-size:clamp(26px,3.4vw,38px);line-height:1.08;letter-spacing:-.02em;
+}
+.sec-head p{margin:12px 0 0;max-width:620px;font-size:17px;line-height:1.5;color:var(--muted);}
+
+/* ---- 20-second case summary ---- */
+.summary{margin-top:16px;max-width:760px;border-top:1px solid var(--line);}
+.summary > summary{
+  list-style:none;cursor:pointer;padding:14px 0 0;
+  font-size:14.5px;color:var(--accent);display:inline-flex;align-items:center;gap:8px;
+}
+.summary > summary::-webkit-details-marker{display:none;}
+.summary > summary .chev{transition:transform .25s ease;display:inline-block;}
+.summary[open] > summary .chev{transform:rotate(90deg);}
+.summary dl{margin:14px 0 4px;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;}
+.summary dt{
+  font-family:"SF Pro Display",sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);padding-top:3px;white-space:nowrap;
+}
+.summary dd{margin:0;font-size:16px;line-height:1.5;color:var(--ink);}
+.summary .tradeoff{
+  margin-top:6px;padding:14px 16px;border-radius:12px;
+  background:color-mix(in srgb,var(--ink) 4%, transparent);
+  font-size:15.5px;line-height:1.5;color:var(--ink);
+}
+.summary .tradeoff b{font-weight:500;}
+
+/* ---- Patent highlight ---- */
+.patent{padding:34px 0 26px;}
+.patent-card{
+  border:1px solid var(--line);border-radius:18px;background:var(--panel);
+  box-shadow:var(--shadow);padding:34px 36px;
+  display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+  transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.patent-card:hover{transform:translateY(-4px);}
+.patent-card .pc-eyebrow{
+  font-family:"SF Pro Display",sans-serif;font-size:12.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);
+}
+.patent-card h3{
+  margin:10px 0 0;font-family:"Neue Montreal",sans-serif;font-weight:500;
+  font-size:clamp(21px,2.6vw,29px);line-height:1.12;letter-spacing:-.015em;max-width:620px;
+}
+.patent-card p{margin:10px 0 0;max-width:620px;font-size:16px;line-height:1.5;color:var(--muted);}
+
+/* ---- Work with me: offer cards ---- */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:30px 0 10px;}
+.offer{
+  display:flex;flex-direction:column;
+  border:1px solid var(--line);border-radius:18px;background:var(--panel);
+  box-shadow:var(--shadow);padding:28px 26px;
+  transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.offer:hover{transform:translateY(-5px);}
+.offer .o-kicker{
+  font-family:"SF Pro Display",sans-serif;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);
+}
+.offer h3{margin:12px 0 0;font-size:22px;font-weight:500;letter-spacing:-.015em;line-height:1.15;}
+.offer .o-for{margin:12px 0 0;font-size:14.5px;line-height:1.45;color:var(--muted);}
+.offer ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:9px;}
+.offer li{position:relative;padding-left:20px;font-size:15px;line-height:1.45;}
+.offer li::before{content:"→";position:absolute;left:0;color:var(--muted);}
+.offer .o-foot{
+  margin-top:auto;padding-top:20px;display:flex;align-items:center;
+  justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.offer .o-time{font-size:13.5px;color:var(--muted);}
+.offer-proof{
+  margin:26px 0 18px;padding-top:20px;border-top:1px solid var(--line);
+  max-width:860px;font-size:14.5px;line-height:1.55;color:var(--muted);
+}
+
+/* ---- How I work ---- */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:26px 0 8px;}
+.how .step{border-top:1px solid var(--line);padding-top:18px;}
+.how .step .num{
+  font-family:"Joane",serif;font-weight:900;font-style:italic;
+  font-size:30px;line-height:1;color:var(--muted);
+}
+.how .step h3{margin:12px 0 0;font-size:19px;font-weight:500;letter-spacing:-.01em;}
+.how .step p{margin:9px 0 0;font-size:15.5px;line-height:1.5;color:var(--muted);}
+
+/* ---- Earlier work ---- */
+.earlier .t-name{font-size:24px;}
+.earlier .showcase{margin-top:22px;}
+
+/* ---- Closing CTA ---- */
+.closer{padding:70px 0 10px;}
+.closer-card{
+  border:1px solid var(--line);border-radius:18px;background:var(--panel);
+  box-shadow:var(--shadow);padding:44px 40px;text-align:center;
+}
+.closer-card h2{
+  margin:0;font-family:"Neue Montreal",sans-serif;font-weight:500;
+  font-size:clamp(24px,3.2vw,36px);line-height:1.1;letter-spacing:-.02em;
+}
+.closer-card p{margin:14px auto 0;max-width:520px;font-size:17px;line-height:1.5;color:var(--muted);}
+.closer-card .hero-actions{justify-content:center;}
+
 footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+
+@media(max-width:900px){
+  .offers,.how{grid-template-columns:1fr;}
+  .proof .stats{grid-template-columns:repeat(2,1fr);gap:22px;padding:24px;}
+}
+
+.kyc-devices .audit-bar .illus{
+  float:right;font-weight:600;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:#7a7a85;border:1px solid rgba(25,23,19,.18);border-radius:5px;padding:1px 5px;
+}
+
+@media(max-width:480px){
+  .hero-sub,.desc,.summary dd,.offer li{font-size:16px;}
+  footer{font-size:15px;}
+}
 
 @media(max-width:720px){
   .wrap{padding:0 22px;}
+  /* The full role string wraps into the nav at phone widths — name only up top;
+     the role is still in the footer, the <title> and the OG card. */
+  .brand .role{display:none;}
+  .brand{gap:10px;}
+  nav{gap:18px;}
+  nav a{font-size:14px;white-space:nowrap;}
+  /* Hero already carries the primary CTA, so the nav copy goes rather than wrap. */
+  .nav-work{display:none;}
+  .summary dl{grid-template-columns:1fr;gap:4px 0;}
+  .summary dt{padding-top:10px;}
+  .patent-card{padding:28px 24px;}
+  .closer-card{padding:34px 24px;}
+  .proof .stats{grid-template-columns:1fr;}
   .bar{height:78px;}
   .logo{font-size:40px;}
   .brand .name{font-size:20px;}
@@ -288,13 +499,14 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
     <a class="brand" href="#top">
       <span class="logo">N</span>
       <span class="who">
-        <span class="name">Naman</span>
-        <span class="role">Sr. Product Manager</span>
+        <span class="name">Naman Gupta</span>
+        <span class="role">Product Owner, KYC &amp; Applied AI @ Digio</span>
       </span>
     </a>
     <nav>
+      <a class="nav-work" href="#work">Work with me</a>
       <a href="https://www.linkedin.com/in/gupta-naman-iitkgp/" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
-      <a href="assets/Naman-Gupta-Resume.pdf" target="_blank" rel="noopener">Resume <span class="arr">↗</span></a>
+      <a href="resume/">Resume</a>
     </nav>
   </div>
 </header>
@@ -308,71 +520,80 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
           <span class="plus">+</span>
         </div>
         <div class="win-body">
-          <h1 class="hero-head">I use <span class="stories">data</span> to break complex problems into <span class="stories">roadmaps</span>, <span class="amp">&amp;</span> roadmaps into products that move the <span class="stories">metrics</span>.</h1>
+          <div class="hero-copy">
+            <h1 class="hero-head">I build <span class="stories">AI products</span> where mistakes are <span class="stories">expensive</span>.</h1>
+            <p class="hero-sub">KYC fraud detection running at 2L+ verifications a day. A 0→1 retailer credit line that moved ~$350M a year and cut NPAs from 6% to 2%.<br>Ten years turning regulated, high-stakes problems into products that ship.</p>
+            <div class="hero-actions">
+              <!-- TODO: replace hello@namanbuilds.com everywhere in this file with your personal address -->
+              <a class="btn btn-primary" href="mailto:hello@namanbuilds.com?subject=Project%20enquiry">Hire me for a project <span class="arr">↗</span></a>
+              <a class="btn btn-ghost" href="resume/">View resume</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Project 1 -->
-  <section class="project" data-screen-label="Ninja Credit">
-    <div class="wrap intro">
-      <div class="titles">
-        <div class="title-stack">
-          <div class="t-name">Ninja Credit</div>
-          <div class="t-company">Ninja Global</div>
+  <!-- Proof bar -->
+  <section class="proof">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat-item">
+          <div class="n">2L+</div>
+          <div class="l">KYC verifications a day running through flows I own</div>
         </div>
-        <div class="desc">Helping the Retailers of our country with my lending product</div>
-        <a class="case-cta" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html">Open case <span class="arr">↗</span></a>
+        <div class="stat-item">
+          <div class="n">~$350M</div>
+          <div class="l">Annual disbursals on a credit line I built 0→1</div>
+        </div>
+        <div class="stat-item">
+          <div class="n">6% → 2%</div>
+          <div class="l">NPAs, after re-scoring who got credit and how much</div>
+        </div>
+        <div class="stat-item">
+          <div class="n">1</div>
+          <div class="l">US patent in deep learning, granted at Capital One</div>
+        </div>
       </div>
-      <span class="tag">Ninja Global</span>
+      <div class="logos">
+        <b>IIT Kharagpur</b><span class="sep">·</span>
+        <b>Capital One</b><span class="sep">·</span>
+        <b>Ninjacart</b><span class="sep">·</span>
+        <b>Cogoport</b><span class="sep">·</span>
+        <b>Digio</b><span class="sep">·</span>
+        <span>ex-founder</span>
+      </div>
     </div>
-    <a class="media-link" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html" aria-label="Open Ninja Credit case study">
-      <div class="showcase">
-        <div class="wrap trio">
-          <div class="shot side left"><img src="https://framerusercontent.com/images/GGT4X9i5irXN0IcSWeFZhIkANzc.png?width=600" alt=""></div>
-          <div class="shot mid"><img src="https://framerusercontent.com/images/SDXNbEq3XmQkR8eXhdh6VpZyVBA.png?width=640" alt=""></div>
-          <div class="shot side right"><img src="https://framerusercontent.com/images/fyCQiZw0o2QenigDVtSbBMCzJdY.png?width=600" alt=""></div>
-        </div>
-      </div>
-    </a>
   </section>
 
-  <!-- Project 2 -->
-  <section class="project" data-screen-label="Ninja Connect">
-    <div class="wrap intro">
-      <div class="titles">
-        <div class="title-stack">
-          <div class="t-name">Ninja Connect</div>
-          <div class="t-company">The Trade Desk</div>
-        </div>
-        <div class="desc">A communication based commerce platform to empower business</div>
-        <a class="case-cta" href="ninja-connect/tradedesk.html">Open case <span class="arr">↗</span></a>
-      </div>
-      <span class="tag">The Trade Desk</span>
-    </div>
-    <a class="media-link" href="ninja-connect/tradedesk.html" aria-label="Open Ninja Connect case study">
-      <div class="showcase">
-        <div class="wrap combo">
-          <div class="wide"><img src="https://framerusercontent.com/images/veWSSAKCrrl3LrIGHZ3VWxKBGSA.png?width=1400" alt=""></div>
-          <div class="float"><img src="https://framerusercontent.com/images/JOk73ppRBLnQA5VwczzYBgiwWo.png?width=500" alt=""></div>
-        </div>
-      </div>
-    </a>
-  </section>
-
-  <!-- Project 3 -->
+  <!-- Project 1 — Digio Selfie / AI fraud -->
   <section class="project" data-screen-label="KYC Verification">
     <div class="wrap intro">
       <div class="titles">
-        <div class="title-stack">
-          <div class="t-name">KYC Verification</div>
-          <div class="t-company">The Trade Desk</div>
-        </div>
-        <div class="desc">Liveness-checked selfie capture with a full, regulator-ready audit trail</div>
+        <a class="title-link" href="cinematic/index_2_light.html"><div class="title-stack">
+          <div class="t-name">Selfie &amp; Liveness KYC</div>
+          <div class="t-company">Digio</div>
+        </div></a>
+        <div class="desc">Caught face-spoof fraud at 2L+ verifications a day — without rejecting the real customers behind them.</div>
         <a class="case-cta" href="cinematic/index_2_light.html">Open case <span class="arr">↗</span></a>
+
+        <!-- VERIFY: "What I'd do differently" is drafted from the tradeoff logic — rewrite in your own voice. -->
+        <details class="summary">
+          <summary><span class="chev">›</span> The 20-second version</summary>
+          <dl>
+            <dt>Context</dt>
+            <dd>Regulated onboarding requires matching a live face to a government ID. Too loose and you onboard fraudsters; too strict and you lose genuine customers at the last step.</dd>
+            <dt>My role</dt>
+            <dd>Product Owner for the selfie &amp; liveness flow — capture UX, scoring thresholds, and the audit trail an auditor actually reads.</dd>
+            <dt>Key decision</dt>
+            <dd>Score and keep <em>every</em> attempt instead of a single pass/fail. Retakes became evidence rather than friction, and each decision got a reviewable trail.</dd>
+            <dt>Result</dt>
+            <dd>2L+ verifications a day, each with a liveness score, a face-match confidence and a timestamped attempt history.</dd>
+          </dl>
+          <p class="tradeoff"><b>The tradeoff:</b> every point I moved the liveness threshold traded fraud caught against genuine users rejected. A stricter bar blocks more spoofs and also blocks a real customer in poor light holding a cheap phone. I tuned for the lender's loss appetite, not for the cleanest demo — and made the threshold configurable rather than baked in.</p>
+        </details>
       </div>
-      <span class="tag">The Trade Desk</span>
+      <span class="tag">Digio</span>
     </div>
     <a class="media-link" href="cinematic/index_2_light.html" aria-label="Open KYC Verification case study">
       <div class="showcase">
@@ -381,7 +602,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
           <div class="laptop">
             <div class="laptop-lid">
               <div class="laptop-screen">
-                <img class="laptop-shot" src="kyc-assets/digistudio-workflow.png" alt="DigiStudio KYC workflow editor">
+                <img class="laptop-shot" src="kyc-assets/digistudio-workflow.png" alt="DigiStudio KYC workflow editor" loading="lazy" decoding="async">
               </div>
             </div>
             <div class="laptop-deck"></div>
@@ -398,7 +619,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
                       <span class="pill pending">Pending: Approval</span>
                       <span class="pill rerequest">Re-Request Step</span>
                     </div>
-                    <div class="audit-bar">Overview</div>
+                    <div class="audit-bar">Overview <span class="illus">Illustrative data</span></div>
                     <div class="stat-row">
                       <div class="stat ok">
                         <div class="hd"><span><span class="ic g">✓</span>Geo-Location</span><span class="link">View Details ›</span></div>
@@ -418,12 +639,12 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
                     <div class="photo-panel">
                       <div class="photo-frame">
                         <span class="ts">10-04-2026 13:21:16</span>
-                        <img src="kyc-assets/selfie-frame.png" alt="Captured selfie frame">
+                        <img src="kyc-assets/selfie-frame.png" alt="Captured selfie frame" loading="lazy" decoding="async">
                       </div>
                     </div>
                     <div class="attempts">
                       <div class="attempt">
-                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="">
+                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="" loading="lazy" decoding="async">
                         <div class="meta">
                           <div class="nm">Attempt 3 <span class="ok2">Success</span></div>
                           <div class="ln">Attempted At: 05/06/2026, 11:53:16</div>
@@ -431,7 +652,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
                         </div>
                       </div>
                       <div class="attempt">
-                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="">
+                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="" loading="lazy" decoding="async">
                         <div class="meta">
                           <div class="nm">Attempt 2 <span class="rt">Retake</span></div>
                           <div class="ln">Attempted At: 05/06/2026, 11:52:41</div>
@@ -439,7 +660,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
                         </div>
                       </div>
                       <div class="attempt">
-                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="">
+                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="" loading="lazy" decoding="async">
                         <div class="meta">
                           <div class="nm">Attempt 1 <span class="rt">Retake</span></div>
                           <div class="ln">Attempted At: 05/06/2026, 11:52:09</div>
@@ -464,7 +685,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
               </div>
               <div class="cap-toast">Look straight at the camera</div>
               <div class="cap-circle-wrap">
-                <div class="cap-circle"><img src="kyc-assets/selfie-face-centered.png" alt="Live camera preview"></div>
+                <div class="cap-circle"><img src="kyc-assets/selfie-face-centered.png" alt="Live camera preview" loading="lazy" decoding="async"></div>
               </div>
               <div class="cap-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a5db0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h3l1.5-2h9L18 8.5h3V19H3z"/><circle cx="12" cy="13" r="3.2"/></svg> Capture Selfie</div>
             </div>
@@ -474,16 +695,72 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
     </a>
   </section>
 
-  <!-- Project 4 -->
+  <!-- Project 2 — Ninja Global 0→1 lending -->
+  <section class="project" data-screen-label="Ninja Credit">
+    <div class="wrap intro">
+      <div class="titles">
+        <a class="title-link" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html"><div class="title-stack">
+          <div class="t-name">Ninja Credit</div>
+          <div class="t-company">Ninjacart (Walmart-backed)</div>
+        </div></a>
+        <div class="desc">Built a retailer credit line from zero to ~$350M a year — and cut NPAs from 6% to 2%.</div>
+        <a class="case-cta" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html">Open case <span class="arr">↗</span></a>
+
+        <!-- VERIFY: confirm the underwriting-signal line matches what shipped. -->
+        <details class="summary">
+          <summary><span class="chev">›</span> The 20-second version</summary>
+          <dl>
+            <dt>Context</dt>
+            <dd>Retailers buying fresh produce daily had no formal credit history, so banks wouldn't lend. Working capital was the constraint on how much they could buy.</dd>
+            <dt>My role</dt>
+            <dd>Product Manager, 0→1 — from the first underwriting rule to a live lending product at national scale.</dd>
+            <dt>Key decision</dt>
+            <dd>Underwrite on observed buying behaviour on the platform rather than on financial statements nobody had. Transaction history became the credit signal.</dd>
+            <dt>Result</dt>
+            <dd>~$350M in annual disbursals, with NPAs down from 6% to 2% as the scoring tightened.</dd>
+          </dl>
+          <p class="tradeoff"><b>The tradeoff:</b> lower NPAs and higher GMV pull in opposite directions. Tightening limits is the fastest way to clean up a book and the fastest way to starve good retailers of the credit that grows it. I moved limits down for thin-history buyers and up for proven ones, so the book got safer without the platform losing its best customers.</p>
+        </details>
+      </div>
+      <span class="tag">Ninjacart</span>
+    </div>
+    <a class="media-link" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html" aria-label="Open Ninja Credit case study">
+      <div class="showcase">
+        <div class="wrap trio">
+          <div class="shot side left"><img src="https://framerusercontent.com/images/GGT4X9i5irXN0IcSWeFZhIkANzc.png?width=600" alt="Ninja Credit app — retailer credit limit and repayment schedule" loading="lazy" decoding="async"></div>
+          <div class="shot mid"><img src="https://framerusercontent.com/images/SDXNbEq3XmQkR8eXhdh6VpZyVBA.png?width=640" alt="Ninja Credit app — credit line home screen for a retailer" loading="lazy" decoding="async"></div>
+          <div class="shot side right"><img src="https://framerusercontent.com/images/fyCQiZw0o2QenigDVtSbBMCzJdY.png?width=600" alt="Ninja Credit app — order financing confirmation" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Project 3 — Retargeting / KYC workflow -->
   <section class="project" data-screen-label="Retargeting">
     <div class="wrap intro">
       <div class="titles">
-        <div class="title-stack">
-          <div class="t-name">Retargeting</div>
+        <a class="title-link" href="retargeting/Retargeting%20Case%20Study%20Studio%20Blue.html"><div class="title-stack">
+          <div class="t-name">Onboarding Retargeting</div>
           <div class="t-company">Digio</div>
-        </div>
-        <div class="desc">Winning back drop-off customers during KYC onboarding</div>
+        </div></a>
+        <div class="desc">Most KYC drop-offs never come back on their own. This finds who stalled, where, and sends the one nudge that restarts them.</div>
         <a class="case-cta" href="retargeting/Retargeting%20Case%20Study%20Studio%20Blue.html">Open case <span class="arr">↗</span></a>
+
+        <!-- VERIFY: add your real recovery-rate number to <dd> under Result once you have it cleared. -->
+        <details class="summary">
+          <summary><span class="chev">›</span> The 20-second version</summary>
+          <dl>
+            <dt>Context</dt>
+            <dd>Onboarding is a funnel with a dozen places to quit — a failed selfie, a missing document, a bank's OTP timing out. Every abandoned journey is acquisition spend already paid for.</dd>
+            <dt>My role</dt>
+            <dd>Product Owner — instrumenting the funnel, defining the drop-off taxonomy, and designing the nudge logic on top of it.</dd>
+            <dt>Key decision</dt>
+            <dd>Treat the <em>reason</em> for the drop-off as the trigger, not the drop-off itself. Someone blocked by a document problem needs a different message from someone who simply got distracted.</dd>
+            <dt>Result</dt>
+            <dd>Stalled journeys get a targeted nudge tied to the step that failed, instead of a generic "complete your KYC" blast.</dd>
+          </dl>
+          <p class="tradeoff"><b>The tradeoff:</b> nudges have a hard ceiling before they become spam, and the channel is shared with the lender's own messaging. Retargeting harder lifts recovery and burns goodwill and SMS budget at the same time — so the cap on messages per journey was a product decision, not a technical one.</p>
+        </details>
       </div>
       <span class="tag">Digio</span>
     </div>
@@ -491,24 +768,30 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
       <div class="showcase">
         <div class="wrap deckwrap">
           <div class="deckcover">
-            <span class="dc-eyebrow">Case study · Studio Blue</span>
+            <span class="dc-eyebrow">Case study · Digio</span>
             <div class="dc-head">See the drop. Send the nudge.<br><span class="grad">Watch them convert.</span></div>
-            <span class="dc-note">Placeholder cover — to be refined</span>
+            <div class="dc-flow" aria-hidden="true">
+              <span class="chip">Drop-off detected</span>
+              <span class="chip-arr">→</span>
+              <span class="chip">Reason classified</span>
+              <span class="chip-arr">→</span>
+              <span class="chip on">Journey resumed</span>
+            </div>
           </div>
         </div>
       </div>
     </a>
   </section>
 
-  <!-- Project 5 -->
+  <!-- Project 4 — stock-tracker (AI builder proof) -->
   <section class="project" data-screen-label="stock-tracker">
     <div class="wrap intro">
       <div class="titles">
-        <div class="title-stack">
+        <a class="title-link" href="https://namanguptaiitkgp.github.io/stock-tracker/docs/how-it-works.html" target="_blank" rel="noopener"><div class="title-stack">
           <div class="t-name">stock-tracker</div>
           <div class="t-company">Personal project</div>
-        </div>
-        <div class="desc">A research assistant for your stock portfolio — reads the news, checks fundamentals and tracks large-investor activity every morning</div>
+        </div></a>
+        <div class="desc">Built and shipped solo: an AI research assistant that reads the news, checks fundamentals and tracks large-investor activity every morning. Proof I build the things I spec.</div>
         <a class="case-cta" href="https://namanguptaiitkgp.github.io/stock-tracker/docs/how-it-works.html" target="_blank" rel="noopener">How it works <span class="arr">↗</span></a>
       </div>
       <span class="tag">Personal project</span>
@@ -516,15 +799,163 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
     <a class="media-link" href="https://namanguptaiitkgp.github.io/stock-tracker/docs/how-it-works.html" target="_blank" rel="noopener" aria-label="Open stock-tracker — how it works">
       <div class="showcase">
         <div class="wrap combo">
-          <div class="wide"><img src="stock-tracker-assets/dashboard.png" alt="stock-tracker daily portfolio brief"></div>
+          <div class="wide"><img src="stock-tracker-assets/dashboard.png" alt="stock-tracker daily portfolio brief" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </a>
   </section>
 
+  <!-- Patent highlight -->
+  <section class="patent">
+    <div class="wrap">
+      <a class="patent-card" href="https://patents.google.com/patent/US12387059B2/en" target="_blank" rel="noopener">
+        <div>
+          <span class="pc-eyebrow">US Patent 12,387,059 · Capital One · Granted 2025</span>
+          <h3>Identifying zones of interest in text transcripts using deep learning</h3>
+          <p>Co-inventor on Capital One's method for finding the parts of a conversation that actually matter. The research side of the same instinct that shapes how I scope AI products now: know what a model can really promise before you design around it.</p>
+        </div>
+        <span class="btn btn-ghost">View patent <span class="arr">↗</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Work with me -->
+  <section class="wrap sec-head" id="work">
+    <span class="eyebrow">Work with me</span>
+    <h2>Product help when it matters most</h2>
+    <p>For founders and teams who need a senior product partner — to figure out what to build, fix a funnel that leaks, or ship an AI feature that actually works. Fixed scope or ongoing, your call.</p>
+  </section>
+  <section class="wrap">
+    <div class="offers">
+      <div class="offer">
+        <span class="o-kicker">2–4 weeks</span>
+        <h3>Product Discovery &amp; Strategy</h3>
+        <p class="o-for">For teams entering a new market, launching a product line, or unsure what to build next.</p>
+        <ul>
+          <li>Customer and funnel research with root causes, not opinions</li>
+          <li>Market-entry and competitor review</li>
+          <li>Prioritised roadmap with clear success metrics</li>
+          <li>Backlog-ready specs your team can pick up</li>
+        </ul>
+        <div class="o-foot">
+          <span class="o-time">2–4 weeks · fixed fee</span>
+          <a class="btn btn-primary" href="https://calendly.com/namanbuilds/intro-call" target="_blank" rel="noopener">Book a call <span class="arr">↗</span></a>
+        </div>
+      </div>
+
+      <div class="offer">
+        <span class="o-kicker">1–3 weeks</span>
+        <h3>Funnel &amp; Growth Diagnostics</h3>
+        <p class="o-for">For products where users drop off — onboarding, quote-to-booking, checkout, KYC.</p>
+        <ul>
+          <li>Step-by-step drop-off map of your live funnel</li>
+          <li>Root-cause analysis with data and user evidence</li>
+          <li>Ranked fix list, effort vs impact</li>
+          <li>Experiment plan to prove the fixes</li>
+        </ul>
+        <div class="o-foot">
+          <span class="o-time">1–3 weeks · fixed fee</span>
+          <a class="btn btn-primary" href="https://calendly.com/namanbuilds/intro-call" target="_blank" rel="noopener">Book a call <span class="arr">↗</span></a>
+        </div>
+      </div>
+
+      <div class="offer">
+        <span class="o-kicker">Monthly</span>
+        <h3>Fractional Product Lead / AI Advisory</h3>
+        <p class="o-for">For founders without a senior PM, or teams making their first big AI bet.</p>
+        <ul>
+          <li>Weekly working sessions on live product decisions</li>
+          <li>Roadmap, prioritisation and spec reviews</li>
+          <li>AI feature scoping: eval sets, build-vs-buy, kill criteria</li>
+          <li>Hiring input for your first product hires</li>
+        </ul>
+        <div class="o-foot">
+          <span class="o-time">Monthly retainer</span>
+          <a class="btn btn-primary" href="https://calendly.com/namanbuilds/intro-call" target="_blank" rel="noopener">Book a call <span class="arr">↗</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="offer-proof">Built and scaled products across fintech, lending, logistics and identity — Ninjacart (Walmart-backed), Cogoport, Capital One (US patent), Digio — and currently consulting for a Dubai-based freight-tech marketplace.</p>
+  </section>
+
+  <!-- How I work -->
+  <section class="wrap sec-head">
+    <span class="eyebrow">How I work</span>
+    <h2>Three steps, no discovery theatre</h2>
+  </section>
+  <section class="wrap">
+    <div class="how">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Find the problem worth solving</h3>
+        <p>One call to work out where the real cost sits — good users dropping out, a roadmap pulling in three directions, or engineering time going into something a vendor already solved.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Scope it against evidence</h3>
+        <p>I write the spec from your data and your users, with the failure modes and success metrics attached, so "is it working?" has an answer that isn't an opinion.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Hand over something usable</h3>
+        <p>You get the artefacts your team builds from — specs, metrics, a prioritised list — not a slide deck that needs translating.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials: hidden until there are real ones to show. Delete the style attribute to reveal. -->
+  <section class="wrap sec-head" id="testimonials" style="display:none;">
+    <span class="eyebrow">What people say</span>
+    <h2>Testimonials</h2>
+    <p>Placeholder — add real quotes with name, role and company before revealing this section.</p>
+  </section>
+
+  <section class="wrap sec-head" id="earlier">
+    <span class="eyebrow">Earlier work</span>
+    <h2>Before the AI work</h2>
+    <p>A commerce platform I built at Ninjacart, kept here for completeness.</p>
+  </section>
+
+  <!-- Earlier work: Ninja Connect -->
+  <section class="project earlier" data-screen-label="Ninja Connect">
+    <div class="wrap intro">
+      <div class="titles">
+        <a class="title-link" href="ninja-connect/tradedesk.html"><div class="title-stack">
+          <div class="t-name">Ninja Connect</div>
+          <div class="t-company">Ninjacart</div>
+        </div></a>
+        <div class="desc">A chat-based commerce platform that let agri buyers and sellers negotiate, order and settle in one thread.</div>
+        <a class="case-cta" href="ninja-connect/tradedesk.html">Open case <span class="arr">↗</span></a>
+      </div>
+      <span class="tag">Ninjacart</span>
+    </div>
+    <a class="media-link" href="ninja-connect/tradedesk.html" aria-label="Open Ninja Connect case study">
+      <div class="showcase">
+        <div class="wrap combo">
+          <div class="wide"><img src="https://framerusercontent.com/images/veWSSAKCrrl3LrIGHZ3VWxKBGSA.png?width=1400" alt="Ninja Connect — chat-based trade desk on desktop" loading="lazy" decoding="async"></div>
+          <div class="float"><img src="https://framerusercontent.com/images/JOk73ppRBLnQA5VwczzYBgiwWo.png?width=500" alt="Ninja Connect — order thread on mobile" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="closer">
+    <div class="wrap">
+      <div class="closer-card">
+        <h2>Got an AI feature that could go expensively wrong?</h2>
+        <p>Hiring for a senior product role, or want a second opinion before you build — either way, tell me the problem and I'll tell you straight whether I'm the right person for it.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:hello@namanbuilds.com?subject=Hello">Email me <span class="arr">↗</span></a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/gupta-naman-iitkgp/" target="_blank" rel="noopener">Connect on LinkedIn <span class="arr">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="wrap">
-    <span>Naman — Sr. Product Manager</span>
-    <span>Made with care · Day edition</span>
+    <span>Naman Gupta — Product Owner, KYC &amp; Applied AI @ Digio</span>
+    <span><a href="mailto:hello@namanbuilds.com">hello@namanbuilds.com</a> · India</span>
   </footer>
 </main>
 
@@ -546,7 +977,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   // design's default tweak state (Warm tone, bright showcase panels, 7s color cycle).
   (()=>{
     const r = document.documentElement.style;
-    const WARM = { panel:"#fffdf9", ink:"#191713", muted:"#8b8678", line:"rgba(25,23,19,0.10)", accent:"#191713" };
+    const WARM = { panel:"#fffdf9", ink:"#191713", muted:"#5f5a4e", line:"rgba(25,23,19,0.10)", accent:"#191713" };
     r.setProperty('--ink', WARM.ink);
     r.setProperty('--muted', WARM.muted);
     r.setProperty('--line', WARM.line);

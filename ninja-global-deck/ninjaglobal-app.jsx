@@ -18,8 +18,8 @@ function NinjaGlobalApp() {
   return (
     <Stage
       scenes={ngScenes}
-      brand="WALMART"
-      lesson="Case Study · Ninja Global · Cross-border agri-trade lending, 0→1"
+      brand="NINJACART"
+      lesson="Case Study · Ninjacart (Walmart-backed) · Cross-border agri-trade lending, 0→1"
       runtime="11 slides"
     />
   );

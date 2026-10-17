@@ -7,10 +7,10 @@
 <meta name="description" content="The Trade Desk — Ninjacart's communication-based commerce + ERP platform. A product case study told as Situation, Task, Action, Result.">
 <script>document.documentElement.className="anim";</script>
 <style>
-@font-face { font-family:"Neue Montreal"; src:url("https://framerusercontent.com/assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2"); font-weight:400; font-display:swap; }
-@font-face { font-family:"Neue Montreal"; src:url("https://framerusercontent.com/assets/vEydk8LUwvYV3ZJtsQhKLqsza0.woff2"); font-weight:500; font-display:swap; }
-@font-face { font-family:"SF Pro Display"; src:url("https://framerusercontent.com/assets/dTVfXNKgID7VXkl9c6QSFxH4c.woff2"); font-weight:500; font-display:swap; }
-@font-face { font-family:"Joane"; src:url("https://framerusercontent.com/assets/s7QBt6TrbwZwxnd8WeMUW0iXFw.woff2"); font-weight:900; font-style:italic; font-display:swap; }
+@font-face { font-family:"Neue Montreal"; src:url("assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Neue Montreal"; src:url("assets/vEydk8LUwvYV3ZJtsQhKLqsza0.woff2"); font-weight:500; font-display:swap; }
+@font-face { font-family:"SF Pro Display"; src:url("assets/dTVfXNKgID7VXkl9c6QSFxH4c.woff2"); font-weight:500; font-display:swap; }
+@font-face { font-family:"Joane"; src:url("assets/s7QBt6TrbwZwxnd8WeMUW0iXFw.woff2"); font-weight:900; font-style:italic; font-display:swap; }
 
 :root{
   /* ===== THEME (default: Sage + forest) — overridden as a group on <html> by the switcher ===== */
@@ -163,6 +163,39 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
   nav.toc{display:none;}
   .star-strip,.hl-grid{grid-template-columns:repeat(2,1fr);}
   .beat.result{padding:36px 22px;}
+
+  /* The bar was a fixed 74px row; at this width the brand wrapped onto two
+     lines and pushed out of it. Let it breathe and keep the controls intact. */
+  .bar{height:auto;min-height:64px;padding:10px 0;gap:12px;flex-wrap:wrap;}
+  .brand{font-size:16px;gap:9px;min-height:44px;align-items:center;}
+  .hdr-right{gap:14px;}
+  .back{white-space:nowrap;min-height:44px;padding:0 15px;}
+
+  /* 21px swatches are well under a fingertip. Keep the dot, grow the target
+     with a transparent overlay, and space them so the targets don't collide. */
+  .themes{gap:24px;}
+  .swatch{position:relative;}
+  .swatch::before{content:"";position:absolute;inset:-14px;border-radius:50%;}
+
+  /* Reading sizes: the desktop page drops to 14–15px in places. */
+  .meta-row .v,.hl,.card .cd,.principle .pd,.stat .lbl,.foot .next{font-size:16px;}
+  .beat p{font-size:17px;}
+  .cap{font-size:12.5px;}
+  .stat .lbl .fill{font-size:11.5px;}
+  .star-strip .s{font-size:14px;}
+  .star-strip a{min-height:44px;padding:16px 16px 10px 0;}
+  /* The bar wraps to ~120px here, so in-page jumps need more clearance. */
+  .beat{scroll-margin-top:132px;}
+  .hero{scroll-margin-top:132px;}
+}
+
+@media(max-width:560px){
+  /* Two half-width cells leave ~140px of text; one column reads better. */
+  .star-strip,.hl-grid{grid-template-columns:1fr;}
+  .star-strip a{border-right:0;border-bottom:1px solid var(--line);padding:14px 0 12px;}
+  .star-strip a:last-child{border-bottom:0;}
+  .foot{gap:18px;}
+  .foot .sig{text-align:left;}
 }
 </style>
 </head>
@@ -194,6 +227,10 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
     #back-home .bh-arr{ font-size:14px; line-height:1; transform:translateY(-.5px); }
     #back-home .bh-label{ line-height:1; }
     @media print{ #back-home{ display:none; } }
+    /* This page has a sticky header of its own carrying the brand link and
+       "\2190 All work", and the floating pill sits on top of the brand at
+       every width. The pill is for the decks, which have no header. */
+    #back-home{ display:none; }
   </style>
 
 <header id="hdr">
@@ -214,23 +251,24 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
 <main>
   <!-- ===================== HOOK / OVERVIEW ===================== -->
   <section class="hero wrap" id="overview">
-    <div class="eyebrow kicker">Ninjacart '23 · Commerce + ERP · Sole designer</div>
+    <div class="eyebrow kicker">Ninjacart '23 · Commerce + ERP · Product manager &amp; designer</div>
     <h1>The back-engine of<br>Ninjacart's <span class="it">entire trade.</span></h1>
     <p class="lede">
       The Trade Desk is a full-fledged trade &amp; ERP platform built to seamlessly run and manage
-      Ninjacart's entire trade business. I owned the end-to-end design strategy as the
-      <b>sole designer</b> — and it now acts as the <b>back-engine of all of Ninjacart's trade</b>,
+      Ninjacart's entire trade business. I owned it end to end — strategy through to the
+      interface — as its <b>product manager and sole designer</b>, and it now acts as the
+      <b>back-engine of all of Ninjacart's trade</b>,
       praised by customers and stakeholders as one of the most successful projects in the company.
     </p>
 
     <div class="meta-row">
       <div>
         <div class="k">My role</div>
-        <div class="v">Sole Designer — strategy, research, interaction &amp; visual design, prototyping.</div>
+        <div class="v">Product Manager &amp; sole designer — strategy, research, interaction &amp; visual design, prototyping.</div>
       </div>
       <div>
         <div class="k">Timeline</div>
-        <div class="v">2 months, sunsets.</div>
+        <div class="v">2 months.</div>
       </div>
       <div>
         <div class="k">Scope</div>
@@ -287,8 +325,8 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
           barely, and it could not scale.
         </p>
         <div class="stage">
-          <div class="plate wide"><img src="images/3V1f4kUlJWRtj9qBOOoJ8ykrLLo.png" alt="Messed-up WhatsApp groups and Excel sheets tracking trades"></div>
-          <div class="plate wide"><img src="images/GyTqAKqalfxNsa5x9iopnwg27nM.png" alt="Buyer, Seller and Ninjacart trade network"></div>
+          <div class="plate wide"><img src="images-opt/3V1f4kUlJWRtj9qBOOoJ8ykrLLo.png" alt="Messed-up WhatsApp groups and Excel sheets tracking trades" loading="lazy" decoding="async" width="1600" height="1153"></div>
+          <div class="plate wide"><img src="images-opt/GyTqAKqalfxNsa5x9iopnwg27nM.png" alt="Buyer, Seller and Ninjacart trade network" loading="lazy" decoding="async" width="1173" height="829"></div>
         </div>
         <div class="cap">~85% of Buyer–Seller–Ninjacart trade ran on unorganised WhatsApp groups &amp; Excel</div>
       </section>
@@ -299,8 +337,8 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
         <h2>Break the trade — and <span class="it">build it again.</span></h2>
         <p>
           The brief from the GPM, reinforced by the co-founders and business heads: build and launch a
-          single trade system swiftly and at scale. As the sole designer, the responsibility — and the
-          potential business impact — sat with the design. The philosophy: <b>break the trade into its
+          single trade system swiftly and at scale. Owning it alone as product manager and designer, the
+          responsibility — and the potential business impact — sat with those calls. The philosophy: <b>break the trade into its
           pieces and rebuild each one</b> into an open, scalable system that could be plugged into any
           use-case.
         </p>
@@ -314,10 +352,10 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
           </div>
         </div>
         <div class="stage">
-          <div class="plate wide"><img src="images/ZyizI6xvihUGcjHtMjYy8G9U6RI.png" alt="Familiarity over novelty — a WhatsApp-like design"></div>
-          <div class="plate wide"><img src="images/ybdHmuR3kqYkiyC3cCT1Ovr0Js.png" alt="A web-responsive design for the internal team"></div>
-          <div class="plate wide"><img src="images/0njBNtpfEJdowZ45GtYWhQfi0.png" alt="Flow, design and product discussion"></div>
-          <div class="plate phone"><img src="images/rJoN7k8IBuRpCh3o1ZhQfZPXU1c.png" alt="Comparing it with the NorthStar principles"></div>
+          <div class="plate wide"><img src="images-opt/ZyizI6xvihUGcjHtMjYy8G9U6RI.png" alt="Familiarity over novelty — a WhatsApp-like design" loading="lazy" decoding="async" width="1600" height="531"></div>
+          <div class="plate wide"><img src="images-opt/ybdHmuR3kqYkiyC3cCT1Ovr0Js.png" alt="A web-responsive design for the internal team" loading="lazy" decoding="async" width="1600" height="1059"></div>
+          <div class="plate wide"><img src="images-opt/0njBNtpfEJdowZ45GtYWhQfi0.png" alt="Flow, design and product discussion" loading="lazy" decoding="async" width="1600" height="805"></div>
+          <div class="plate phone"><img src="images-opt/rJoN7k8IBuRpCh3o1ZhQfZPXU1c.png" alt="Comparing it with the NorthStar principles" loading="lazy" decoding="async" width="640" height="809"></div>
         </div>
         <div class="cap">Familiarity over novelty · web-responsive for internal teams · mapped to the NorthStar principles</div>
       </section>
@@ -338,10 +376,10 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
             define a status against each individual supply.
           </p>
           <div class="stage">
-            <div class="plate wide"><img src="images/GkVgmxd6gqJdepgnBYvPMwj88.png" alt="Managing the supplies"></div>
-            <div class="plate wide"><img src="images/gv7QgdZnQj2jrgkhztSSyvF33oQ.png" alt="The supply details page"></div>
-            <div class="plate wide"><img src="images/vLu6zwuJEPU2crpYhClptLwwh4.png" alt="Share and track supplies in a few clicks"></div>
-            <div class="plate wide"><img src="images/z8Bx0DNREMliWoBJ6j4NCVFfpd0.png" alt="Defining status to individual supplies"></div>
+            <div class="plate wide"><img src="images-opt/GkVgmxd6gqJdepgnBYvPMwj88.png" alt="Managing the supplies" loading="lazy" decoding="async" width="1600" height="648"></div>
+            <div class="plate wide"><img src="images-opt/gv7QgdZnQj2jrgkhztSSyvF33oQ.png" alt="The supply details page" loading="lazy" decoding="async" width="1600" height="802"></div>
+            <div class="plate wide"><img src="images-opt/vLu6zwuJEPU2crpYhClptLwwh4.png" alt="Share and track supplies in a few clicks" loading="lazy" decoding="async" width="1600" height="802"></div>
+            <div class="plate wide"><img src="images-opt/z8Bx0DNREMliWoBJ6j4NCVFfpd0.png" alt="Defining status to individual supplies" loading="lazy" decoding="async" width="1600" height="802"></div>
           </div>
           <div class="cap">Capturing supply &amp; demand · the supply details page · share, track &amp; status</div>
         </div>
@@ -357,14 +395,14 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
             <b>Bill-to / Ship-to</b> trade structures.
           </p>
           <div class="stage">
-            <div class="plate wide"><img src="images/6QUneTfX2KNbZmvgyjEy6BsYI2Q.png" alt="A central chat-based trade system"></div>
-            <div class="plate phone"><img src="images/VQyokcJMJ4uOe3syqFfMlEiJk.png" alt="The buyer side"></div>
-            <div class="plate phone"><img src="images/Nf5MlrngOIoJWVM3CE7s24Jhaqo.png" alt="Order acceptance by customers"></div>
-            <div class="plate wide"><img src="images/LDUKiSLOtFsQJYN27caVPz5Naw.png" alt="Giving consent to start the trade"></div>
-            <div class="plate wide"><img src="images/8uwp0kEiokLx9IHgQrjsLbl6fs.png" alt="Live trade information"></div>
-            <div class="plate wide"><img src="images/O0vgmyb57A3RxjZMEaEqbT7qwU.png" alt="Maintained in the internal system"></div>
-            <div class="plate wide"><img src="images/yc9t6cUCHwd2d7YWeEqQavLxV4.png" alt="Platform-Model trade"></div>
-            <div class="plate wide"><img src="images/ksuSqM65qXHH8BW3QAZNsXcHU.png" alt="Bill-to / Ship-to model trade"></div>
+            <div class="plate wide"><img src="images-opt/6QUneTfX2KNbZmvgyjEy6BsYI2Q.png" alt="A central chat-based trade system" loading="lazy" decoding="async" width="1600" height="1157"></div>
+            <div class="plate phone"><img src="images-opt/VQyokcJMJ4uOe3syqFfMlEiJk.png" alt="The buyer side" loading="lazy" decoding="async" width="640" height="1203"></div>
+            <div class="plate phone"><img src="images-opt/Nf5MlrngOIoJWVM3CE7s24Jhaqo.png" alt="Order acceptance by customers" loading="lazy" decoding="async" width="640" height="1203"></div>
+            <div class="plate wide"><img src="images-opt/LDUKiSLOtFsQJYN27caVPz5Naw.png" alt="Giving consent to start the trade" loading="lazy" decoding="async" width="1600" height="743"></div>
+            <div class="plate wide"><img src="images-opt/8uwp0kEiokLx9IHgQrjsLbl6fs.png" alt="Live trade information" loading="lazy" decoding="async" width="1600" height="733"></div>
+            <div class="plate wide"><img src="images-opt/O0vgmyb57A3RxjZMEaEqbT7qwU.png" alt="Maintained in the internal system" loading="lazy" decoding="async" width="1600" height="1091"></div>
+            <div class="plate wide"><img src="images-opt/yc9t6cUCHwd2d7YWeEqQavLxV4.png" alt="Platform-Model trade" loading="lazy" decoding="async" width="1600" height="351"></div>
+            <div class="plate wide"><img src="images-opt/ksuSqM65qXHH8BW3QAZNsXcHU.png" alt="Bill-to / Ship-to model trade" loading="lazy" decoding="async" width="1600" height="411"></div>
           </div>
           <div class="cap">Chat-based trade · consent · live status · order acceptance · Platform &amp; Bill-to/Ship-to models</div>
         </div>
@@ -379,9 +417,9 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
             process and simply make an <b>outside-payment entry</b> in-app.
           </p>
           <div class="stage">
-            <div class="plate wide"><img src="images/MJm46bunG8eLARXIJ24xgLqYEMo.png" alt="Two ways to pay — in-app payment or outside payment"></div>
-            <div class="plate wide"><img src="images/pXXrmSlswvRPC0RYqLOxKkPMFk.png" alt="Make payments with ease"></div>
-            <div class="plate wide"><img src="images/jm0J6fVZqysrrYKuUWJwuGtkZw.png" alt="Buyer registering the payments"></div>
+            <div class="plate wide"><img src="images-opt/MJm46bunG8eLARXIJ24xgLqYEMo.png" alt="Two ways to pay — in-app payment or outside payment" loading="lazy" decoding="async" width="1600" height="492"></div>
+            <div class="plate wide"><img src="images-opt/pXXrmSlswvRPC0RYqLOxKkPMFk.png" alt="Make payments with ease" loading="lazy" decoding="async" width="1600" height="669"></div>
+            <div class="plate wide"><img src="images-opt/jm0J6fVZqysrrYKuUWJwuGtkZw.png" alt="Buyer registering the payments" loading="lazy" decoding="async" width="1600" height="666"></div>
           </div>
           <div class="cap">Two ways to pay — in-app (buyer registers, seller accepts) &amp; outside-payment entries</div>
         </div>
@@ -396,13 +434,13 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
             and your own tasks — down to a sample email thread inside Tasks.
           </p>
           <div class="stage">
-            <div class="plate wide"><img src="images/3oqOumpUoQ812efbX02RdBxM6I.png" alt="Track and manage the entire lead inventory"></div>
-            <div class="plate wide"><img src="images/oY16BmAnCeXXq7r6NxBiKiXQNo.png" alt="Lead inventory management"></div>
-            <div class="plate wide"><img src="images/FdGopqFJs1iYU8h2lRaGuAzgc.png" alt="Built in with powerful ERP capabilities"></div>
-            <div class="plate wide"><img src="images/hbdIM3CjskNIcRzRZD9rUiXQSq8.png" alt="Onboard, track and maintain the customer base"></div>
-            <div class="plate wide"><img src="images/iQuXogLgyi6ro7Z7qmyIh5zs88.png" alt="Track, manage and apply credits"></div>
-            <div class="plate wide"><img src="images/v1W3xdZVeI05eZcthKa1vDVh8.png" alt="Manage your team and your own tasks in one place"></div>
-            <div class="plate phone"><img src="images/7G6PnKlAgiAuWwlrFj44t9MMZ0.png" alt="Sample email thread inside Tasks"></div>
+            <div class="plate wide"><img src="images-opt/3oqOumpUoQ812efbX02RdBxM6I.png" alt="Track and manage the entire lead inventory" loading="lazy" decoding="async" width="1600" height="962"></div>
+            <div class="plate wide"><img src="images-opt/oY16BmAnCeXXq7r6NxBiKiXQNo.png" alt="Lead inventory management" loading="lazy" decoding="async" width="1600" height="1030"></div>
+            <div class="plate wide"><img src="images-opt/FdGopqFJs1iYU8h2lRaGuAzgc.png" alt="Built in with powerful ERP capabilities" loading="lazy" decoding="async" width="1600" height="913"></div>
+            <div class="plate wide"><img src="images-opt/hbdIM3CjskNIcRzRZD9rUiXQSq8.png" alt="Onboard, track and maintain the customer base" loading="lazy" decoding="async" width="1600" height="960"></div>
+            <div class="plate wide"><img src="images-opt/iQuXogLgyi6ro7Z7qmyIh5zs88.png" alt="Track, manage and apply credits" loading="lazy" decoding="async" width="1600" height="872"></div>
+            <div class="plate wide"><img src="images-opt/v1W3xdZVeI05eZcthKa1vDVh8.png" alt="Manage your team and your own tasks in one place" loading="lazy" decoding="async" width="1600" height="905"></div>
+            <div class="plate phone"><img src="images-opt/7G6PnKlAgiAuWwlrFj44t9MMZ0.png" alt="Sample email thread inside Tasks" loading="lazy" decoding="async" width="640" height="1340"></div>
           </div>
           <div class="cap">Lead inventory · customer onboarding · credits · the task module</div>
         </div>
@@ -429,8 +467,8 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
         </p>
 
         <div class="stage" style="margin-top:10px;">
-          <div class="plate photo"><img src="images/YowTAsXwVOzn12wqKuf9CwcWgM.png" alt="Something to look and smile at"></div>
-          <div class="plate photo"><img src="images/rJdjvy75RlpSIid7JOcwPoKzq4.png" alt="A happy moment from the project"></div>
+          <div class="plate photo"><img src="images-opt/YowTAsXwVOzn12wqKuf9CwcWgM.png" alt="Something to look and smile at" loading="lazy" decoding="async" width="1200" height="875"></div>
+          <div class="plate photo"><img src="images-opt/rJdjvy75RlpSIid7JOcwPoKzq4.png" alt="A happy moment from the project" loading="lazy" decoding="async" width="1200" height="890"></div>
         </div>
         <div class="cap">some happy moments</div>
       </section>
@@ -439,7 +477,7 @@ footer{border-top:1px solid var(--line);margin-top:30px;}
       <section class="beat" id="retro">
         <div class="beat-eyebrow"><span class="L">·</span><span class="lbl">Retrospective</span></div>
         <h2>The fun and sleepless nights.</h2>
-        <p>Owning the design of a company-critical platform end to end — as the sole designer — taught me how much precision in design can move a business.</p>
+        <p>Owning a company-critical platform end to end — the product calls and the design, alone — taught me how much precision in both can move a business.</p>
         <p>Designing one open, scalable system that had to fit many trade use-cases sharpened how I think about modularity and reuse.</p>
         <p>And shipping fast, under direct founder and business-head expectation, was the kind of pressure that makes the work — and the designer — better.</p>
       </section>

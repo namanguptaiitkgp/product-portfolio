@@ -1,0 +1,285 @@
+/* ========================================================================
+   DECK — MOBILE FALLBACK
+   ------------------------------------------------------------------------
+   On desktop these decks are a fixed 1920×1080 canvas, scaled to fit the
+   viewport and letterboxed. That is the whole point of them and nothing in
+   this file touches it: every rule below sits inside a `max-width: 768px`
+   media query AND is scoped to `.stage-root.is-mobile`, a class the Stage
+   only renders when the viewport is narrow. Above the breakpoint this
+   stylesheet is inert.
+
+   Below it, the Stage drops the canvas entirely and renders the same scenes
+   as a normal, vertically scrolling document — one section per scene, text
+   at real reading sizes, scrolling as the navigation. The rules here undo
+   the 1920-wide absolute/grid layout the scenes are built on and restack it
+   into a single column.
+   --------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* The page scrolls normally now; the hidden overflow is the backstop for
+     any single wide widget inside a scene that cannot be reflowed. */
+  /* `overflow-x` is the backstop for any single wide widget a scene can't
+     reflow. It stays off `body` on purpose: an overflow value on both html
+     and body turns body into its own scroll box, and window.scrollTo (which
+     the bottom nav uses) then scrolls the wrong element. */
+  html {
+    overflow-x: hidden;         /* backstop for a widget a scene can't reflow */
+    overflow-y: visible;
+    height: auto;
+  }
+  /* The base sheet pins `overflow: hidden` on both html and body for the
+     fixed canvas. It has to come off body here: an ancestor scroll container
+     breaks `position: sticky` on the title bar, and body would be a second
+     scroll box that window.scrollTo (used by the bottom nav) never moves. */
+  body {
+    overflow: visible;
+    height: auto;
+    background: var(--ink-0);
+  }
+
+  /* The deck pages carry a fixed "← Home" pill for the desktop canvas. On
+     mobile that would float over the sticky bar, which has its own Home. */
+  .is-mobile-active #back-home { display: none !important; }
+
+  /* ---- shell ---------------------------------------------------------- */
+  .stage-root.is-mobile {
+    position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    background: var(--ink-0);
+    padding-bottom: 86px;           /* room for the fixed bottom nav */
+  }
+  .stage-root.is-mobile::before,
+  .stage-root.is-mobile::after { display: none !important; }
+
+  /* ---- sticky title bar ----------------------------------------------- */
+  .m-top {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 8px 14px;
+    background: color-mix(in srgb, var(--ink-0) 92%, transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .m-top .m-home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: none;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 12px;
+    margin-left: -6px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper);
+    text-decoration: none;
+    border-radius: 999px;
+  }
+  .m-top .m-home:active { background: rgba(34, 28, 48, 0.07); }
+  .m-top .m-title {
+    min-width: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.25;
+    color: var(--paper);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ---- one section per scene ------------------------------------------ */
+  .is-mobile .m-doc { display: block; }
+
+  .is-mobile .scene {
+    flex: none !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding: 26px 0 34px !important;
+    border-top: 1px solid var(--hairline);
+    scroll-margin-top: 56px;
+  }
+  .is-mobile .scene:first-child { border-top: 0; }
+
+  .is-mobile .m-scene-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 0 18px 16px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper-quiet);
+  }
+  .is-mobile .m-scene-head .m-n { flex: none; color: var(--amber); font-variant-numeric: tabular-nums; }
+  .is-mobile .m-scene-head .m-name {
+    min-width: 0;
+    color: var(--paper-dim);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .is-mobile .m-scene-body { padding: 0 18px; }
+
+  /* Unpick the fixed canvas layout: every scene root (.s-split, .s-df,
+     .scene-pad, …) becomes a plain block in normal flow. */
+  .is-mobile .m-scene-body > * {
+    position: static !important;
+    inset: auto !important;
+    top: auto !important; right: auto !important; bottom: auto !important; left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    max-width: 100% !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+    transform: none !important;
+    overflow: visible !important;   /* the canvas-era clip would cut content */
+  }
+  /* …and so do its columns. */
+  .is-mobile .m-scene-body .left,
+  .is-mobile .m-scene-body .right,
+  .is-mobile .m-scene-body .col,
+  .is-mobile .m-scene-body .side {
+    display: block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    position: static !important;
+    inset: auto !important;
+  }
+  .is-mobile .m-scene-body > * > * + * { margin-top: 22px; }
+
+  /* Nothing inside a scene may be wider than the phone. */
+  .is-mobile .m-scene-body * { max-width: 100% !important; }
+  .is-mobile .m-scene-body img,
+  .is-mobile .m-scene-body svg,
+  .is-mobile .m-scene-body video { max-width: 100% !important; height: auto; }
+
+  /* Scenes that scroll internally on desktop just grow instead. */
+  .is-mobile [data-scroll-capture] {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Background glows and the leader lines that point at absolute
+     coordinates have no meaning once the layout is restacked. */
+  .is-mobile .glow,
+  .is-mobile .lead-line,
+  .is-mobile .scene-foot,
+  .is-mobile .df-foot,
+  .is-mobile .zoom-hint { display: none !important; }
+
+  /* Entry animations are keyed off the single active scene; with every
+     scene on the page at once they only risk leaving content invisible. */
+  .is-mobile .m-scene-body *,
+  .is-mobile .scene[data-active="true"] * {
+    animation: none !important;
+  }
+  .is-mobile .a-rise,
+  .is-mobile .a-fade,
+  .is-mobile .a-slide,
+  .is-mobile .a-pop,
+  .is-mobile .a-draw {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+  /* ---- type: the cinematic scale is sized for a 1920 canvas ----------- */
+  .is-mobile .cine-hero      { font-size: 40px !important; line-height: 1.04 !important; letter-spacing: -0.022em !important; }
+  .is-mobile .cine-headline  { font-size: 32px !important; line-height: 1.08 !important; letter-spacing: -0.02em !important; }
+  .is-mobile .cine-headline-2{ font-size: 26px !important; line-height: 1.15 !important; letter-spacing: -0.015em !important; }
+  .is-mobile .cine-lede,
+  .is-mobile .lede           { font-size: 17px !important; line-height: 1.58 !important; max-width: none !important; margin-top: 16px !important; }
+  .is-mobile .cine-body      { font-size: 16.5px !important; line-height: 1.6 !important; max-width: none !important; }
+  .is-mobile .small          { font-size: 16px !important; line-height: 1.55 !important; max-width: none !important; margin-top: 20px !important; }
+  .is-mobile .cine-caption   { font-size: 13px !important; }
+  .is-mobile .eyebrow        { font-size: 11.5px !important; letter-spacing: 0.18em !important; gap: 10px !important; }
+  .is-mobile .annotation     { font-size: 11.5px !important; white-space: normal !important; }
+  .is-mobile h2, .is-mobile h3 { text-wrap: pretty; }
+
+  /* ---- bottom scene navigation ---------------------------------------- */
+  .m-nav {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: 8px;
+    padding: 7px 10px;
+    padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px));
+    background: color-mix(in srgb, var(--ink-0) 94%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--hairline);
+  }
+  .m-nav button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ink-3);
+    border: 1px solid var(--hairline-2);
+    border-radius: 12px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .m-nav button:disabled { opacity: 0.32; }
+  .m-nav button:not(:disabled):active { background: var(--ink-2); }
+  .m-nav .m-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    white-space: nowrap;
+    min-width: 72px;
+    min-height: 48px;
+    padding: 0 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--paper-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .m-nav .m-count b { color: var(--amber); font-weight: 500; }
+
+  /* The lightbox overlay sits above the nav. */
+  .lightbox { z-index: 2147483001; }
+  .lightbox .lb-nav,
+  .lightbox .lb-close { min-width: 48px; min-height: 48px; }
+}

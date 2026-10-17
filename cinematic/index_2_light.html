@@ -7,11 +7,38 @@
   <meta name="description" content="Light-mode remix of the ten-slide cinematic case study of the Digio Selfie Service: the frontend defenses, the backend pipeline, and the configurable control surface." />
   <link rel="stylesheet" href="cinematic-light.css" />
   <link rel="stylesheet" href="selfie-light.css" />
+  <link rel="stylesheet" href="deck-mobile.css" />
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body data-screen-label="Case Study · Selfie Service · Light">
+<!-- Local-preview guard: these decks compile JSX in the browser via <script type="text/babel">,
+     which browsers refuse to run from a file:// URL. Without this the page is simply blank.
+     Served over http(s) — including GitHub Pages — nothing below runs. -->
+<script>
+if (location.protocol === "file:") {
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.innerHTML =
+      '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;' +
+      'font-family:-apple-system,BlinkMacSystemFont,\'SF Pro Display\',sans-serif;background:#f4f2ec;color:#191713;padding:32px;">' +
+      '<div style="max-width:560px;">' +
+      '<div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#5f5a4e;">Local preview</div>' +
+      '<h1 style="font-size:28px;line-height:1.2;margin:14px 0 0;font-weight:500;">This deck needs to be served over HTTP</h1>' +
+      '<p style="font-size:16px;line-height:1.55;color:#5f5a4e;margin:16px 0 0;">' +
+      'It compiles JSX in the browser, and browsers block that from a <code>file://</code> URL. ' +
+      'Opening the file directly from Finder will always show a blank slide. ' +
+      'The published site is unaffected.</p>' +
+      '<p style="font-size:16px;line-height:1.55;color:#5f5a4e;margin:14px 0 0;">From the project folder, run:</p>' +
+      '<pre style="margin:12px 0 0;padding:14px 16px;background:#fffdf9;border:1px solid rgba(25,23,19,.12);' +
+      'border-radius:10px;font-size:14px;overflow-x:auto;">python3 .claude/serve.py "$(pwd)" 8001</pre>' +
+      '<p style="font-size:16px;line-height:1.55;color:#5f5a4e;margin:14px 0 0;">' +
+      'then open <b>http://127.0.0.1:8001</b>.</p>' +
+      '</div></div>';
+  });
+}
+</script>
+
   <!-- Back to home (portfolio landing) -->
   <a id="back-home" href="../index.html" aria-label="Back to home">
     <span class="bh-arr" aria-hidden="true">←</span><span class="bh-label">Home</span>

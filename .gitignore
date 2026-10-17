@@ -12,3 +12,6 @@ _archive/
 # Node / tooling (none today, but safe)
 node_modules/
 *.log
+
+# Local preview helper (not part of the live site)
+Preview portfolio.command
