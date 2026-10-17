@@ -283,3 +283,125 @@
   .lightbox .lb-nav,
   .lightbox .lb-close { min-width: 48px; min-height: 48px; }
 }
+
+/* ===========================================================================
+   Legible small type on phones.
+
+   The mobile fallback raised body copy to 16-17px but left the label tier
+   pinned at 11.5-12.5px. On desktop those sizes are read through the scaled
+   1920px canvas; in mobile mode the canvas scaling is gone, so they render
+   at their literal px size and become unreadable.
+
+   Two tiers, because they carry different risk:
+     - flow labels sit in normal flow and can grow freely
+     - mock internals sit inside fixed-size device depictions, so they get a
+       smaller lift to avoid bursting their containers
+   =========================================================================== */
+@media (max-width: 768px) {
+
+  /* --- Tier 1: labels, eyebrows, captions and notes in normal flow --- */
+  .is-mobile .eyebrow        { font-size: 13px !important; letter-spacing: 0.14em !important; }
+  .is-mobile .annotation     { font-size: 14.5px !important; line-height: 1.5 !important; }
+  .is-mobile .cine-caption   { font-size: 14px !important; line-height: 1.5 !important; }
+  .is-mobile .shot-note,
+  .is-mobile .flow-kicker,
+  .is-mobile .panel-h,
+  .is-mobile .ex,
+  .is-mobile .gh,
+  .is-mobile .num,
+  .is-mobile .pill,
+  .is-mobile .s,
+  .is-mobile .l,
+  .is-mobile .rl,
+  .is-mobile .rm-l,
+  .is-mobile .ac-k,
+  .is-mobile .ac-v           { font-size: 14px !important; line-height: 1.45 !important; }
+
+  /* Chart threshold labels sit in a ~34px box; at mobile body size the word
+     no longer fits and overflow:auto clipped it mid-word. Let it render. */
+  .is-mobile .thr-line       { overflow: visible !important; font-size: 12.5px !important; }
+
+  /* Bare <small> elements, which the class selectors above don't reach. */
+  .is-mobile small           { font-size: 13.5px !important; line-height: 1.45 !important; }
+
+  /* The scene name in the sticky mobile title bar. */
+  .is-mobile .m-name         { font-size: 13px !important; }
+
+  /* --- Tier 2: text inside simulated phone/tablet screens ---
+     These are depictions of a UI, not the UI itself. They are lifted enough
+     to read on a phone but kept below the flow tier so the mock still reads
+     as a screenshot rather than a real control. */
+  .is-mobile .app-toast,
+  .is-mobile .app-capture,
+  .is-mobile .meta,
+  .is-mobile .chk-note,
+  .is-mobile .chk-link,
+  .is-mobile .chk-sub,
+  .is-mobile .ar-att-meta,
+  .is-mobile .ar-pending,
+  .is-mobile .stamp-mark     { font-size: 12.5px !important; line-height: 1.4 !important; }
+}
+
+/* ===========================================================================
+   Multi-column grids with fixed px tracks.
+
+   These are sized for the 1920px canvas — e.g. .entry-grid is
+   "560px 1fr" and .limit-grid is "600px 1fr". On a ~354px phone column the
+   fixed track cannot fit, so the grid shrinks it to ~114px and crams the
+   content into a third of the screen with the rest left empty. Collapse
+   them to a single column instead.
+   =========================================================================== */
+@media (max-width: 768px) {
+  .is-mobile .entry-grid,
+  .is-mobile .limit-grid,
+  .is-mobile .flow-step,
+  .is-mobile .flow-step.flip,
+  .is-mobile .s-flow--dark .flow-world,
+  .is-mobile .strat-body,
+  .is-mobile .framework-stage,
+  .is-mobile .rm-row {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Freed from its squeezed track, the flow no longer needs to scroll sideways. */
+  .is-mobile .flow-main { overflow-x: visible !important; width: auto !important; }
+  .is-mobile .entry-card { overflow: visible !important; }
+  .is-mobile .entry-hero { width: auto !important; }
+
+  /* Remaining label tier on the Ninja Global deck. */
+  .is-mobile .quad,
+  .is-mobile .rcol-k,
+  .is-mobile .rs-lead { font-size: 14px !important; line-height: 1.45 !important; }
+}
+
+/* The JS fit pass also stacks and pans these containers at runtime. Where a
+   fixed canvas track has already squeezed an ancestor, stacking the grid is
+   not enough — the box itself has to be told to take the full column. */
+@media (max-width: 768px) {
+  .is-mobile .flow-world,
+  .is-mobile .flow-main,
+  .is-mobile .entry-hero,
+  .is-mobile .entry-grid,
+  .is-mobile .limit-grid,
+  .is-mobile .flow-step {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Canvas-scale horizontal padding.
+
+   .flow-world carries 120px of padding each side and .flow-intro 140px —
+   generous on a 1920px canvas, but on a ~354px phone column they leave only
+   ~114px of content box, which is what squeezed the flow and entry grids.
+   Trim it to a phone gutter. */
+@media (max-width: 768px) {
+  .is-mobile .flow-world,
+  .is-mobile .flow-intro,
+  .is-mobile .entry-card-label {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
