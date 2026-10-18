@@ -9,7 +9,7 @@ document root is passed explicitly instead.
 import os
 import sys
 from functools import partial
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 
 root = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else ".")
 port = int(sys.argv[2]) if len(sys.argv) > 2 else 8000
@@ -17,4 +17,5 @@ port = int(sys.argv[2]) if len(sys.argv) > 2 else 8000
 os.chdir(root)
 handler = partial(SimpleHTTPRequestHandler, directory=root)
 print(f"serving {root} on http://127.0.0.1:{port}", flush=True)
-HTTPServer(("127.0.0.1", port), handler).serve_forever()
+# Threaded: a single stuck keep-alive connection used to wedge the whole server.
+ThreadingHTTPServer(("127.0.0.1", port), handler).serve_forever()

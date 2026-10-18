@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Naman Gupta — Product Owner @ Digio | ex-Capital One, Ninjacart | Marketplaces &amp; 0→1 products</title>
-<meta name="description" content="Naman Gupta — Product Owner @ Digio | ex-Capital One, Ninjacart | Marketplaces &amp; 0→1 products">
+<meta name="description" content="Product Owner at Digio, previously Capital One, Ninjacart and Cogoport. Seven years building fintech, lending and marketplace products from the first decision through to real-world scale.">
 <link rel="canonical" href="https://namanbuilds.com/">
 
 <!-- Open Graph / LinkedIn / WhatsApp previews -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://namanbuilds.com/">
 <meta property="og:title" content="Naman Gupta — Product Owner @ Digio | ex-Capital One, Ninjacart | Marketplaces &amp; 0→1 products">
-<meta property="og:description" content="Naman Gupta — Product Owner @ Digio | ex-Capital One, Ninjacart | Marketplaces &amp; 0→1 products">
+<meta property="og:description" content="Product Owner at Digio, previously Capital One, Ninjacart and Cogoport. Seven years building fintech, lending and marketplace products from the first decision through to real-world scale.">
 <meta property="og:image" content="https://namanbuilds.com/assets/og-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Naman Gupta — Product Owner @ Digio | ex-Capital One, Ninjacart | Marketplaces &amp; 0→1 products">
-<meta name="twitter:description" content="Naman Gupta — Product Owner @ Digio | ex-Capital One, Ninjacart | Marketplaces &amp; 0→1 products">
+<meta name="twitter:description" content="Product Owner at Digio, previously Capital One, Ninjacart and Cogoport. Seven years building fintech, lending and marketplace products from the first decision through to real-world scale.">
 <meta name="twitter:image" content="https://namanbuilds.com/assets/og-preview.png">
 
 <!-- Favicon: inline "N" monogram, no extra file to host -->
@@ -308,6 +308,10 @@ nav a:hover::after{transform:scaleX(1);}
   margin:22px 0 0;max-width:640px;
   font-size:clamp(15px,1.5vw,18px);line-height:1.5;color:var(--muted);
 }
+.hero-proof{
+  margin:12px 0 0;max-width:640px;
+  font-size:clamp(14px,1.3vw,15.5px);line-height:1.5;color:var(--muted);
+}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
@@ -450,6 +454,81 @@ nav a:hover::after{transform:scaleX(1);}
 .closer-card p{margin:14px auto 0;max-width:520px;font-size:17px;line-height:1.5;color:var(--muted);}
 .closer-card .hero-actions{justify-content:center;}
 
+
+/* ---- Floating "Hire me" button ----
+   Appears once the hero is out of view and hides again over the booking
+   section and the footer, so it never sits on top of the thing it points at. */
+.hire-fab{
+  position:fixed;right:24px;bottom:24px;z-index:60;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 22px;border-radius:999px;
+  background:var(--ink);color:var(--panel);
+  border:1px solid var(--ink);
+  font-family:"Neue Montreal","SF Pro Display",sans-serif;font-size:15px;font-weight:500;
+  text-decoration:none;
+  box-shadow:0 2px 6px rgba(25,23,19,.10), 0 14px 32px -12px rgba(25,23,19,.45);
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .28s ease, transform .28s ease, background-color .2s ease;
+}
+.hire-fab.is-visible{opacity:1;transform:none;pointer-events:auto;}
+.hire-fab:hover{background:#2e2a22;}
+.hire-fab:focus-visible{outline:3px solid #2563EB;outline-offset:3px;}
+.hire-fab .arr{transition:transform .25s ease;}
+.hire-fab:hover .arr{transform:translate(2px,-2px);}
+
+/* Anchor targets clear the sticky header. */
+#book,#work,#earlier,#top,#cases{scroll-margin-top:112px;}
+@media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth;} }
+@media (prefers-reduced-motion: reduce){
+  .hire-fab{transition:opacity .01s linear;transform:none;}
+  .hire-fab.is-visible{transform:none;}
+}
+
+/* Phone: a full-width bar instead of a floating pill. Body gains matching
+   padding so the bar never sits over the footer. */
+@media(max-width:720px){
+  .hire-fab{
+    left:0;right:0;bottom:0;border-radius:0;justify-content:center;
+    padding:15px 20px;padding-bottom:calc(15px + env(safe-area-inset-bottom, 0px));
+    border-width:1px 0 0 0;
+    box-shadow:0 -6px 24px -10px rgba(25,23,19,.35);
+    transform:translateY(100%);
+  }
+  .hire-fab.is-visible{transform:none;}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom, 0px));}
+}
+
+
+/* ---- "What I shipped" strip (sits inside the showcase band, under the media) ---- */
+.built-strip{
+  max-width:1000px;margin:0 auto;padding:4px 40px 46px;
+  display:grid;gap:34px;align-items:start;
+  grid-template-columns:1.55fr 1fr 0.85fr;
+}
+.built-strip.two-col{grid-template-columns:1.55fr 1fr;}
+.bs-col .bs-k{
+  font-family:"SF Pro Display",sans-serif;font-size:11.5px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--muted);padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+.bs-col .bs-v{margin-top:13px;font-size:14.5px;line-height:1.55;color:var(--ink);}
+.bs-col .bs-v .muted{color:var(--muted);}
+.built-strip .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;}
+.built-strip .chip{
+  font-size:12.5px;line-height:1;padding:7px 11px;border-radius:999px;
+  border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 4%, transparent);
+  color:var(--ink);white-space:nowrap;
+}
+.built-strip .chip.key{background:var(--ink);color:var(--panel);border-color:var(--ink);}
+.bs-col .scale-n{
+  font-family:"Joane",serif;font-style:italic;font-weight:900;
+  font-size:26px;line-height:1;color:var(--ink);margin-top:13px;
+}
+.bs-col .scale-s{margin-top:7px;font-size:13.5px;color:var(--muted);line-height:1.45;}
+.showcase .media-link + .built-strip{margin-top:-6px;}
+@media(max-width:900px){
+  .built-strip,.built-strip.two-col{grid-template-columns:1fr;gap:22px;padding:0 22px 34px;}
+}
+
 footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
 
 @media(max-width:900px){
@@ -500,7 +579,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
       <span class="logo">N</span>
       <span class="who">
         <span class="name">Naman Gupta</span>
-        <span class="role">Product Owner, KYC &amp; Applied AI @ Digio</span>
+        <span class="role">Product Owner @ Digio · ex-Capital One, Ninjacart</span>
       </span>
     </a>
     <nav>
@@ -521,12 +600,13 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         </div>
         <div class="win-body">
           <div class="hero-copy">
-            <h1 class="hero-head">I build <span class="stories">AI products</span> where mistakes are <span class="stories">expensive</span>.</h1>
-            <p class="hero-sub">KYC fraud detection running at 2L+ verifications a day. A 0→1 retailer credit line that moved ~$350M a year and cut NPAs from 6% to 2%.<br>Ten years turning regulated, high-stakes problems into products that ship.</p>
+            <h1 class="hero-head">I turn <span class="stories">ambiguous</span> business problems into products that <span class="stories">work in the real world</span>.</h1>
+            <p class="hero-sub">Seven years across fintech, lending, logistics and marketplaces — building products from the first decision through to real-world scale.</p>
             <div class="hero-actions">
-              <!-- TODO: replace hello@namanbuilds.com everywhere in this file with your personal address -->
-              <a class="btn btn-primary" href="mailto:hello@namanbuilds.com?subject=Project%20enquiry">Hire me for a project <span class="arr">↗</span></a>
+              <a class="btn btn-primary" href="#book">Let’s talk <span class="arr">↗</span></a>
+              <a class="btn btn-ghost" href="#cases">Explore my work</a>
               <a class="btn btn-ghost" href="resume/">View resume</a>
+            </div>
             </div>
           </div>
         </div>
@@ -540,15 +620,15 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
       <div class="stats">
         <div class="stat-item">
           <div class="n">2L+</div>
-          <div class="l">KYC verifications a day running through flows I own</div>
+          <div class="l">Daily KYC verifications through flows I own</div>
         </div>
         <div class="stat-item">
           <div class="n">~$350M</div>
-          <div class="l">Annual disbursals on a credit line I built 0→1</div>
+          <div class="l">Annual disbursals on a credit line I built from scratch</div>
         </div>
         <div class="stat-item">
           <div class="n">6% → 2%</div>
-          <div class="l">NPAs, after re-scoring who got credit and how much</div>
+          <div class="l">NPA reduction after I changed how credit was scored</div>
         </div>
         <div class="stat-item">
           <div class="n">1</div>
@@ -567,14 +647,14 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   </section>
 
   <!-- Project 1 — Digio Selfie / AI fraud -->
-  <section class="project" data-screen-label="KYC Verification">
+  <section class="project" id="cases" data-screen-label="KYC Verification">
     <div class="wrap intro">
       <div class="titles">
         <a class="title-link" href="cinematic/index_2_light.html"><div class="title-stack">
           <div class="t-name">Selfie &amp; Liveness KYC</div>
           <div class="t-company">Digio</div>
         </div></a>
-        <div class="desc">Caught face-spoof fraud at 2L+ verifications a day — without rejecting the real customers behind them.</div>
+        <div class="desc">A liveness check has two ways to fail: let a fraudster through, or turn away a real customer. I owned the line between them.</div>
         <a class="case-cta" href="cinematic/index_2_light.html">Open case <span class="arr">↗</span></a>
 
         <!-- VERIFY: "What I'd do differently" is drafted from the tradeoff logic — rewrite in your own voice. -->
@@ -595,8 +675,9 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
       </div>
       <span class="tag">Digio</span>
     </div>
+    <div class="showcase">
     <a class="media-link" href="cinematic/index_2_light.html" aria-label="Open KYC Verification case study">
-      <div class="showcase">
+
         <div class="kyc-devices">
           <!-- Laptop: DigiStudio workflow editor -->
           <div class="laptop">
@@ -691,8 +772,32 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
             </div>
           </div>
         </div>
+      
+      </a>
+    <div class="built-strip">
+      <div class="bs-col">
+        <div class="bs-k">What I shipped</div>
+        <div class="chips">
+          <span class="chip key">Android app</span>
+          <span class="chip key">iOS app</span>
+          <span class="chip key">Selfie liveness</span>
+          <span class="chip key">Synthetic-document detection</span>
+          <span class="chip key">OCR</span>
+          <span class="chip">Fraud decisioning</span>
+          <span class="chip">No-code workflow builder</span>
+        </div>
       </div>
-    </a>
+      <div class="bs-col">
+        <div class="bs-k">Stack</div>
+        <div class="bs-v">Model thresholds tuned to the lender’s loss appetite, not to the cleanest demo.<br><span class="muted">Event instrumentation per client and step</span></div>
+      </div>
+      <div class="bs-col">
+        <div class="bs-k">Scale</div>
+        <div class="scale-n">2L+</div>
+        <div class="scale-s">verifications a day</div>
+      </div>
+    </div>
+    </div>
   </section>
 
   <!-- Project 2 — Ninja Global 0→1 lending -->
@@ -703,7 +808,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
           <div class="t-name">Ninja Credit</div>
           <div class="t-company">Ninjacart (Walmart-backed)</div>
         </div></a>
-        <div class="desc">Built a retailer credit line from zero to ~$350M a year — and cut NPAs from 6% to 2%.</div>
+        <div class="desc">Retailers with no credit history still needed working capital. We underwrote them on what they actually bought.</div>
         <a class="case-cta" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html">Open case <span class="arr">↗</span></a>
 
         <!-- VERIFY: confirm the underwriting-signal line matches what shipped. -->
@@ -724,15 +829,40 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
       </div>
       <span class="tag">Ninjacart</span>
     </div>
+    <div class="showcase">
     <a class="media-link" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html" aria-label="Open Ninja Credit case study">
-      <div class="showcase">
+
         <div class="wrap trio">
           <div class="shot side left"><img src="https://framerusercontent.com/images/GGT4X9i5irXN0IcSWeFZhIkANzc.png?width=600" alt="Ninja Credit app — retailer credit limit and repayment schedule" loading="lazy" decoding="async"></div>
           <div class="shot mid"><img src="https://framerusercontent.com/images/SDXNbEq3XmQkR8eXhdh6VpZyVBA.png?width=640" alt="Ninja Credit app — credit line home screen for a retailer" loading="lazy" decoding="async"></div>
           <div class="shot side right"><img src="https://framerusercontent.com/images/fyCQiZw0o2QenigDVtSbBMCzJdY.png?width=600" alt="Ninja Credit app — order financing confirmation" loading="lazy" decoding="async"></div>
         </div>
+      
+      </a>
+    <div class="built-strip">
+      <div class="bs-col">
+        <div class="bs-k">What I shipped</div>
+        <div class="chips">
+          <span class="chip key">Android app</span>
+          <span class="chip key">iOS app</span>
+          <span class="chip key">Ninja Global</span>
+          <span class="chip key">Unified Credit-Line Framework</span>
+          <span class="chip key">Payment Guarantee</span>
+          <span class="chip">LOS / LMS</span>
+          <span class="chip">Partner APIs</span>
+        </div>
       </div>
-    </a>
+      <div class="bs-col">
+        <div class="bs-k">Stack</div>
+        <div class="bs-v">Underwriting on observed transaction history, not statements.<br><span class="muted">Karza · Razorpay · Xflow · Onfido</span></div>
+      </div>
+      <div class="bs-col">
+        <div class="bs-k">Scale</div>
+        <div class="scale-n">~$350M</div>
+        <div class="scale-s">annual disbursals · NPAs 6% → 2%</div>
+      </div>
+    </div>
+    </div>
   </section>
 
   <!-- Project 3 — Retargeting / KYC workflow -->
@@ -764,8 +894,9 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
       </div>
       <span class="tag">Digio</span>
     </div>
+    <div class="showcase">
     <a class="media-link" href="retargeting/Retargeting%20Case%20Study%20Studio%20Blue.html" aria-label="Open Retargeting case study">
-      <div class="showcase">
+
         <div class="wrap deckwrap">
           <div class="deckcover">
             <span class="dc-eyebrow">Case study · Digio</span>
@@ -779,8 +910,23 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
             </div>
           </div>
         </div>
+      
+      </a>
+    <div class="built-strip two-col">
+      <div class="bs-col">
+        <div class="bs-k">What I shipped</div>
+        <div class="chips">
+          <span class="chip key">Drop-off taxonomy</span>
+          <span class="chip key">Funnel instrumentation</span>
+          <span class="chip key">Triggered nudges</span>
+        </div>
       </div>
-    </a>
+      <div class="bs-col">
+        <div class="bs-k">Stack</div>
+        <div class="bs-v">The reason for the drop-off is the trigger, not the drop-off itself.<br><span class="muted">Capped messages per journey</span></div>
+      </div>
+    </div>
+    </div>
   </section>
 
   <!-- Project 4 — stock-tracker (AI builder proof) -->
@@ -796,13 +942,30 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
       </div>
       <span class="tag">Personal project</span>
     </div>
+    <div class="showcase">
     <a class="media-link" href="https://namanguptaiitkgp.github.io/stock-tracker/docs/how-it-works.html" target="_blank" rel="noopener" aria-label="Open stock-tracker — how it works">
-      <div class="showcase">
+
         <div class="wrap combo">
           <div class="wide"><img src="stock-tracker-assets/dashboard.png" alt="stock-tracker daily portfolio brief" loading="lazy" decoding="async"></div>
         </div>
+      
+      </a>
+    <div class="built-strip two-col">
+      <div class="bs-col">
+        <div class="bs-k">What I shipped</div>
+        <div class="chips">
+          <span class="chip key">Daily portfolio brief</span>
+          <span class="chip">News ingestion</span>
+          <span class="chip">Fundamentals check</span>
+          <span class="chip">Large-investor tracking</span>
+        </div>
       </div>
-    </a>
+      <div class="bs-col">
+        <div class="bs-k">Stack</div>
+        <div class="bs-v">Built and shipped solo — spec through to running code.<br><span class="muted">Runs every morning</span></div>
+      </div>
+    </div>
+    </div>
   </section>
 
   <!-- Patent highlight -->
@@ -822,10 +985,10 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   <!-- Work with me -->
   <section class="wrap sec-head" id="work">
     <span class="eyebrow">Work with me</span>
-    <h2>Product help when it matters most</h2>
-    <p>For founders and teams who need a senior product partner — to figure out what to build, fix a funnel that leaks, or ship an AI feature that actually works. Fixed scope or ongoing, your call.</p>
+    <h2>A difficult product decision? Let’s work through it.</h2>
+    <p>Sometimes you need someone experienced to help decide what to build. Sometimes the product exists but users aren’t getting through it. And sometimes a feature looks promising until you examine what happens when it gets something wrong. Fixed scope or ongoing, your call.</p>
   </section>
-  <section class="wrap">
+  <section class="wrap" id="book">
     <div class="offers">
       <div class="offer">
         <span class="o-kicker">2–4 weeks</span>
@@ -881,23 +1044,23 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   <!-- How I work -->
   <section class="wrap sec-head">
     <span class="eyebrow">How I work</span>
-    <h2>Three steps, no discovery theatre</h2>
+    <h2>Understand the problem. Make the call. Leave something usable.</h2>
   </section>
   <section class="wrap">
     <div class="how">
       <div class="step">
         <div class="num">01</div>
-        <h3>Find the problem worth solving</h3>
+        <h3>Find the real problem</h3>
         <p>One call to work out where the real cost sits — good users dropping out, a roadmap pulling in three directions, or engineering time going into something a vendor already solved.</p>
       </div>
       <div class="step">
         <div class="num">02</div>
-        <h3>Scope it against evidence</h3>
+        <h3>Decide with evidence</h3>
         <p>I write the spec from your data and your users, with the failure modes and success metrics attached, so "is it working?" has an answer that isn't an opinion.</p>
       </div>
       <div class="step">
         <div class="num">03</div>
-        <h3>Hand over something usable</h3>
+        <h3>Make it actionable</h3>
         <p>You get the artefacts your team builds from — specs, metrics, a prioritised list — not a slide deck that needs translating.</p>
       </div>
     </div>
@@ -912,7 +1075,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
 
   <section class="wrap sec-head" id="earlier">
     <span class="eyebrow">Earlier work</span>
-    <h2>Before the AI work</h2>
+    <h2>Earlier work</h2>
     <p>A commerce platform I built at Ninjacart, kept here for completeness.</p>
   </section>
 
@@ -943,8 +1106,8 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   <section class="closer">
     <div class="wrap">
       <div class="closer-card">
-        <h2>Got an AI feature that could go expensively wrong?</h2>
-        <p>Hiring for a senior product role, or want a second opinion before you build — either way, tell me the problem and I'll tell you straight whether I'm the right person for it.</p>
+        <h2>Have a product problem worth solving?</h2>
+        <p>Hiring for a senior product role, or deciding what to build next? Tell me what you’re working through and I’ll give you an honest view of where I can help.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:hello@namanbuilds.com?subject=Hello">Email me <span class="arr">↗</span></a>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/gupta-naman-iitkgp/" target="_blank" rel="noopener">Connect on LinkedIn <span class="arr">↗</span></a>
@@ -954,12 +1117,38 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   </section>
 
   <footer class="wrap">
-    <span>Naman Gupta — Product Owner, KYC &amp; Applied AI @ Digio</span>
+    <span>Naman Gupta — Product Owner @ Digio</span>
     <span><a href="mailto:hello@namanbuilds.com">hello@namanbuilds.com</a> · India</span>
   </footer>
+
+  <a class="hire-fab" href="#book" aria-label="Hire me for a project — jump to the booking section">
+    Hire me for a project <span class="arr" aria-hidden="true">↗</span>
+  </a>
 </main>
 
 <script>
+
+  // Floating hire button: show once the hero has scrolled away, hide again
+  // whenever the booking section or the footer is on screen.
+  (()=>{
+    const fab  = document.querySelector('.hire-fab');
+    const hero = document.querySelector('.hero');
+    if(!fab || !hero || !('IntersectionObserver' in window)) return;
+
+    const hideWhenSeen = [document.getElementById('book'), document.querySelector('footer')].filter(Boolean);
+    const onScreen = new Set();
+    let pastHero = false;
+    const sync = () => fab.classList.toggle('is-visible', pastHero && onScreen.size === 0);
+
+    new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; sync(); }, { threshold: 0 }).observe(hero);
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target));
+      sync();
+    }, { threshold: 0.12 });
+    hideWhenSeen.forEach(el => io.observe(el));
+  })();
+
   const hdr=document.getElementById('hdr');
   const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>10);
   onScroll();window.addEventListener('scroll',onScroll,{passive:true});
