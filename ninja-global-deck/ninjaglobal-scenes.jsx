@@ -45,9 +45,9 @@ function NGCover() {
       </div>
       <div className="cv-right">
         <Trio items={[
-          { src: A + "GGT4X9i5irXN0IcSWeFZhIkANzc.png", alt: "Selfie KYC", pos: "side left", d: "350ms" },
+          { src: A + "GGT4X9i5irXN0IcSWeFZhIkANzc.webp", alt: "Selfie KYC", pos: "side left", d: "350ms" },
           { src: A + "SDXNbEq3XmQkR8eXhdh6VpZyVBA.png", alt: "Credit limit", pos: "mid", d: "250ms" },
-          { src: A + "fyCQiZw0o2QenigDVtSbBMCzJdY.png", alt: "Loan calculator", pos: "side right", d: "350ms" },
+          { src: A + "fyCQiZw0o2QenigDVtSbBMCzJdY.webp", alt: "Loan calculator", pos: "side right", d: "350ms" },
         ]} />
       </div>
     </div>
@@ -140,7 +140,7 @@ function NGUser() {
         </div>
       </div>
       <div className="persona-foot a-fade" style={{ "--d": "700ms" }}>
-        <img className="mkt" src={A + "hosur-market.png"} alt="Hosur market visit" />
+        <img className="mkt" src={A + "hosur-market.webp"} alt="Hosur market visit" />
         <div className="ft">
           We wanted to serve the whole trade — every commodity, both legs. The strategic call was
           <b> sequencing</b>: enter where the capital pain was sharpest and the risk was containable, then
@@ -320,16 +320,16 @@ function NGFlow({ go, index }) {
   // `entry-hero` block below. Each step carries an `id` so the CONTENTS index
   // can scroll-spy and jump to it.
   const onb = [
-    { id: "s5-landing", n: "02", kicker: "Landing", title: "Friendly, trustworthy landing", body: "Straight after onboarding you land on a focused home — only the parts that matter, the clutter stripped out.", src: "5luMULrnkN29ud93RsITZuJ70.png", ratio: "wide", dark: true },
-    { id: "s5-identity", n: "03", kicker: "Identity", title: "Let's take a selfie", body: "Liveness + selfie KYC in seconds — the lightest possible identity step before we ever ask for a document.", src: "selfie_image.webp", ratio: "wide", dark: true },
-    { id: "s5-persona", n: "04", kicker: "Persona", title: "Knowing the applicant", body: "Two paths: self-upload for the savvy, and an assisted flow run by a TradeDesk agent for users who aren't.", src: "IQitstd5p8txc5Y8gfFvRGtZTOg.png", ratio: "wide", dark: true },
-    { id: "s5-documents", n: "05", kicker: "Documents", title: "Few more business details", body: "A few business documents and details let us assess the business and arrive at the real limit and credit-worthiness. We split the flow two ways — self-upload for the savvy, and an assisted, agent-led upload powered by the TradeDesk for everyone else.", src: "flow-splitting.png", ratio: "tall", flip: true, dark: true },
-    { id: "s5-edge", n: "06", kicker: "Edge cases", title: "Getting the last details, gracefully", body: "Dynamic drop-off screens adapt if the user leaves mid-way and nudge them back to finish. The address auto-fetches from the map instead of being typed, and bank details are confirmed before disbursal — fewer fields, fewer errors.", src: "flow-additional.png", ratio: "wide", dark: true },
-    { id: "s5-sign", n: "07", kicker: "Sign & takeaway", title: "Sign and takeaway the cash", body: "The journey is done and the limit has been set. The user can just sign and takeaway the money with a few clicks.", src: "sign_cash_image.png", ratio: "wide", dark: true },
+    { id: "s5-landing", n: "02", kicker: "Landing", title: "Friendly, trustworthy landing", body: "Straight after onboarding you land on a focused home — only the parts that matter, the clutter stripped out.", src: "assets/5luMULrnkN29ud93RsITZuJ70.png", ratio: "wide", dark: true },
+    { id: "s5-identity", n: "03", kicker: "Identity", title: "Let's take a selfie", body: "Liveness + selfie KYC in seconds — the lightest possible identity step before we ever ask for a document.", src: "assets/selfie_image.webp", ratio: "wide", dark: true },
+    { id: "s5-persona", n: "04", kicker: "Persona", title: "Knowing the applicant", body: "Two paths: self-upload for the savvy, and an assisted flow run by a TradeDesk agent for users who aren't.", src: "assets/IQitstd5p8txc5Y8gfFvRGtZTOg.webp", ratio: "wide", dark: true },
+    { id: "s5-documents", n: "05", kicker: "Documents", title: "Few more business details", body: "A few business documents and details let us assess the business and arrive at the real limit and credit-worthiness. We split the flow two ways — self-upload for the savvy, and an assisted, agent-led upload powered by the TradeDesk for everyone else.", src: "assets/flow-splitting.webp", ratio: "tall", flip: true, dark: true },
+    { id: "s5-edge", n: "06", kicker: "Edge cases", title: "Getting the last details, gracefully", body: "Dynamic drop-off screens adapt if the user leaves mid-way and nudge them back to finish. The address auto-fetches from the map instead of being typed, and bank details are confirmed before disbursal — fewer fields, fewer errors.", src: "assets/flow-additional.webp", ratio: "wide", dark: true },
+    { id: "s5-sign", n: "07", kicker: "Sign & takeaway", title: "Sign and takeaway the cash", body: "The journey is done and the limit has been set. The user can just sign and takeaway the money with a few clicks.", src: "assets/sign_cash_image.webp", ratio: "wide", dark: true },
     // FfIH is already a pre-rendered photorealistic iPhone (frame baked into a
     // transparent PNG, like loan-calculator) → `bare`, not `device`; wrapping it
     // in the CSS frame double-framed it (a second bezel + black screen ground).
-    { id: "s5-limit", n: "08", kicker: "Limit", title: "Your potential limit — up front", body: "A/B-won: showing the potential limit at the start built trust, where revealing it only at the end felt like a let-down.", src: "FfIHXUFzAeSDTLpVuoxOnINPl4.png", ratio: "portrait", bare: true },
+    { id: "s5-limit", n: "08", kicker: "Limit", title: "Your potential limit — up front", body: "A/B-won: showing the potential limit at the start built trust, where revealing it only at the end felt like a let-down.", src: "assets/FfIHXUFzAeSDTLpVuoxOnINPl4.webp", ratio: "portrait", bare: true },
   ];
   const idx5 = [
     { id: "s5-overview", label: "Overview" },
@@ -382,7 +382,7 @@ function NGFlow({ go, index }) {
               <div className="entry-card">
                 <div className="entry-card-label">Keeping a clean and simple entry point</div>
                 <div className="entry-card-phone">
-                  <img src={A + "ml8peHKGaKd2u6hTC60ZuCqgS3o.png"} alt="A clean entry point" />
+                  <img src={A + "ml8peHKGaKd2u6hTC60ZuCqgS3o.webp"} alt="A clean entry point" />
                 </div>
               </div>
               <div className="entry-copy">
@@ -494,7 +494,7 @@ function NGUnderwriting({ go, index, active }) {
             id="s6-chase"
             n="03" kicker="Where it stalled" title="The chase lived in chat" ratio="tall" bare
             body="A customer raises a loan request against a trade — but ops receives a thin request, realises something's missing, and has no direct line to the customer. The chase runs through sales, documents land scattered across chat threads, and nothing routes them back to ops."
-            src={A + "VQyokcJMJ4uOe3syqFfMlEiJk.png"} alt="The Trade Chat — communication where a lot is at stake"
+            src={A + "VQyokcJMJ4uOe3syqFfMlEiJk.webp"} alt="The Trade Chat — communication where a lot is at stake"
           />
           <div className="flow-quote">
             The customer never knew what was needed up front — so they <b>under-submitted</b>, the loop repeated,
@@ -507,13 +507,13 @@ function NGUnderwriting({ go, index, active }) {
             n="04" kicker="Innovation 1" title="Ask up front — inline with the request" flip ratio="tall" bare
             body="The first screen offers one clear choice — “Yes, I'll upload it myself” or “No, I need some assistance” — and the supporting docs are requested then and there, with explicit guidance on what's needed and why. The case arrives underwriting-ready instead of triggering a chase."
             badge="Customers who did → ~75% faster case time"
-            src={A + "doc-choice.png"} alt="Voluntary upfront document submission, inline with the loan request"
+            src={A + "doc-choice.webp"} alt="Voluntary upfront document submission, inline with the loan request"
           />
           <FlowStep
             id="s6-templated"
             n="05" kicker="Innovation 2" title="Incomplete? Ops fires a templated request" ratio="tall" bare
             body="For requests that still come in thin, ops sends a predefined document checklist + message template straight to the customer — “loan on hold pending X” — replacing the sales → chat → ticket detour. Docs land directly in a structured pipeline ops pulls from, not buried in a thread."
-            src={A + "doc-chat.png"} alt="Ops-triggered templated document request with direct notification"
+            src={A + "doc-chat.webp"} alt="Ops-triggered templated document request with direct notification"
           />
           <FlowStep
             id="s6-moat"
@@ -527,7 +527,7 @@ function NGUnderwriting({ go, index, active }) {
             id="s6-transparency"
             n="07" kicker="Transparency" title="Every charge, shown before you commit" ratio="portrait" bare
             body="A loan calculator lays out the borrow amount, tenure, interest and processing fee up front — and reviewing it never touches your credit score. The customer sees the exact total disbursal before a single click, then gets the money in an instant."
-            src={A + "loan-calculator.png"} alt="Loan calculator — interest and processing fee shown transparently before disbursal"
+            src={A + "loan-calculator.webp"} alt="Loan calculator — interest and processing fee shown transparently before disbursal"
           />
 
           <div className="flow-end">
@@ -563,9 +563,9 @@ function NGDocs() {
         <b> 75% less hold time.</b>
       </p>
       <Trio items={[
-        { src: A + "doc-chat.png",   alt: "Assist path — a loan agent will be assigned", pos: "side left", d: "500ms" },
-        { src: A + "doc-choice.png", alt: "The split: upload it myself, or get assistance", pos: "mid", d: "400ms" },
-        { src: A + "doc-basics.png", alt: "Business basics form in the self-serve path", pos: "side right", d: "500ms" },
+        { src: A + "doc-chat.webp",   alt: "Assist path — a loan agent will be assigned", pos: "side left", d: "500ms" },
+        { src: A + "doc-choice.webp", alt: "The split: upload it myself, or get assistance", pos: "mid", d: "400ms" },
+        { src: A + "doc-basics.webp", alt: "Business basics form in the self-serve path", pos: "side right", d: "500ms" },
       ]} />
     </div>
   );
@@ -619,7 +619,7 @@ function NGRepayment() {
       <div className="ng-pair" style={{ marginTop: 30 }}>
         <div className="a-rise" style={{ "--d": "560ms" }}>
           <div className="ng-dev" style={{ width: 296 }}>
-            <img src={A + "5aXxhF5uLYoh2ZAfJfvxOJDqG5E.png"} alt="Payments — the repayment surface" />
+            <img src={A + "5aXxhF5uLYoh2ZAfJfvxOJDqG5E.webp"} alt="Payments — the repayment surface" />
           </div>
         </div>
         <div className="repay-points a-fade" style={{ "--d": "720ms" }}>
@@ -789,10 +789,10 @@ function NGResults() {
       </div>
       <div className="ng-pair" style={{ marginTop: 24 }}>
         <div className="a-rise" style={{ "--d": "620ms" }}>
-          <div className="ng-dev" style={{ width: 232 }}><img src={A + "5aXxhF5uLYoh2ZAfJfvxOJDqG5E.png"} alt="Payments — repayment surface" /></div>
+          <div className="ng-dev" style={{ width: 232 }}><img src={A + "5aXxhF5uLYoh2ZAfJfvxOJDqG5E.webp"} alt="Payments — repayment surface" /></div>
         </div>
         <div className="a-rise" style={{ "--d": "740ms" }}>
-          <div className="ng-plate wide" style={{ maxWidth: 480 }}><img src={A + "sOFZTUfT03wnxZmCGIPWPswm6Vo.png"} alt="Marvel Award — Q4 FY 2023-24" /></div>
+          <div className="ng-plate wide" style={{ maxWidth: 480 }}><img src={A + "sOFZTUfT03wnxZmCGIPWPswm6Vo.webp"} alt="Marvel Award — Q4 FY 2023-24" /></div>
         </div>
       </div>
       <div className="ng-badge a-fade" style={{ "--d": "980ms" }}>Flow reused across other PODs · Marvel Award · Q4 FY 2023-24</div>

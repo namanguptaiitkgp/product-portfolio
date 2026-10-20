@@ -11,26 +11,26 @@ function SelfieSceneProblem() {
       label: "Printed photo",
       hint: "Printed photo held up to camera — paper edges, fingertips",
       verdict: "Looks like a face. Isn't a person.",
-      img: "assets/spoof-printed-photo.png",
+      img: "assets/spoof-printed-photo.webp",
     },
     {
       label: "Screen replay",
       hint: "Phone or tablet displaying a face — bezel visible",
       verdict: "Looks like a face. Isn't a person.",
-      img: "assets/spoof-screen-replay.jpeg",
+      img: "assets/spoof-screen-replay.webp",
     },
     {
       label: "Face Not Visible",
       hint: "Pre-recorded video frame playing on a device",
       verdict: "Looks like a face. Isn't a person.",
-      img: "assets/spoof-face-not-visible.png",
+      img: "assets/spoof-face-not-visible.webp",
       stamp: "Non Compliant",
     },
     {
       label: "AI-generated face",
       hint: "Eerily symmetrical face · subtle diffusion shimmer",
       verdict: "Looks like a face. Isn't a real one.",
-      img: "assets/as.png",
+      img: "assets/as.webp",
     },
   ];
 
@@ -45,7 +45,7 @@ function SelfieSceneProblem() {
           <span>The Onboarding Problem</span>
         </span>
         <h2 className="cine-headline-2 a-rise" style={{ "--d": "150ms" }}>
-          1.5 lakh selfies a day.<br/>
+          2 lakh selfies a day.<br/>
           A fraudster hides in <span className="it">one of them.</span>
         </h2>
         <p className="cine-lede lede a-rise" style={{ "--d": "450ms" }}>
@@ -188,16 +188,16 @@ function FourAxesPanel() {
           <h3 className="q-title">Whatever it <span className="it">captures.</span></h3>
           <div className="items">
             <div className="item" data-on={on(0)}>
-              <div className="viz"><span className="cam-thumb" style={{ width: 58, height: 58 }}><img src="assets/subject.jpg" alt="" /></span></div><div className="lbl">12 MP</div><div className="meta">4080×3072</div><div className="liveflag">Live</div>
+              <div className="viz"><span className="cam-thumb" style={{ width: 58, height: 58 }}><img src="assets/subject.webp" alt="" /></span></div><div className="lbl">12 MP</div><div className="meta">4080×3072</div><div className="liveflag">Live</div>
             </div>
             <div className="item" data-on={on(1)}>
-              <div className="viz"><span className="cam-thumb" style={{ width: 50, height: 50, filter: "contrast(1.02)" }}><img src="assets/subject.jpg" alt="" /></span></div><div className="lbl">1080p</div><div className="meta">1920×1080</div><div className="liveflag">Live</div>
+              <div className="viz"><span className="cam-thumb" style={{ width: 50, height: 50, filter: "contrast(1.02)" }}><img src="assets/subject.webp" alt="" /></span></div><div className="lbl">1080p</div><div className="meta">1920×1080</div><div className="liveflag">Live</div>
             </div>
             <div className="item" data-on={on(2)}>
-              <div className="viz"><span className="cam-thumb" style={{ width: 44, height: 44, filter: "blur(.4px) saturate(.92)" }}><img src="assets/subject.jpg" alt="" /></span></div><div className="lbl">720p</div><div className="meta">1280×720</div><div className="liveflag">Live</div>
+              <div className="viz"><span className="cam-thumb" style={{ width: 44, height: 44, filter: "blur(.4px) saturate(.92)" }}><img src="assets/subject.webp" alt="" /></span></div><div className="lbl">720p</div><div className="meta">1280×720</div><div className="liveflag">Live</div>
             </div>
             <div className="item" data-on={on(3)}>
-              <div className="viz"><span className="cam-thumb" style={{ width: 38, height: 38, filter: "blur(.7px) contrast(1.08) saturate(.85) brightness(.95)" }}><img src="assets/subject.jpg" alt="" /><span className="grain"></span></span></div><div className="lbl">VGA</div><div className="meta">640×480</div><div className="liveflag">Live</div>
+              <div className="viz"><span className="cam-thumb" style={{ width: 38, height: 38, filter: "blur(.7px) contrast(1.08) saturate(.85) brightness(.95)" }}><img src="assets/subject.webp" alt="" /><span className="grain"></span></span></div><div className="lbl">VGA</div><div className="meta">640×480</div><div className="liveflag">Live</div>
             </div>
           </div>
         </div>
@@ -437,7 +437,7 @@ function SelfieSceneGuidance() {
                 </span>
               </div>
               <div className="app-bar">
-                <img className="app-logo-img" src="assets/logo-groww.png" alt="Groww" />
+                <img className="app-logo-img" src="assets/logo-groww.webp" alt="Groww" />
                 <span className="app-actions">
                   <span className="app-a11y" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="13" height="13">
@@ -451,7 +451,7 @@ function SelfieSceneGuidance() {
               <div className="app-toast">Look straight at the camera</div>
               <div className="viewport">
                 <div className="ring-out">
-                  <img className="frame-img" src="assets/frame-look.png" alt="Look straight at the camera" />
+                  <img className="frame-img" src="assets/frame-look.webp" alt="Look straight at the camera" />
                 </div>
               </div>
               <button className="app-capture" type="button">
@@ -589,7 +589,7 @@ function SelfieSceneFraming() {
                 </span>
               </div>
               <div className="app-bar">
-                <img className="app-logo-img" src="assets/logo-groww.png" alt="Groww" />
+                <img className="app-logo-img" src="assets/logo-groww.webp" alt="Groww" />
                 <span className="app-actions">
                   <span className="app-a11y" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="13" height="13">
@@ -603,7 +603,7 @@ function SelfieSceneFraming() {
               <div className="app-toast">Move Right</div>
               <div className="viewport">
                 <div className="ring-out">
-                  <img className="frame-img" src="assets/frame-too-far.png" alt="Face too far from the camera" />
+                  <img className="frame-img" src="assets/frame-too-far.webp" alt="Face too far from the camera" />
                 </div>
               </div>
               <button className="app-capture" type="button">
@@ -639,7 +639,7 @@ function SelfieSceneFraming() {
                 </span>
               </div>
               <div className="app-bar">
-                <img className="app-logo-img" src="assets/logo-jio.png" alt="Jio BlackRock" />
+                <img className="app-logo-img" src="assets/logo-jio.webp" alt="Jio BlackRock" />
                 <span className="app-actions">
                   <span className="app-a11y" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="13" height="13">
@@ -653,7 +653,7 @@ function SelfieSceneFraming() {
               <div className="app-toast">Face detected · ready to capture</div>
               <div className="viewport">
                 <div className="ring-out">
-                  <img className="frame-img" src="assets/frame-ready.png" alt="Face correctly framed and ready" />
+                  <img className="frame-img" src="assets/frame-ready.webp" alt="Face correctly framed and ready" />
                 </div>
               </div>
               <button className="app-capture" type="button">
@@ -703,7 +703,7 @@ function SelfieSceneFraming() {
               <div className="app-toast">Move Slightly Back</div>
               <div className="viewport">
                 <div className="ring-out">
-                  <img className="frame-img" src="assets/frame-too-close.png" alt="Face too close to the camera" />
+                  <img className="frame-img" src="assets/frame-too-close.webp" alt="Face too close to the camera" />
                 </div>
               </div>
               <button className="app-capture" type="button">

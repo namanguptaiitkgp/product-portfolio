@@ -570,7 +570,7 @@
 
 /* ---- Back-to-home button (fixed in letterbox, outside the scaled stage) ---- */
 #back-home{
-  position:fixed; top:18px; left:18px; z-index:1000;
+  position:fixed; top:18px; right:18px; z-index:1000;
   display:inline-flex; align-items:center; gap:8px;
   padding:8px 14px 8px 11px;
   font-family:"JetBrains Mono", ui-monospace, monospace;

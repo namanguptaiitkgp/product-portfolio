@@ -34,7 +34,7 @@ function SelfieSceneDual() {
         <div className="capture-seq a-rise" style={{ "--d": "550ms" }}>
           <div className="cap-step">
             <span className="cs-num">01</span>
-            <div className="cap-frame"><img src="assets/capture-shown.png" alt="What the user sees — face in the circle" /></div>
+            <div className="cap-frame"><img src="assets/capture-shown.webp" alt="What the user sees — face in the circle" /></div>
             <div className="cap-cap">
               <span className="cs-k">What the user sees</span>
               <span className="cs-v">Just the face in the circle. The 1.5× zoom lets them sit back, so light falls evenly on the face.</span>
@@ -51,7 +51,7 @@ function SelfieSceneDual() {
 
           <div className="cap-step">
             <span className="cs-num">02</span>
-            <div className="cap-frame"><img src="assets/capture-wider.png" alt="What the system actually captures — wider frame revealing the screen" /></div>
+            <div className="cap-frame"><img src="assets/capture-wider.webp" alt="What the system actually captures — wider frame revealing the screen" /></div>
             <div className="cap-cap">
               <span className="cs-k">What we actually capture</span>
               <span className="cs-v">A wider frame the user never sees — the screen bezel, the holding hand, the replay device all land in it.</span>
@@ -236,12 +236,12 @@ function SelfieSceneDetMap() {
 
 function SelfieSceneFaceRead() {
   const regions = [
-    { cls: "face",  label: "Face",      conf: "99.4%", img: "assets/feat-face.png"  },
-    { cls: "eye",   label: "Left Eye",  conf: "98.7%", img: "assets/feat-eyeL.png"  },
-    { cls: "eye",   label: "Right Eye", conf: "98.2%", img: "assets/feat-eyeR.png"  },
-    { cls: "nose",  label: "Nose",      conf: "97.5%", img: "assets/feat-nose.png"  },
-    { cls: "mouth", label: "Mouth",     conf: "96.8%", img: "assets/feat-mouth.png" },
-    { cls: "chin",  label: "Chin",      conf: "97.2%", img: "assets/feat-chin.png"  },
+    { cls: "face",  label: "Face",      conf: "99.4%", img: "assets/feat-face.webp"  },
+    { cls: "eye",   label: "Left Eye",  conf: "98.7%", img: "assets/feat-eyeL.webp"  },
+    { cls: "eye",   label: "Right Eye", conf: "98.2%", img: "assets/feat-eyeR.webp"  },
+    { cls: "nose",  label: "Nose",      conf: "97.5%", img: "assets/feat-nose.webp"  },
+    { cls: "mouth", label: "Mouth",     conf: "96.8%", img: "assets/feat-mouth.webp" },
+    { cls: "chin",  label: "Chin",      conf: "97.2%", img: "assets/feat-chin.webp"  },
   ];
   return (
     <div className="s-split s2-faceread">
@@ -271,9 +271,9 @@ function SelfieSceneFaceRead() {
       </div>
 
       <div className="right">
-        <div className="detect-hero a-rise zoomable" style={{ "--d": "500ms" }} data-full="assets/orig-all.jpg" data-cap="Localizer output · all regions · single pass">
+        <div className="detect-hero a-rise zoomable" style={{ "--d": "500ms" }} data-full="assets/orig-all.webp" data-cap="Localizer output · all regions · single pass">
           <span className="hero-tag"><span className="led" />Localizer · live output</span>
-          <img src="assets/feat-all.png" alt="Facial feature detection with all regions boxed and labelled with confidence scores" />
+          <img src="assets/feat-all.webp" alt="Facial feature detection with all regions boxed and labelled with confidence scores" />
           <span className="hero-meta"><span className="em">6 regions</span> · 1 face · single pass</span>
           <span className="zoom-hint">Click to enlarge</span>
         </div>
@@ -366,15 +366,15 @@ function SelfieSceneCropping() {
 
           <div className="ar-hero">
             <div className="ar-hero-card">
-              <img src="assets/audit-frame.png" alt="Stored selfie capture with timestamp" />
+              <img src="assets/audit-frame.webp" alt="Stored selfie capture with timestamp" />
             </div>
           </div>
 
           <div className="ar-attempts">
             {[
-              { n: 3, status: "Success", at: "05/06/2026, 11:53:16", score: "0.8553793", img: "assets/audit-att3.png" },
-              { n: 2, status: "Retake",  at: "05/06/2026, 11:52:41", score: "0.6390825", img: "assets/audit-att2.png" },
-              { n: 1, status: "Retake",  at: "05/06/2026, 11:52:09", score: "0.4128871", img: "assets/audit-att1.png" },
+              { n: 3, status: "Success", at: "05/06/2026, 11:53:16", score: "0.8553793", img: "assets/audit-att3.webp" },
+              { n: 2, status: "Retake",  at: "05/06/2026, 11:52:41", score: "0.6390825", img: "assets/audit-att2.webp" },
+              { n: 1, status: "Retake",  at: "05/06/2026, 11:52:09", score: "0.4128871", img: "assets/audit-att1.webp" },
             ].map((a) => (
               <div key={a.n} className="ar-att">
                 <div className="ar-att-thumb"><img src={a.img} alt="" /></div>
@@ -555,13 +555,13 @@ function SelfieSceneDeepfake() {
                       <div className="forge-flow">
                         <div className="forge-sources">
                           <div className="df-face a">
-                            <div className="portrait"><img className="pf-img" src="assets/df-srcA.png" alt="Source A face" /></div>
+                            <div className="portrait"><img className="pf-img" src="assets/df-srcA.webp" alt="Source A face" /></div>
                             <div className="mesh"></div>
                             <span className="tag">Source A</span>
                             <span className="sub">Enrolled ID photo — carries the target's identity</span>
                           </div>
                           <div className="df-face b">
-                            <div className="portrait"><img className="pf-img" src="assets/df-srcB.png" alt="Source B face" /></div>
+                            <div className="portrait"><img className="pf-img" src="assets/df-srcB.webp" alt="Source B face" /></div>
                             <div className="mesh"></div>
                             <span className="tag">Source B</span>
                             <span className="sub">Cooperative live face — supplies real-capture texture</span>
@@ -577,7 +577,7 @@ function SelfieSceneDeepfake() {
 
                         <div className="forge-out">
                           <div className="df-face">
-                            <div className="portrait"><img className="pf-img" src="assets/df-synth.png" alt="Synthetic blended face" /></div>
+                            <div className="portrait"><img className="pf-img" src="assets/df-synth.webp" alt="Synthetic blended face" /></div>
                             <div className="mesh"></div>
                             <span className="tag">Deepfake</span>
                             <span className="sub">Looks live, scores as the target</span>

@@ -227,7 +227,7 @@ function RtSceneEntry() {
             id="rt-shot-listing"
             cap="DigiStudio"
             sub="Workflow listing"
-            src="assets/shot-listing.png"
+            src="assets/shot-listing.webp"
             fit="contain"
             height={384}
             note="→ Opens Workflow Analytics"
@@ -278,7 +278,7 @@ function RtSceneAnalytics() {
             id="rt-shot-analytics"
             cap="Workflow Analytics"
             sub="Step-by-step conversion (Sankey)"
-            src="assets/shot-analytics.png"
+            src="assets/shot-analytics.webp"
             fit="contain"
             height={476}
             note="Click a step to break it down"
@@ -328,7 +328,7 @@ function RtSceneStep() {
             id="rt-shot-step"
             cap="Step Breakdown"
             sub="Download drop-offs · Send reminder"
-            src="assets/shot-step.png"
+            src="assets/shot-step.webp"
             fit="contain"
             height={514}
             note="Download · Remind"
@@ -379,7 +379,7 @@ function RtSceneRemindAll() {
             id="rt-shot-remindall"
             cap="Send Reminders"
             sub="Side panel · time-range cohort"
-            src="assets/shot-remindall.png"
+            src="assets/shot-remindall.webp"
             fit="contain"
             height={720}
             frameW={510}
@@ -434,13 +434,13 @@ function RtSceneHistory() {
             </div>
             <div className="shot-body trio">
               <image-slot id="rt-shot-history" shape="rounded" radius="10"
-                src="assets/shot-history.png" fit="contain"
+                src="assets/shot-history.webp" fit="contain"
                 placeholder="Drop screenshot · Reminder history list" style={{ height: "350px" }} />
               <image-slot id="rt-shot-stepcard" shape="rounded" radius="10"
-                src="assets/shot-stepcard.png" fit="contain"
+                src="assets/shot-stepcard.webp" fit="contain"
                 placeholder="Drop screenshot · Step breakdown" style={{ height: "350px" }} />
               <image-slot id="rt-shot-groupstatus" shape="rounded" radius="10"
-                src="assets/shot-groupstatus.png" fit="contain"
+                src="assets/shot-groupstatus.webp" fit="contain"
                 placeholder="Drop screenshot · Reminder group status" style={{ height: "285px" }} />
             </div>
           </div>
@@ -489,7 +489,7 @@ function RtSceneImpact() {
             id="rt-shot-impact"
             cap="Impact Dashboard"
             sub="Conversion after each reminder"
-            src="assets/shot-impact.png"
+            src="assets/shot-impact.webp"
             fit="contain"
             height={476}
             note="Status flips to complete"
@@ -539,7 +539,7 @@ function RtSceneChannel() {
             id="rt-shot-channel"
             cap="Impact Dashboard"
             sub="Effectiveness by channel"
-            src="assets/shot-channel.png"
+            src="assets/shot-channel.webp"
             fit="contain"
             height={242}
             note="SMS · Email · WhatsApp"

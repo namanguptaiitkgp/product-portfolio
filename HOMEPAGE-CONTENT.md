@@ -239,10 +239,10 @@ the footer. Has an `aria-label` and a `:focus-visible` outline.
 - ~~"Before the AI work" and the AI-framed closer~~ — both rewritten to match the broader positioning.
 - ~~Hero said 7 years, resume said 6+~~ — **seven years** everywhere, and the PDF regenerated.
 - ~~Hero proof line repeated the proof bar~~ — removed; the numbers appear once.
+- ~~Selfie deck said "1.5 lakh selfies a day" against the homepage's 2L+~~ — deck now reads **2 lakh selfies a day**.
 
 **Still open — these need your facts, not copyediting:**
 
 1. **Retargeting has no number** in its one-liner, result line or strip.
-2. **The Selfie deck opens with "1.5 lakh selfies a day"** while the homepage says 2L+ verifications. These may measure different things — confirm before aligning.
-3. **"Android app / iOS app" on the Digio strip** — if Digio ships SDKs embedded in clients' apps rather than its own store apps, these should read "SDK".
-4. **The 2L+ and ~$350M figures** have not been confirmed public-safe since you last raised the question.
+2. **"Android app / iOS app" on the Digio strip** — if Digio ships SDKs embedded in clients' apps rather than its own store apps, these should read "SDK".
+3. **The 2L+ and ~$350M figures** have not been confirmed public-safe since you last raised the question.

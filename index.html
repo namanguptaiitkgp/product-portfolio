@@ -12,13 +12,13 @@
 <meta property="og:url" content="https://namanbuilds.com/">
 <meta property="og:title" content="Naman Gupta — Product Owner @ Digio | ex-Capital One, Ninjacart | Marketplaces &amp; 0→1 products">
 <meta property="og:description" content="Product Owner at Digio, previously Capital One, Ninjacart and Cogoport. Seven years building fintech, lending and marketplace products from the first decision through to real-world scale.">
-<meta property="og:image" content="https://namanbuilds.com/assets/og-preview.png">
+<meta property="og:image" content="https://namanbuilds.com/assets/og-preview.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Naman Gupta — Product Owner @ Digio | ex-Capital One, Ninjacart | Marketplaces &amp; 0→1 products">
 <meta name="twitter:description" content="Product Owner at Digio, previously Capital One, Ninjacart and Cogoport. Seven years building fintech, lending and marketplace products from the first decision through to real-world scale.">
-<meta name="twitter:image" content="https://namanbuilds.com/assets/og-preview.png">
+<meta name="twitter:image" content="https://namanbuilds.com/assets/og-preview.webp">
 
 <!-- Favicon: inline "N" monogram, no extra file to host -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23191713'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-weight='bold' font-size='40' fill='%23f4f2ec' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
@@ -132,12 +132,11 @@ nav a:hover::after{transform:scaleX(1);}
 .intro{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:8px;}
 .titles{position:relative;}
 .title-link{display:inline-block;color:inherit;}
-.title-stack{position:relative;display:inline-grid;}
-.title-stack > *{grid-area:1/1;transition:opacity .35s ease,transform .35s ease;}
+.title-stack{position:relative;display:block;}
 .t-name{font-size:30px;letter-spacing:-.015em;}
-.t-company{font-family:"SF Pro Display",sans-serif;font-size:30px;letter-spacing:-.015em;color:var(--accent);opacity:0;transform:translateY(6px);}
-.project:hover .t-name{opacity:0;transform:translateY(-6px);}
-.project:hover .t-company{opacity:1;transform:translateY(0);}
+/* The title used to swap to the company name on hover. It read as a glitch,
+   and the company is already shown in the tag pill beside it. */
+.t-company{display:none;}
 .desc{font-size:16px;color:var(--muted);max-width:560px;}
 .tag{font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px;white-space:nowrap;}
 
@@ -196,6 +195,14 @@ nav a:hover::after{transform:scaleX(1);}
 
 /* deck-cover placeholder (Retargeting — refine later) */
 .deckwrap{padding:64px 0 60px;display:flex;justify-content:center;}
+.deckshot{
+  width:760px;max-width:100%;aspect-ratio:850/510;margin:0 auto;
+  border-radius:18px;overflow:hidden;border:1px solid var(--line);
+  box-shadow:var(--shadow);background:#fff;
+  transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.deckshot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+.media-link:hover .deckshot{transform:translateY(-6px);}
 .deckcover{
   width:760px;max-width:100%;aspect-ratio:850/510;margin:0 auto;
   border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);
@@ -683,7 +690,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
           <div class="laptop">
             <div class="laptop-lid">
               <div class="laptop-screen">
-                <img class="laptop-shot" src="kyc-assets/digistudio-workflow.png" alt="DigiStudio KYC workflow editor" loading="lazy" decoding="async">
+                <img class="laptop-shot" src="kyc-assets/digistudio-workflow.webp" alt="DigiStudio KYC workflow editor" loading="lazy" decoding="async">
               </div>
             </div>
             <div class="laptop-deck"></div>
@@ -720,12 +727,12 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
                     <div class="photo-panel">
                       <div class="photo-frame">
                         <span class="ts">10-04-2026 13:21:16</span>
-                        <img src="kyc-assets/selfie-frame.png" alt="Captured selfie frame" loading="lazy" decoding="async">
+                        <img src="kyc-assets/selfie-frame.webp" alt="Captured selfie frame" loading="lazy" decoding="async">
                       </div>
                     </div>
                     <div class="attempts">
                       <div class="attempt">
-                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="" loading="lazy" decoding="async">
+                        <img class="thumb" src="kyc-assets/selfie-frame.webp" alt="" loading="lazy" decoding="async">
                         <div class="meta">
                           <div class="nm">Attempt 3 <span class="ok2">Success</span></div>
                           <div class="ln">Attempted At: 05/06/2026, 11:53:16</div>
@@ -733,7 +740,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
                         </div>
                       </div>
                       <div class="attempt">
-                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="" loading="lazy" decoding="async">
+                        <img class="thumb" src="kyc-assets/selfie-frame.webp" alt="" loading="lazy" decoding="async">
                         <div class="meta">
                           <div class="nm">Attempt 2 <span class="rt">Retake</span></div>
                           <div class="ln">Attempted At: 05/06/2026, 11:52:41</div>
@@ -741,7 +748,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
                         </div>
                       </div>
                       <div class="attempt">
-                        <img class="thumb" src="kyc-assets/selfie-frame.png" alt="" loading="lazy" decoding="async">
+                        <img class="thumb" src="kyc-assets/selfie-frame.webp" alt="" loading="lazy" decoding="async">
                         <div class="meta">
                           <div class="nm">Attempt 1 <span class="rt">Retake</span></div>
                           <div class="ln">Attempted At: 05/06/2026, 11:52:09</div>
@@ -766,7 +773,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
               </div>
               <div class="cap-toast">Look straight at the camera</div>
               <div class="cap-circle-wrap">
-                <div class="cap-circle"><img src="kyc-assets/selfie-face-centered.png" alt="Live camera preview" loading="lazy" decoding="async"></div>
+                <div class="cap-circle"><img src="kyc-assets/selfie-face-centered.webp" alt="Live camera preview" loading="lazy" decoding="async"></div>
               </div>
               <div class="cap-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2a5db0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h3l1.5-2h9L18 8.5h3V19H3z"/><circle cx="12" cy="13" r="3.2"/></svg> Capture Selfie</div>
             </div>
@@ -833,9 +840,9 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
     <a class="media-link" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html" aria-label="Open Ninja Credit case study">
 
         <div class="wrap trio">
-          <div class="shot side left"><img src="https://framerusercontent.com/images/GGT4X9i5irXN0IcSWeFZhIkANzc.png?width=600" alt="Ninja Credit app — retailer credit limit and repayment schedule" loading="lazy" decoding="async"></div>
+          <div class="shot side left"><img src="https://framerusercontent.com/images/GGT4X9i5irXN0IcSWeFZhIkANzc.webp?width=600" alt="Ninja Credit app — retailer credit limit and repayment schedule" loading="lazy" decoding="async"></div>
           <div class="shot mid"><img src="https://framerusercontent.com/images/SDXNbEq3XmQkR8eXhdh6VpZyVBA.png?width=640" alt="Ninja Credit app — credit line home screen for a retailer" loading="lazy" decoding="async"></div>
-          <div class="shot side right"><img src="https://framerusercontent.com/images/fyCQiZw0o2QenigDVtSbBMCzJdY.png?width=600" alt="Ninja Credit app — order financing confirmation" loading="lazy" decoding="async"></div>
+          <div class="shot side right"><img src="https://framerusercontent.com/images/fyCQiZw0o2QenigDVtSbBMCzJdY.webp?width=600" alt="Ninja Credit app — order financing confirmation" loading="lazy" decoding="async"></div>
         </div>
       
       </a>
@@ -898,16 +905,10 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
     <a class="media-link" href="retargeting/Retargeting%20Case%20Study%20Studio%20Blue.html" aria-label="Open Retargeting case study">
 
         <div class="wrap deckwrap">
-          <div class="deckcover">
-            <span class="dc-eyebrow">Case study · Digio</span>
-            <div class="dc-head">See the drop. Send the nudge.<br><span class="grad">Watch them convert.</span></div>
-            <div class="dc-flow" aria-hidden="true">
-              <span class="chip">Drop-off detected</span>
-              <span class="chip-arr">→</span>
-              <span class="chip">Reason classified</span>
-              <span class="chip-arr">→</span>
-              <span class="chip on">Journey resumed</span>
-            </div>
+          <div class="deckshot">
+            <img src="retargeting-assets/workflow-dashboard.webp"
+                 alt="DigiStudio workflow analytics — 42,200 users across PAN verification, Aadhaar eKYC and Video KYC, showing where each one dropped off"
+                 width="1520" height="1083" loading="lazy" decoding="async">
           </div>
         </div>
       
@@ -946,7 +947,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
     <a class="media-link" href="https://namanguptaiitkgp.github.io/stock-tracker/docs/how-it-works.html" target="_blank" rel="noopener" aria-label="Open stock-tracker — how it works">
 
         <div class="wrap combo">
-          <div class="wide"><img src="stock-tracker-assets/dashboard.png" alt="stock-tracker daily portfolio brief" loading="lazy" decoding="async"></div>
+          <div class="wide"><img src="stock-tracker-assets/dashboard.webp" alt="stock-tracker daily portfolio brief" loading="lazy" decoding="async"></div>
         </div>
       
       </a>
