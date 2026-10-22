@@ -59,8 +59,8 @@ Floating button           ← fixed; appears after the hero, hides over #book an
 
 | Field | Value |
 |---|---|
-| `<title>` | Naman Gupta — Product Owner @ Digio \| ex-Capital One, Ninjacart \| Marketplaces & 0→1 products |
-| `description` | Product Owner at Digio, previously Capital One, Ninjacart and Cogoport. Seven years building fintech, lending and marketplace products from the first decision through to real-world scale. |
+| `<title>` | Naman Gupta — Senior Product Manager @ Digio \| ex-Capital One, Ninjacart \| Marketplaces & 0→1 products |
+| `description` | Senior Product Manager at Digio, previously Capital One, Ninjacart and Cogoport. Seven years building fintech, lending and marketplace products from the first decision through to real-world scale. |
 | `canonical` / `og:url` | `https://namanbuilds.com/` |
 | `og:image` | `https://namanbuilds.com/assets/og-preview.png` (1200×630, generated) |
 | favicon | inline SVG "N" monogram — no file to host |
@@ -68,7 +68,7 @@ Floating button           ← fixed; appears after the hero, hides over #book an
 ## 2. Header (sticky)
 
 - **Name:** Naman Gupta
-- **Role:** Product Owner @ Digio · ex-Capital One, Ninjacart
+- **Role:** Senior Product Manager @ Digio · ex-Capital One, Ninjacart
 - **Nav:** Work with me → `#work` · LinkedIn ↗ · Resume → `resume/`
 
 Gains a hairline border once the page scrolls. On phones the role line is
@@ -112,7 +112,7 @@ band, and a **what I shipped** strip (chips · stack · scale).
 → `cinematic/index_2_light.html`
 
 - **Context** — Regulated onboarding requires matching a live face to a government ID. Too loose and you onboard fraudsters; too strict and you lose genuine customers at the last step.
-- **My role** — Product Owner for the selfie & liveness flow — capture UX, scoring thresholds, and the audit trail an auditor actually reads.
+- **My role** — Senior Product Manager for the selfie & liveness flow — capture UX, scoring thresholds, and the audit trail an auditor actually reads.
 - **Key decision** — Score and keep every attempt instead of a single pass/fail. Retakes became evidence rather than friction.
 - **Result** — 2L+ verifications a day, each with a liveness score, a face-match confidence and a timestamped attempt history.
 - **Tradeoff** — Every point the liveness threshold moves trades fraud caught against genuine users rejected. Tuned for the lender's loss appetite, and made configurable rather than baked in.
@@ -138,7 +138,7 @@ band, and a **what I shipped** strip (chips · stack · scale).
 → `retargeting/Retargeting Case Study Studio Blue.html`
 
 - **Context** — Onboarding is a funnel with a dozen places to quit. Every abandoned journey is acquisition spend already paid for.
-- **My role** — Product Owner — instrumenting the funnel, defining the drop-off taxonomy, designing the nudge logic.
+- **My role** — Senior Product Manager — instrumenting the funnel, defining the drop-off taxonomy, designing the nudge logic.
 - **Key decision** — Treat the *reason* for the drop-off as the trigger, not the drop-off itself.
 - **Result** — Stalled journeys get a targeted nudge tied to the step that failed.
 - **Tradeoff** — Nudges have a ceiling before they become spam; the cap per journey was a product decision, not a technical one.
@@ -206,7 +206,7 @@ Buttons: **Email me ↗** (`mailto:hello@namanbuilds.com`) · **Connect on Linke
 
 ## 12. Footer
 
-`Naman Gupta — Product Owner @ Digio` · `hello@namanbuilds.com · India`
+`Naman Gupta — Senior Product Manager @ Digio` · `hello@namanbuilds.com · India`
 
 ## 13. Floating button
 
@@ -234,7 +234,7 @@ the footer. Has an `aria-label` and a `:focus-visible` outline.
 
 **Resolved** in the editorial pass of 18 Oct 2026:
 
-- ~~Footer and resume carried an older role title~~ — all three surfaces now read **Product Owner @ Digio**.
+- ~~Footer and resume carried an older role title~~ — all three surfaces now read **Senior Product Manager @ Digio**.
 - ~~`description` duplicated `<title>`~~ — replaced with a real description.
 - ~~"Before the AI work" and the AI-framed closer~~ — both rewritten to match the broader positioning.
 - ~~Hero said 7 years, resume said 6+~~ — **seven years** everywhere, and the PDF regenerated.
