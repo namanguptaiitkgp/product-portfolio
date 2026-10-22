@@ -22,10 +22,11 @@ Proof bar                 ← 4 numbers + company row
   └─ the credibility hit, before any case study
 
 Case studies (×4)         ← ordered by strategic value
-  ├─ 1  Selfie & Liveness KYC      #cases
-  ├─ 2  Ninja Credit
+  ├─ 1  Ninja Credit               #cases
+  ├─ 2  Selfie & Liveness KYC
   ├─ 3  Onboarding Retargeting
-  └─ 4  stock-tracker
+  ├─ 4  stock-tracker
+  └─ 5  Ninja Connect
        each: title · company · one-liner · "Open case" ·
              "20-second version" (collapsed) · media · "what I shipped" strip
 
@@ -39,9 +40,6 @@ Work with me              #book
 How I work                ← 3 steps
 
 Testimonials              ← present but display:none until real quotes exist
-
-Earlier work              #earlier
-  └─ Ninja Connect (no strip, no summary — deliberately secondary)
 
 Closing CTA               ← email + LinkedIn
 
@@ -190,12 +188,6 @@ Proof strip below the cards:
 
 Section exists in the markup with `display:none`. Remove the style attribute to
 reveal it — add real quotes with name, role and company first.
-
-## 10. Earlier work — `#earlier`
-
-**Earlier work** — *A commerce platform I built at Ninjacart, kept here for completeness.*
-Holds **Ninja Connect** (chat-based commerce platform). Deliberately has no
-strip and no summary, so it reads as secondary.
 
 ## 11. Closing CTA
 
