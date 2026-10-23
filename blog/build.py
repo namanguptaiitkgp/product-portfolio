@@ -299,11 +299,13 @@ def build():
              for f in sorted(os.listdir(POSTS)) if f.endswith(".md")]
     live = sorted([p for p in posts if not p["draft"]], key=lambda p: p["date"], reverse=True)
 
-    # remove directories for posts that no longer exist or went back to draft
-    keep = {p["slug"] for p in live}
+    # remove directories for posts that no longer exist or went back to draft.
+    # Only ever touch a directory that holds a generated index.html and nothing
+    # else, so a stray folder here is left alone rather than deleted.
+    keep = {p["slug"] for p in live} | {"posts", "assets", "__pycache__"}
     for d in os.listdir(HERE):
         full = os.path.join(HERE, d)
-        if os.path.isdir(full) and d not in ("posts", "__pycache__") and d not in keep:
+        if os.path.isdir(full) and d not in keep and os.listdir(full) == ["index.html"]:
             shutil.rmtree(full)
 
     for p in live:
