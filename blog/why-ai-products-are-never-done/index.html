@@ -20,16 +20,14 @@
 @font-face{font-family:"Neue Montreal";src:url("https://framerusercontent.com/assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Neue Montreal";src:url("https://framerusercontent.com/assets/vEydk8LUwvYV3ZJtsQhKLqsza0.woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Joane";src:url("https://framerusercontent.com/assets/s7QBt6TrbwZwxnd8WeMUW0iXFw.woff2");font-weight:900;font-display:swap}
-:root{--paper:#f4f2ec;--panel:#fffdf9;--ink:#191713;--muted:#5f5a4e;--line:rgba(25,23,19,.12);
+:root{--paper:#fff;--panel:#fff;--ink:#191713;--muted:#5f5a4e;--line:rgba(25,23,19,.12);
 --shadow:0 1px 2px rgba(25,23,19,.04),0 18px 48px -22px rgba(25,23,19,.28)}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
 body{background:var(--paper);color:var(--ink);font-family:"Neue Montreal","SF Pro Display",-apple-system,sans-serif;
-font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
-transition:background-color 2.4s ease,color .35s ease}
+font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);
-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent;
-transition:border-color .3s ease,background-color 2.4s ease}
+backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent}
 .topbar.scrolled{border-bottom-color:var(--line)}
 .bar{max-width:720px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
@@ -202,17 +200,6 @@ justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(-
 (function(){var b=document.getElementById('topbar');
 function s(){b.classList.toggle('scrolled',window.scrollY>8)}s();
 window.addEventListener('scroll',s,{passive:true})})();
-
-/* The homepage's ambient background cycle, same tints and same 7s step.
-   --paper starts on CYCLE[0] in the CSS above, so the first paint matches
-   and there is nothing to set here before the first step. Ink, muted and
-   line stay fixed, so contrast holds on every tint. */
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var CYCLE=["#f4f2ec","#bbd2be","#e6dcec","#dbe6ef","#f3ddd6","#eee7c6"],i=0;
-  setInterval(function(){i=(i+1)%CYCLE.length;
-    document.documentElement.style.setProperty('--paper',CYCLE[i]);},7000);
-})();
 </script>
 </body>
 </html>
