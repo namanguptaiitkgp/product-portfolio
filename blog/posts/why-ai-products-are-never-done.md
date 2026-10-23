@@ -63,13 +63,9 @@ Detecting a printed photograph, a replayed video and an AI-generated face involv
 
 The same goes for measurement. An overall detection rate can look healthy while performance against a particular type of attack is deteriorating. Unless we break down the results, we might not even realise where the problem lies.
 
-![One set of weights per kind of fraud, rather than one model asked to carry all three.](foundation-models.webp)
-
 This is where model governance becomes important. The RBI's draft guidance on model risk management reflects a broader shift towards ongoing monitoring, validation and controlled changes to models.
 
 The idea is straightforward: a model shouldn't be treated as something we build, deploy and forget.
-
-![Who signs off at each stage, and what gets written down when a model changes.](mrm-governance.webp)
 
 Once it goes live, the nature of the work changes. We're no longer just building the model. We're making sure it continues to do its job.
 
@@ -140,8 +136,6 @@ Monitoring, evaluation and revalidation need to happen continuously enough to id
 ![The loop that runs every day, from a new tool appearing to a versioned release.](daily-training-loop.webp)
 
 And a better result in an experiment doesn't automatically justify a production release. The new model still needs to meet the standards we expect of any change to a live system.
-
-![The same attack set after retraining — caught in testing rather than in production.](detection-restored.webp)
 
 None of these practices makes AI development as predictable as conventional software development.
 

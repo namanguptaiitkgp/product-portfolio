@@ -140,10 +140,8 @@ justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(-
 <p>Detecting a printed photograph, a replayed video and an AI-generated face involves different signals. If we treat them as one broad problem, we risk missing where the model is actually struggling.</p>
 <figure><img src="../assets/kyc-fraud-types.webp" alt="Three kinds of attack, three different sets of signals." loading="lazy" decoding="async" width="1080" height="940"><figcaption>Three kinds of attack, three different sets of signals.</figcaption></figure>
 <p>The same goes for measurement. An overall detection rate can look healthy while performance against a particular type of attack is deteriorating. Unless we break down the results, we might not even realise where the problem lies.</p>
-<figure><img src="../assets/foundation-models.webp" alt="One set of weights per kind of fraud, rather than one model asked to carry all three." loading="lazy" decoding="async" width="1080" height="884"><figcaption>One set of weights per kind of fraud, rather than one model asked to carry all three.</figcaption></figure>
 <p>This is where model governance becomes important. The RBI's draft guidance on model risk management reflects a broader shift towards ongoing monitoring, validation and controlled changes to models.</p>
 <p>The idea is straightforward: a model shouldn't be treated as something we build, deploy and forget.</p>
-<figure><img src="../assets/mrm-governance.webp" alt="Who signs off at each stage, and what gets written down when a model changes." loading="lazy" decoding="async" width="1080" height="1083"><figcaption>Who signs off at each stage, and what gets written down when a model changes.</figcaption></figure>
 <p>Once it goes live, the nature of the work changes. We're no longer just building the model. We're making sure it continues to do its job.</p>
 <h2>The other problem: we don't know how long improvement will take</h2>
 <p>The changing behaviour of fraudsters is only half the challenge. The other half is figuring out how long it will take to build a better model.</p>
@@ -179,7 +177,6 @@ justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(-
 <p>Monitoring, evaluation and revalidation need to happen continuously enough to identify when a model is losing effectiveness. Retraining should follow when the evidence supports it, with clear release criteria and appropriate governance.</p>
 <figure><img src="../assets/daily-training-loop.webp" alt="The loop that runs every day, from a new tool appearing to a versioned release." loading="lazy" decoding="async" width="1080" height="1007"><figcaption>The loop that runs every day, from a new tool appearing to a versioned release.</figcaption></figure>
 <p>And a better result in an experiment doesn't automatically justify a production release. The new model still needs to meet the standards we expect of any change to a live system.</p>
-<figure><img src="../assets/detection-restored.webp" alt="The same attack set after retraining — caught in testing rather than in production." loading="lazy" decoding="async" width="1080" height="1052"><figcaption>The same attack set after retraining — caught in testing rather than in production.</figcaption></figure>
 <p>None of these practices makes AI development as predictable as conventional software development.</p>
 <p>They make the uncertainty easier to manage.</p>
 <h2>This is what makes the work interesting</h2>
