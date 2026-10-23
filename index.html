@@ -575,6 +575,154 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   .trio .mid{width:34%;}
   .combo .float{right:18px;width:34%;}
 }
+
+/* ======================================================================
+   Icon bar + stacked case studies
+   ====================================================================== */
+
+/* The bar is sticky, so the page scrolls underneath it and it needs a ground
+   of its own. Transparent, the patent card and the work section ran straight
+   through the logo and the icons. The tint follows --paper, so the header
+   keeps step with the background cycle instead of fighting it. */
+header{
+  background:color-mix(in srgb,var(--paper) 93%, transparent);
+  backdrop-filter:saturate(150%) blur(12px);
+  border-bottom:1px solid transparent;
+}
+header.scrolled{border-bottom-color:var(--line);}
+header .bar{justify-content:center;position:relative;padding-top:12px;padding-bottom:12px;}
+header .brand{position:absolute;left:40px;top:50%;transform:translateY(-50%);}
+header .brand .role{display:none;}
+
+.iconbar{display:flex;gap:7px;align-items:center;}
+.ib{
+  position:relative;width:42px;height:42px;border-radius:12px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);color:var(--ink);
+  background:color-mix(in srgb,var(--panel) 82%, transparent);
+  backdrop-filter:saturate(150%) blur(10px);
+  transition:background-color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.ib svg{width:20px;height:20px;}
+.ib:hover{background:var(--panel);border-color:color-mix(in srgb,var(--ink) 24%,transparent);
+  transform:translateY(-1px);}
+.ib:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+.ib-wide{width:auto;gap:8px;padding:0 15px;}
+.ib-wide span{font-size:15px;white-space:nowrap;}
+
+/* An icon alone does not say where it goes, so every button names itself
+   on hover and on keyboard focus.
+
+   These links are inside <nav>, so they already carry the underline-sweep
+   rule `nav a::after{right:18px;bottom:-3px;height:1px}`. A pseudo-element
+   gets one set of declarations, not two, so the tooltip inherits whatever it
+   does not restate — which pins it to a 1px-tall sliver and throws the label
+   outside it. right/bottom/height are reset for that reason. */
+.ib::after{
+  content:attr(data-tip);position:absolute;
+  top:calc(100% + 8px);left:50%;right:auto;bottom:auto;
+  width:auto;height:auto;
+  transform:translateX(-50%) translateY(-3px);
+  background:var(--ink);color:var(--panel);
+  font-size:12px;font-weight:400;letter-spacing:.01em;line-height:1.15;
+  padding:6px 9px;border-radius:7px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;
+}
+.ib:hover::after,.ib:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0);}
+.ib-wide::after{display:none;}
+
+/* The stack sits on its own fixed ground: the page background cycles through
+   these same tints, and a frame would otherwise dissolve into its own colour.
+   overflow-x is clipped rather than hidden — hidden would make this a scroll
+   container and the cards inside it would stop sticking. */
+.stack{position:relative;background:#f1efe9;padding:66px 0 86px;margin-top:34px;overflow-x:clip;}
+/* The bottom margin is the dwell: once a card pins, the next one needs this
+   much scroll before it starts covering it. Without it the cards overlap the
+   moment they appear and the lower half of each is never readable. */
+.stack-card{
+  position:sticky;top:86px;padding:0;
+  margin:0 auto 38vh;max-width:1040px;width:calc(100% - 56px);
+}
+.stack-card:last-child{margin-bottom:0;}
+.card-frame{
+  background:var(--tint);border-radius:28px;padding:13px;
+  transform:rotate(var(--rot));
+  box-shadow:0 26px 60px -34px rgba(25,23,19,.55);
+}
+.card-inner{
+  background:#fff;border-radius:18px;padding:22px 28px 20px;
+  display:grid;gap:14px 30px;align-items:start;
+  grid-template-columns:minmax(0,0.92fr) minmax(0,1.12fr);
+  grid-template-areas:"eyebrow eyebrow" "intro media" "strip strip";
+}
+.card-eyebrow{
+  grid-area:eyebrow;display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.card-eyebrow span{letter-spacing:.03em;text-transform:none;font-size:13px;}
+
+/* These parts are styled for a full-bleed band; inside a card they are not. */
+.stack-card .wrap{max-width:none;padding:0;}
+/* With the disclosure gone the copy is short, so it sits centred against the
+   media rather than stranded at the top of a tall row. */
+.card-inner > .intro{grid-area:intro;display:block;margin:0;align-self:center;}
+.card-inner > .intro .tag{display:inline-block;margin-top:14px;}
+.stack-card .t-name{font-size:27px;letter-spacing:-.018em;}
+.stack-card .desc{margin-top:9px;font-size:15.5px;line-height:1.5;max-width:42ch;}
+.stack-card .case-cta{margin-top:14px;display:inline-flex;}
+
+/* Each case study brings a different media block — a phone trio, a bespoke
+   capture scene, a single shot — so they are given one slot and scaled into
+   it by script rather than restyled five separate ways. overflow is clipped
+   as a backstop: a mock wider than its column used to hang outside the card. */
+.card-inner > .showcase,
+.card-inner > .media-link{
+  grid-area:media;background:transparent;border:0;margin:0;
+  border-radius:14px;align-self:center;justify-self:stretch;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.card-inner > .showcase .trio{padding:0;}
+
+.card-inner > .built-strip{
+  grid-area:strip;margin:0;padding:14px 0 0;border-top:1px solid var(--line);
+  gap:16px 26px;font-size:13.5px;
+}
+.stack-card .built-strip .chips{margin-top:8px;gap:5px;}
+.stack-card .built-strip .chip{font-size:11.5px;padding:3px 9px;}
+.stack-card .built-strip .bs-v{font-size:13.5px;line-height:1.4;}
+.stack-card .built-strip .scale-n{font-size:26px;}
+
+@media(max-width:900px){
+  header .brand .name{display:none;}
+  header .bar{padding-left:18px;padding-right:18px;}
+  header .brand{left:18px;}
+  .iconbar{gap:6px;}
+  .ib{width:44px;height:44px;}          /* tap target, as everywhere else */
+  .ib-wide{width:auto;padding:0 12px;}
+
+  /* Stacking needs a card to fit the viewport. On a phone it cannot, so the
+     cards simply follow one another and keep their frames. */
+  .stack{padding:34px 0 44px;margin-top:18px;}
+  .stack-card{position:static;width:calc(100% - 28px);margin-bottom:20px;}
+  .card-frame{transform:none;padding:9px;border-radius:20px;}
+  .card-inner{
+    grid-template-columns:1fr;
+    grid-template-areas:"eyebrow" "intro" "media" "strip";
+    padding:18px;
+  }
+  .card-inner > .showcase,.card-inner > .media-link{zoom:1 !important;width:100%;}
+}
+
+/* Six 44px buttons plus a labelled one do not fit beside the logo on a
+   phone, and the buttons are what the bar is for, so the logo stands down. */
+@media(max-width:480px){
+  header .brand{display:none;}
+  header .bar{padding-left:16px;padding-right:16px;}
+  .iconbar{gap:4px;}
+  .ib-wide{padding:0 10px;}
+  .ib-wide span{font-size:14px;}
+}
 </style>
 </head>
 <body>
@@ -588,11 +736,13 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <span class="role">Senior Product Manager @ Digio · ex-Capital One, Ninjacart</span>
       </span>
     </a>
-    <nav>
-      <a class="nav-work" href="#work">Work with me</a>
-      <a href="https://www.linkedin.com/in/gupta-naman-iitkgp/" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
-      <a href="blog/">Writing</a>
-      <a href="resume/">Resume</a>
+    <nav class="iconbar" aria-label="Primary">
+      <a class="ib" href="#top" aria-label="Home" data-tip="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2"/><path d="M5.5 9.2V20h13V9.2"/></svg></a>
+      <a class="ib" href="#cases" aria-label="Case studies" data-tip="Case studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="13" rx="2.2"/><path d="M8.5 7.5V5.6A1.6 1.6 0 0 1 10.1 4h3.8a1.6 1.6 0 0 1 1.6 1.6v1.9"/><path d="M3 12.5h18"/></svg></a>
+      <a class="ib" href="blog/" aria-label="Writing" data-tip="Writing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20.5 4.9 17l9.5-9.5 3.1 3.1L8 20.1z"/><path d="M14.4 7.5 16.9 5a1.7 1.7 0 0 1 2.4 0l.7.7a1.7 1.7 0 0 1 0 2.4l-2.5 2.5"/></svg></a>
+      <a class="ib" href="https://www.linkedin.com/in/gupta-naman-iitkgp/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tip="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.4"/><path d="M7.4 10.6V17"/><circle cx="7.4" cy="7.4" r=".9" fill="currentColor" stroke="none"/><path d="M11.3 17v-3.6a2.1 2.1 0 0 1 4.2 0V17"/></svg></a>
+      <a class="ib" href="#book" aria-label="Book a call" data-tip="Book a call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/><path d="M8.6 14.6h3.2"/></svg></a>
+      <a class="ib ib-wide" href="resume/" data-tip="Resume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12.5h6M9 16h4"/></svg><span>Resume</span></a>
     </nav>
   </div>
 </header>
@@ -613,7 +763,6 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
               <a class="btn btn-primary" href="#book">Let’s talk <span class="arr">↗</span></a>
               <a class="btn btn-ghost" href="#cases">Explore my work</a>
               <a class="btn btn-ghost" href="resume/">View resume</a>
-            </div>
             </div>
           </div>
         </div>
@@ -654,7 +803,10 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   </section>
 
   <!-- Project 2 — Ninja Global 0→1 lending -->
-  <section class="project" id="cases" data-screen-label="Ninja Credit">
+  <div class="stack">
+  <section class="project stack-card" id="cases" data-screen-label="Ninja Credit" style="--tint:#eee7c6;--rot:-1.1deg;z-index:10">
+    <div class="card-frame"><div class="card-inner">
+      <div class="card-eyebrow">Selected work / 001<span>Ninja Credit</span></div>
     <div class="wrap intro">
       <div class="titles">
         <a class="title-link" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html"><div class="title-stack">
@@ -665,20 +817,6 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <a class="case-cta" href="ninja-global-deck/Ninja%20Global%20Case%20Study.html">Open case <span class="arr">↗</span></a>
 
         <!-- VERIFY: confirm the underwriting-signal line matches what shipped. -->
-        <details class="summary">
-          <summary><span class="chev">›</span> The 20-second version</summary>
-          <dl>
-            <dt>Context</dt>
-            <dd>Retailers buying fresh produce daily had no formal credit history, so banks wouldn't lend. Working capital was the constraint on how much they could buy.</dd>
-            <dt>My role</dt>
-            <dd>Product Manager, 0→1 — from the first underwriting rule to a live lending product at national scale.</dd>
-            <dt>Key decision</dt>
-            <dd>Underwrite on observed buying behaviour on the platform rather than on financial statements nobody had. Transaction history became the credit signal.</dd>
-            <dt>Result</dt>
-            <dd>~$350M in annual disbursals, with NPAs down from 6% to 2% as the scoring tightened.</dd>
-          </dl>
-          <p class="tradeoff"><b>The tradeoff:</b> lower NPAs and higher GMV pull in opposite directions. Tightening limits is the fastest way to clean up a book and the fastest way to starve good retailers of the credit that grows it. I moved limits down for thin-history buyers and up for proven ones, so the book got safer without the platform losing its best customers.</p>
-        </details>
       </div>
       <span class="tag">Ninjacart</span>
     </div>
@@ -692,7 +830,9 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         </div>
       
       </a>
-    <div class="built-strip">
+    
+    </div>
+      <div class="built-strip">
       <div class="bs-col">
         <div class="bs-k">What I shipped</div>
         <div class="chips">
@@ -715,10 +855,11 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <div class="scale-s">annual disbursals · NPAs 6% → 2%</div>
       </div>
     </div>
-    </div>
+    </div></div>
   </section>
-  <!-- Project 1 — Digio Selfie / AI fraud -->
-  <section class="project" data-screen-label="KYC Verification">
+  <section class="project stack-card" data-screen-label="KYC Verification" style="--tint:#dbe6ef;--rot:0.75deg;z-index:11">
+    <div class="card-frame"><div class="card-inner">
+      <div class="card-eyebrow">Selected work / 002<span>KYC Verification</span></div>
     <div class="wrap intro">
       <div class="titles">
         <a class="title-link" href="cinematic/index_2_light.html"><div class="title-stack">
@@ -729,20 +870,6 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <a class="case-cta" href="cinematic/index_2_light.html">Open case <span class="arr">↗</span></a>
 
         <!-- VERIFY: "What I'd do differently" is drafted from the tradeoff logic — rewrite in your own voice. -->
-        <details class="summary">
-          <summary><span class="chev">›</span> The 20-second version</summary>
-          <dl>
-            <dt>Context</dt>
-            <dd>Regulated onboarding requires matching a live face to a government ID. Too loose and you onboard fraudsters; too strict and you lose genuine customers at the last step.</dd>
-            <dt>My role</dt>
-            <dd>Senior Product Manager for the selfie &amp; liveness flow — capture UX, scoring thresholds, and the audit trail an auditor actually reads.</dd>
-            <dt>Key decision</dt>
-            <dd>Score and keep <em>every</em> attempt instead of a single pass/fail. Retakes became evidence rather than friction, and each decision got a reviewable trail.</dd>
-            <dt>Result</dt>
-            <dd>2L+ verifications a day, each with a liveness score, a face-match confidence and a timestamped attempt history.</dd>
-          </dl>
-          <p class="tradeoff"><b>The tradeoff:</b> every point I moved the liveness threshold traded fraud caught against genuine users rejected. A stricter bar blocks more spoofs and also blocks a real customer in poor light holding a cheap phone. I tuned for the lender's loss appetite, not for the cleanest demo — and made the threshold configurable rather than baked in.</p>
-        </details>
       </div>
       <span class="tag">Digio</span>
     </div>
@@ -845,7 +972,9 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         </div>
       
       </a>
-    <div class="built-strip">
+    
+    </div>
+      <div class="built-strip">
       <div class="bs-col">
         <div class="bs-k">What I shipped</div>
         <div class="chips">
@@ -868,10 +997,11 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <div class="scale-s">verifications a day</div>
       </div>
     </div>
-    </div>
+    </div></div>
   </section>
-  <!-- Project 3 — Retargeting / KYC workflow -->
-  <section class="project" data-screen-label="Retargeting">
+  <section class="project stack-card" data-screen-label="Retargeting" style="--tint:#f3ddd6;--rot:-0.6deg;z-index:12">
+    <div class="card-frame"><div class="card-inner">
+      <div class="card-eyebrow">Selected work / 003<span>Retargeting</span></div>
     <div class="wrap intro">
       <div class="titles">
         <a class="title-link" href="retargeting/Retargeting%20Case%20Study%20Studio%20Blue.html"><div class="title-stack">
@@ -882,20 +1012,6 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <a class="case-cta" href="retargeting/Retargeting%20Case%20Study%20Studio%20Blue.html">Open case <span class="arr">↗</span></a>
 
         <!-- VERIFY: add your real recovery-rate number to <dd> under Result once you have it cleared. -->
-        <details class="summary">
-          <summary><span class="chev">›</span> The 20-second version</summary>
-          <dl>
-            <dt>Context</dt>
-            <dd>Onboarding is a funnel with a dozen places to quit — a failed selfie, a missing document, a bank's OTP timing out. Every abandoned journey is acquisition spend already paid for.</dd>
-            <dt>My role</dt>
-            <dd>Senior Product Manager — instrumenting the funnel, defining the drop-off taxonomy, and designing the nudge logic on top of it.</dd>
-            <dt>Key decision</dt>
-            <dd>Treat the <em>reason</em> for the drop-off as the trigger, not the drop-off itself. Someone blocked by a document problem needs a different message from someone who simply got distracted.</dd>
-            <dt>Result</dt>
-            <dd>Stalled journeys get a targeted nudge tied to the step that failed, instead of a generic "complete your KYC" blast.</dd>
-          </dl>
-          <p class="tradeoff"><b>The tradeoff:</b> nudges have a hard ceiling before they become spam, and the channel is shared with the lender's own messaging. Retargeting harder lifts recovery and burns goodwill and SMS budget at the same time — so the cap on messages per journey was a product decision, not a technical one.</p>
-        </details>
       </div>
       <span class="tag">Digio</span>
     </div>
@@ -911,7 +1027,9 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         </div>
       
       </a>
-    <div class="built-strip two-col">
+    
+    </div>
+      <div class="built-strip two-col">
       <div class="bs-col">
         <div class="bs-k">What I shipped</div>
         <div class="chips">
@@ -925,10 +1043,11 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <div class="bs-v">The reason for the drop-off is the trigger, not the drop-off itself.<br><span class="muted">Capped messages per journey</span></div>
       </div>
     </div>
-    </div>
+    </div></div>
   </section>
-  <!-- Project 4 — stock-tracker (AI builder proof) -->
-  <section class="project" data-screen-label="stock-tracker">
+  <section class="project stack-card" data-screen-label="stock-tracker" style="--tint:#bbd2be;--rot:1deg;z-index:13">
+    <div class="card-frame"><div class="card-inner">
+      <div class="card-eyebrow">Selected work / 004<span>stock-tracker</span></div>
     <div class="wrap intro">
       <div class="titles">
         <a class="title-link" href="https://namanguptaiitkgp.github.io/stock-tracker/docs/how-it-works.html" target="_blank" rel="noopener"><div class="title-stack">
@@ -948,7 +1067,9 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         </div>
       
       </a>
-    <div class="built-strip two-col">
+    
+    </div>
+      <div class="built-strip two-col">
       <div class="bs-col">
         <div class="bs-k">What I shipped</div>
         <div class="chips">
@@ -963,11 +1084,11 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <div class="bs-v">Built and shipped solo — spec through to running code.<br><span class="muted">Runs every morning</span></div>
       </div>
     </div>
-    </div>
+    </div></div>
   </section>
-
-  <!-- Project 5 — Ninja Connect -->
-  <section class="project" data-screen-label="Ninja Connect">
+  <section class="project stack-card" data-screen-label="Ninja Connect" style="--tint:#e6dcec;--rot:-0.85deg;z-index:14">
+    <div class="card-frame"><div class="card-inner">
+      <div class="card-eyebrow">Selected work / 005<span>Ninja Connect</span></div>
     <div class="wrap intro">
       <div class="titles">
         <a class="title-link" href="ninja-connect/tradedesk.html"><div class="title-stack">
@@ -976,7 +1097,19 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         </div></a>
         <div class="desc">A chat-based commerce platform that let agri buyers and sellers negotiate, order and settle in one thread.</div>
         <a class="case-cta" href="ninja-connect/tradedesk.html">Open case <span class="arr">↗</span></a>
-    <div class="built-strip two-col">
+    
+      </div>
+      <span class="tag">Ninjacart</span>
+    </div>
+    <a class="media-link" href="ninja-connect/tradedesk.html" aria-label="Open Ninja Connect case study">
+      <div class="showcase">
+        <div class="wrap combo">
+          <div class="wide"><img src="https://framerusercontent.com/images/veWSSAKCrrl3LrIGHZ3VWxKBGSA.png?width=1400" alt="Ninja Connect — chat-based trade desk on desktop" loading="lazy" decoding="async"></div>
+          <div class="float"><img src="https://framerusercontent.com/images/JOk73ppRBLnQA5VwczzYBgiwWo.png?width=500" alt="Ninja Connect — order thread on mobile" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </a>
+      <div class="built-strip two-col">
       <div class="bs-col">
         <div class="bs-k">What I shipped</div>
         <div class="chips">
@@ -991,20 +1124,10 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
         <div class="bs-v">A communication-based commerce platform — negotiate, order and settle in one thread.<br><span class="muted">Shipped in 2 months; now the back-engine of Ninjacart's trade</span></div>
       </div>
     </div>
-      </div>
-      <span class="tag">Ninjacart</span>
-    </div>
-    <a class="media-link" href="ninja-connect/tradedesk.html" aria-label="Open Ninja Connect case study">
-      <div class="showcase">
-        <div class="wrap combo">
-          <div class="wide"><img src="https://framerusercontent.com/images/veWSSAKCrrl3LrIGHZ3VWxKBGSA.png?width=1400" alt="Ninja Connect — chat-based trade desk on desktop" loading="lazy" decoding="async"></div>
-          <div class="float"><img src="https://framerusercontent.com/images/JOk73ppRBLnQA5VwczzYBgiwWo.png?width=500" alt="Ninja Connect — order thread on mobile" loading="lazy" decoding="async"></div>
-        </div>
-      </div>
-    </a>
+    </div></div>
   </section>
+  </div>
 
-  <!-- Patent highlight -->
   <section class="patent">
     <div class="wrap">
       <a class="patent-card" href="https://patents.google.com/patent/US12387059B2/en" target="_blank" rel="noopener">
@@ -1193,5 +1316,68 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
   })();
 </script>
 
+<script>
+/* Fit each case study's media into one slot.
+
+   The five showcases were built for a full-width band: they run from ~410px
+   to ~1280px tall and some are wider than the column they now sit in. A
+   sticky card has to fit the viewport or it can never be read, and anything
+   wider than the column hangs outside the card, so each media block is
+   measured against both limits and zoomed to whichever is tighter.
+
+   zoom rather than transform:scale, because zoom shrinks the layout box too —
+   scale would leave the original size behind and the card would not shrink.
+
+   The natural size is the union of the children's boxes, not the container's.
+   The container is a stretched grid item, so its own width is the column
+   width whatever its contents do, and content centred in a flex row overflows
+   both edges while scrollWidth only ever counts one of them. */
+(function(){
+  var SLOT = 400;
+  var cards = document.querySelectorAll('.stack-card');
+  if(!cards.length) return;
+
+  function media(card){
+    return card.querySelector(
+      ':scope > .card-frame > .card-inner > .showcase,' +
+      ':scope > .card-frame > .card-inner > .media-link');
+  }
+
+  function natural(el){
+    var kids = el.children, l = Infinity, r = -Infinity, t = Infinity, b = -Infinity;
+    if(!kids.length) { var own = el.getBoundingClientRect(); return {w:own.width, h:own.height}; }
+    for(var i = 0; i < kids.length; i++){
+      var k = kids[i].getBoundingClientRect();
+      if(!k.width && !k.height) continue;
+      l = Math.min(l, k.left); r = Math.max(r, k.right);
+      t = Math.min(t, k.top);  b = Math.max(b, k.bottom);
+    }
+    return (r > l) ? {w: r - l, h: b - t} : {w: 0, h: 0};
+  }
+
+  function fit(){
+    var narrow = window.matchMedia('(max-width:900px)').matches;
+    cards.forEach(function(card){
+      var m = media(card);
+      if(!m) return;
+      m.style.zoom = '';
+      if(narrow) return;
+
+      m.style.zoom = 1;
+      var cellW = m.getBoundingClientRect().width;
+      var nat = natural(m);
+      if(!nat.w || !nat.h) return;
+
+      var scale = Math.min(1, SLOT / nat.h, cellW / nat.w);
+      m.style.zoom = scale < 1 ? scale.toFixed(4) : '';
+    });
+  }
+
+  fit();
+  window.addEventListener('load', fit);
+  window.addEventListener('resize', fit, {passive:true});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
 </body>
 </html>

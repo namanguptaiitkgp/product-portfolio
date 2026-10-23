@@ -21,3 +21,6 @@ mockup-*.html
 
 # Targeted resume variants — personal job-application files, never published
 resume-variants/
+
+# Shareable build artefacts and their vendored libraries
+share/
