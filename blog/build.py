@@ -11,10 +11,18 @@ first blank line:
     summary: One line that shows on the index and in link previews.
     draft: true          # optional — keeps it out of the index and off the site
 
+Optional front matter: `hero: file.webp` puts a lead image under the dek and
+uses it for the link preview.
+
 Markdown supported: #/##/### headings, paragraphs, **bold**, *italic*,
-`code`, [links](url), > blockquotes, - bullet lists, 1. numbered lists and
---- rules. That is deliberately a small subset; the site has no build step and
-no dependencies, so the parser stays readable rather than complete.
+`code`, [links](url), > blockquotes, - bullet lists, 1. numbered lists,
+--- rules and ![caption](file.webp) images. A paragraph that is bold from end
+to end becomes a statement line. That is deliberately a small subset; the site
+has no build step and no dependencies, so the parser stays readable rather
+than complete.
+
+Images live in blog/assets/ and are referenced by filename alone. The alt text
+doubles as the caption, so leave it empty for an image that needs no caption.
 """
 
 import html
@@ -43,12 +51,35 @@ def inline(t):
     return t
 
 
-def markdown(src):
+def dims(src):
+    """width/height attributes when Pillow is around, so images reserve space."""
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(HERE, "assets", os.path.basename(src))) as im:
+            return f' width="{im.width}" height="{im.height}"'
+    except Exception:
+        return ""
+
+
+def figure(alt, src, prefix, cls=""):
+    url = src if src.startswith(("http", "/")) else prefix + src
+    cap = f"<figcaption>{inline(alt)}</figcaption>" if alt else ""
+    klass = f' class="{cls}"' if cls else ""
+    return (f'<figure{klass}><img src="{url}" alt="{html.escape(alt, quote=True)}"'
+            f' loading="lazy" decoding="async"{dims(src)}>{cap}</figure>')
+
+
+def markdown(src, prefix=""):
     out, para, lst, quote = [], [], None, []
 
     def flush_para():
         if para:
-            out.append("<p>" + inline(" ".join(para)) + "</p>")
+            t = " ".join(para)
+            whole = re.fullmatch(r'\*\*(.+?)\*\*', t)
+            if whole:
+                out.append('<p class="statement">' + inline(whole.group(1)) + "</p>")
+            else:
+                out.append("<p>" + inline(t) + "</p>")
             para.clear()
 
     def flush_list():
@@ -73,10 +104,15 @@ def markdown(src):
             flush_all(); continue
         if line.strip() == "---":
             flush_all(); out.append("<hr>"); continue
+        m = re.match(r'!\[(.*)\]\(([^)\s]+)\)\s*$', line)
+        if m:
+            flush_all()
+            out.append(figure(m.group(1), m.group(2), prefix))
+            continue
         m = re.match(r'(#{1,3})\s+(.*)', line)
         if m:
             flush_all()
-            lvl = len(m.group(1)) + 1          # post title is the h1
+            lvl = max(2, len(m.group(1)))      # post title is the h1
             out.append(f"<h{lvl}>{inline(m.group(2))}</h{lvl}>")
             continue
         m = re.match(r'>\s?(.*)', line)
@@ -114,6 +150,7 @@ def parse(path):
     meta.setdefault("title", "Untitled")
     meta.setdefault("date", date.today().isoformat())
     meta.setdefault("summary", "")
+    meta.setdefault("hero", "")
     meta["slug"] = os.path.splitext(os.path.basename(path))[0]
     meta["draft"] = meta.get("draft", "").lower() == "true"
     meta["body"] = body
@@ -179,6 +216,11 @@ article hr{border:0;border-top:1px solid var(--line);margin:30px 0}
 color:var(--muted);font-style:italic}
 .body code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;
 background:color-mix(in srgb,var(--ink) 6%,transparent);padding:2px 5px;border-radius:5px}
+.body p.statement{margin:28px 0 0;font-size:20.5px;font-weight:500;letter-spacing:-.013em;line-height:1.35}
+.body figure,article figure{margin:28px 0 0}
+.body figure img,article figure img{display:block;width:100%;height:auto;border-radius:12px;
+border:1px solid var(--line);background:var(--panel)}
+.body figcaption{margin:10px 0 0;font-size:14.5px;color:var(--muted);line-height:1.45}
 .body a{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 .foot{border-top:1px solid var(--line);margin-top:26px;padding:26px 0 80px;display:flex;
 justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(--muted)}
@@ -190,6 +232,7 @@ justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(-
   .brand .nm{display:none}
   .wrap{padding:0 18px}
   .lede{padding:34px 0 6px}
+  .body p.statement{font-size:19px}
 }
 @media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
 """
@@ -201,8 +244,9 @@ window.addEventListener('scroll',s,{passive:true})})();
 """
 
 
-def shell(title, desc, canonical, body, depth):
+def shell(title, desc, canonical, body, depth, image=None):
     up = "../" * depth
+    image = image or f"{SITE}/assets/og-preview.png"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -215,11 +259,11 @@ def shell(title, desc, canonical, body, depth):
 <meta property="og:url" content="{canonical}">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
-<meta property="og:image" content="{SITE}/assets/og-preview.png">
+<meta property="og:image" content="{image}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{html.escape(title)}">
 <meta name="twitter:description" content="{html.escape(desc)}">
-<meta name="twitter:image" content="{SITE}/assets/og-preview.png">
+<meta name="twitter:image" content="{image}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23191713'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-weight='bold' font-size='40' fill='%23f4f2ec' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <style>{CSS}</style>
 </head>
@@ -270,10 +314,11 @@ def build():
     <div class="meta">{nice_date(p['date'])} · {p['mins']} min read</div>
     <h1>{inline(p['title'])}</h1>
     {f'<p class="sum">{inline(p["summary"])}</p>' if p['summary'] else ''}
+    {figure('', p['hero'], '../assets/', 'lead') if p['hero'] else ''}
     <hr>
   </article>
   <div class="body">
-{markdown(p['body'])}
+{markdown(p['body'], prefix='../assets/')}
   </div>
   <div class="foot">
     <a href="../index.html">← All writing</a>
@@ -282,7 +327,8 @@ def build():
 </main>"""
         open(os.path.join(out, "index.html"), "w", encoding="utf-8").write(
             shell(f"{p['title']} — Naman Gupta", p["summary"] or p["title"],
-                  f"{SITE}/blog/{p['slug']}/", body, depth=1))
+                  f"{SITE}/blog/{p['slug']}/", body, depth=1,
+                  image=f"{SITE}/blog/assets/{p['hero']}" if p['hero'] else None))
 
     if live:
         items = "\n".join(f"""    <a class="item" href="{p['slug']}/">

@@ -1,6 +1,7 @@
 title: The threshold was never a model decision
 date: 2026-10-23
 summary: A liveness check has two ways to fail, and tuning for one makes the other worse. Picking where it sits is a product call about whose loss you are willing to absorb.
+draft: true
 
 Every liveness check has two ways to fail. It can let a fraudster through, or it can turn away somebody real. You do not get to minimise both, and the dial between them is one number.
 

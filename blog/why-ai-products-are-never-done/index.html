@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why AI Products Are Never Done — Naman Gupta</title>
+<meta name="description" content="Building fraud detection means building against an opponent who learns.">
+<link rel="canonical" href="https://namanbuilds.com/blog/why-ai-products-are-never-done/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://namanbuilds.com/blog/why-ai-products-are-never-done/">
+<meta property="og:title" content="Why AI Products Are Never Done — Naman Gupta">
+<meta property="og:description" content="Building fraud detection means building against an opponent who learns.">
+<meta property="og:image" content="https://namanbuilds.com/assets/og-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why AI Products Are Never Done — Naman Gupta">
+<meta name="twitter:description" content="Building fraud detection means building against an opponent who learns.">
+<meta name="twitter:image" content="https://namanbuilds.com/assets/og-preview.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23191713'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-weight='bold' font-size='40' fill='%23f4f2ec' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Neue Montreal";src:url("https://framerusercontent.com/assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("https://framerusercontent.com/assets/vEydk8LUwvYV3ZJtsQhKLqsza0.woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Joane";src:url("https://framerusercontent.com/assets/s7QBt6TrbwZwxnd8WeMUW0iXFw.woff2");font-weight:900;font-display:swap}
+:root{--paper:#f4f2ec;--panel:#fffdf9;--ink:#191713;--muted:#5f5a4e;--line:rgba(25,23,19,.12);
+--shadow:0 1px 2px rgba(25,23,19,.04),0 18px 48px -22px rgba(25,23,19,.28)}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Neue Montreal","SF Pro Display",-apple-system,sans-serif;
+font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);
+backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent}
+.topbar.scrolled{border-bottom-color:var(--line)}
+.bar{max-width:720px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand .logo{font-family:"Joane",Georgia,serif;font-weight:900;font-style:italic;font-size:30px;line-height:.8}
+.brand .nm{font-size:16px}
+.bar nav{display:flex;gap:20px;font-size:15px}
+.bar nav a{text-decoration:none;position:relative;min-height:44px;display:inline-flex;align-items:center}
+.bar nav a::after{content:"";position:absolute;left:0;right:0;bottom:11px;height:1px;background:var(--ink);
+transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.bar nav a:hover::after{transform:scaleX(1)}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+.lede{padding:54px 0 10px}
+.lede h1{font-family:"Neue Montreal",sans-serif;font-weight:500;font-size:clamp(30px,5vw,44px);
+line-height:1.08;letter-spacing:-.022em;margin:0}
+.lede h1 em{font-family:"Joane",Georgia,serif;font-style:italic;font-weight:900}
+.lede p{margin:14px 0 0;font-size:17.5px;color:var(--muted);max-width:560px;line-height:1.55}
+.list{padding:30px 0 80px;display:grid;gap:4px}
+.item{display:block;text-decoration:none;padding:24px 0;border-top:1px solid var(--line)}
+.item:last-child{border-bottom:1px solid var(--line)}
+.item .meta{font-family:"SF Pro Display",-apple-system,sans-serif;font-size:12.5px;letter-spacing:.1em;
+text-transform:uppercase;color:var(--muted)}
+.item h2{margin:9px 0 0;font-size:24px;font-weight:500;letter-spacing:-.015em;line-height:1.22}
+.item p{margin:8px 0 0;color:var(--muted);font-size:16px;line-height:1.5}
+.item .more{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-size:14.5px}
+.item:hover h2{text-decoration:underline;text-underline-offset:3px}
+.empty{padding:40px 0 90px;color:var(--muted)}
+article{padding:46px 0 20px}
+article .meta{font-family:"SF Pro Display",-apple-system,sans-serif;font-size:12.5px;letter-spacing:.1em;
+text-transform:uppercase;color:var(--muted)}
+article h1{font-family:"Neue Montreal",sans-serif;font-weight:500;font-size:clamp(28px,4.6vw,40px);
+line-height:1.1;letter-spacing:-.022em;margin:12px 0 0;text-wrap:balance}
+article .sum{margin:14px 0 0;font-size:18px;color:var(--muted);line-height:1.55}
+article hr{border:0;border-top:1px solid var(--line);margin:30px 0}
+.body{padding-bottom:40px}
+.body h2{font-size:25px;font-weight:500;letter-spacing:-.015em;margin:34px 0 0;line-height:1.25}
+.body h3{font-size:20px;font-weight:500;margin:26px 0 0}
+.body p{margin:15px 0 0}
+.body ul,.body ol{margin:15px 0 0;padding-left:22px}
+.body li{margin:0 0 7px}
+.body blockquote{margin:22px 0 0;padding:2px 0 2px 18px;border-left:2px solid var(--line);
+color:var(--muted);font-style:italic}
+.body code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;
+background:color-mix(in srgb,var(--ink) 6%,transparent);padding:2px 5px;border-radius:5px}
+.body p.statement{margin:28px 0 0;font-size:20.5px;font-weight:500;letter-spacing:-.013em;line-height:1.35}
+.body figure,article figure{margin:28px 0 0}
+.body figure img,article figure img{display:block;width:100%;height:auto;border-radius:12px;
+border:1px solid var(--line);background:var(--panel)}
+.body figcaption{margin:10px 0 0;font-size:14.5px;color:var(--muted);line-height:1.45}
+.body a{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.foot{border-top:1px solid var(--line);margin-top:26px;padding:26px 0 80px;display:flex;
+justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(--muted)}
+.foot a{text-decoration:none;border-bottom:1px solid var(--line)}
+@media(max-width:640px){
+  body{font-size:16.5px}
+  .bar{padding:12px 18px}
+  .bar nav{gap:14px;font-size:14px}
+  .brand .nm{display:none}
+  .wrap{padding:0 18px}
+  .lede{padding:34px 0 6px}
+  .body p.statement{font-size:19px}
+}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="topbar" id="topbar"><div class="bar">
+  <a class="brand" href="../../index.html"><span class="logo">N</span><span class="nm">Naman Gupta</span></a>
+  <nav>
+    <a href="../index.html">Writing</a>
+    <a href="../../index.html">Work</a>
+    <a href="../../resume/">Resume</a>
+  </nav>
+</div></div>
+<main class="wrap">
+  <article>
+    <div class="meta">23 October 2026 · 7 min read</div>
+    <h1>Why AI Products Are Never Done</h1>
+    <p class="sum">Building fraud detection means building against an opponent who learns.</p>
+    
+    <hr>
+  </article>
+  <div class="body">
+<p>Our deepfake detector was performing well. Then ChatGPT's image model changed, and our detection rate on images generated by it dropped to 79.5%.</p>
+<p>We hadn't changed our code. We hadn't deployed anything new. There was no bug to fix and no obvious problem with our system.</p>
+<p>The world had simply moved on.</p>
+<p>This is one of the things I've found most interesting about building fraud detection at Digio. In traditional software, once a feature works, it generally keeps working unless something around it changes.</p>
+<p>Fraud detection is different. The people trying to get past your system are constantly finding new ways to do it.</p>
+<p class="statement">Our model hadn't broken. The fraudsters had moved on.</p>
+<h2>Every improvement creates the next problem</h2>
+<p>Think about how selfie fraud has evolved.</p>
+<p>Initially, someone might hold a printed photograph in front of a camera. Detection systems get better at catching it, so attackers try replaying a photograph or video on another screen. Systems adapt again.</p>
+<p>Then come more convincing deepfakes and AI-generated faces.</p>
+<p>Each time detection improves, some attacks become harder to pull off. But that doesn't mean the attempts stop. People trying to get around the system look for another way in.</p>
+<p>This is what makes fraud detection different from many other prediction problems.</p>
+<p>A weather forecast doesn't change the weather. Predicting rain tomorrow doesn't influence whether clouds form.</p>
+<p>A fraud detection model is different because its predictions and decisions influence the behaviour of the people trying to defeat it. The better we get at catching one kind of fraud, the more incentive attackers have to try something else.</p>
+<p>Researchers describe a related phenomenon as <em>performative prediction</em>: a prediction system can change the very behaviour it's trying to predict.</p>
+<p>In fraud detection, this creates a moving target. We improve the model, attackers adapt, and the test results that looked reassuring yesterday may tell us much less about the threats we face today.</p>
+<p>The uncomfortable part is that the model can be working exactly as designed and still become less effective.</p>
+<h2>Shipping the model is just the beginning</h2>
+<p>In traditional software development, the process is relatively straightforward. Build a feature, test it, release it, and move on to the next problem.</p>
+<p>Of course, software still needs maintenance. But a login page doesn't usually become less effective because someone has developed a new way to fool it.</p>
+<p>Fraud AI has a different lifecycle. Shipping the model starts another round of work.</p>
+<p>At Digio, we can't establish model performance once and assume it will hold indefinitely. We need to keep testing against newer AI image-generation tools, watch for drops in detection performance, and retrain and validate models when necessary.</p>
+<p>Even then, getting a better model is only part of the job. Releases need to be managed carefully, with versioning, appropriate approvals and communication with clients before changes go live.</p>
+<p>There's also a more basic challenge: not all fraud attempts are the same.</p>
+<p>Detecting a printed photograph, a replayed video and an AI-generated face involves different signals. If we treat them as one broad problem, we risk missing where the model is actually struggling.</p>
+<p>The same goes for measurement. An overall detection rate can look healthy while performance against a particular type of attack is deteriorating. Unless we break down the results, we might not even realise where the problem lies.</p>
+<p>This is where model governance becomes important. The RBI's draft guidance on model risk management reflects a broader shift towards ongoing monitoring, validation and controlled changes to models.</p>
+<p>The idea is straightforward: a model shouldn't be treated as something we build, deploy and forget.</p>
+<p>Once it goes live, the nature of the work changes. We're no longer just building the model. We're making sure it continues to do its job.</p>
+<h2>The other problem: we don't know how long improvement will take</h2>
+<p>The changing behaviour of fraudsters is only half the challenge. The other half is figuring out how long it will take to build a better model.</p>
+<p>In conventional software development, estimates are rarely perfect, but previous projects give us a starting point. If we've built a similar integration before, we have some idea of the effort involved.</p>
+<p>AI development often starts somewhere else entirely. We're testing a hypothesis, and we don't yet know whether the approach will work.</p>
+<p>For example, we might not have enough representative fraud samples to train or evaluate a model properly. Before improving detection, we may first need to figure out how to collect or generate useful data.</p>
+<p>Or a model might perform well on our test dataset but behave very differently when exposed to real users and real-world conditions.</p>
+<p>Even when detection improves, there's another trade-off to consider. We want to catch more fraudulent attempts without unnecessarily rejecting genuine customers. Improving one metric at the expense of the other doesn't necessarily make the product better.</p>
+<p>Finding the right balance can take several rounds of experimentation.</p>
+<p>And the model itself is only one part of the timeline. External lab testing, client sign-offs and compliance reviews introduce dependencies that the team can't always control.</p>
+<p>All of this makes estimation harder than it is for many conventional software projects.</p>
+<p>When someone asks me how long a model improvement will take, the honest answer is sometimes that we need to see what we learn in the first week.</p>
+<p>That doesn't mean planning is pointless. It means the first milestone may be about establishing whether an approach is worth pursuing, rather than promising a finished solution by a particular date.</p>
+<p>Sometimes, the most useful outcome of an experiment is discovering early that we're solving the wrong problem.</p>
+<h2>So how do you manage work when you can't predict the outcome?</h2>
+<p>You can't eliminate the uncertainty. But you can change how you work with it.</p>
+<p>A few practices have become particularly important in this kind of environment.</p>
+<h3>1. Time-box experiments</h3>
+<p>Give an approach a defined window to demonstrate its potential. At the end, decide whether to continue, change direction or stop.</p>
+<p>Not every experiment needs to produce a better model. Sometimes, ruling out an approach saves the team weeks of effort later.</p>
+<h3>2. Test before putting a model in front of customers</h3>
+<p>A new model can run in shadow mode, evaluating incoming cases without influencing the decisions made by the live system.</p>
+<p>This gives us a chance to compare its behaviour with the existing model and catch problems before the change affects customers.</p>
+<h3>3. Make sure you're comparing the same things</h3>
+<p>When evaluating two models, we need to use the same test dataset and decision threshold. Otherwise, an apparent improvement might come from changes in how we're measuring performance rather than from a genuinely better model.</p>
+<p>This sounds basic, but it's essential. If the evaluation conditions keep changing, it's difficult to know whether the model is actually improving.</p>
+<h3>4. Plan around what we know, not what we hope</h3>
+<p>When the outcome is uncertain, a single delivery date can create a false sense of confidence.</p>
+<p>It's more useful to separate the work into stages: an initial experimentation window, clear criteria for deciding whether to proceed, and a checkpoint to reassess the timeline based on what we've learned.</p>
+<p>As the team gathers evidence, the estimate becomes more reliable. We don't need to pretend we know everything upfront.</p>
+<h3>5. Make retraining part of the operating process</h3>
+<p>If attack methods keep evolving, we shouldn't wait for a major drop in performance before thinking about retraining.</p>
+<p>Monitoring, evaluation and revalidation need to happen continuously enough to identify when a model is losing effectiveness. Retraining should follow when the evidence supports it, with clear release criteria and appropriate governance.</p>
+<p>And a better result in an experiment doesn't automatically justify a production release. The new model still needs to meet the standards we expect of any change to a live system.</p>
+<p>None of these practices makes AI development as predictable as conventional software development.</p>
+<p>They make the uncertainty easier to manage.</p>
+<h2>This is what makes the work interesting</h2>
+<p>Building fraud detection means dealing with two kinds of uncertainty at the same time.</p>
+<p>The first is that the world keeps changing. A model that works well today might struggle tomorrow because the methods used to defeat it have evolved.</p>
+<p>The second is that we don't always know how to build the next, better model. We have to experiment, learn from the results and sometimes abandon approaches that initially looked promising.</p>
+<p>For a product manager, this changes the nature of the job.</p>
+<p>It's not just about defining a feature, aligning a team and getting something shipped. It's about building a product that can keep adapting without compromising reliability, customer experience or the controls expected of a production system.</p>
+<p>That can be frustrating. There isn't always a clear roadmap from problem to solution, and shipping something doesn't necessarily mean the problem is solved.</p>
+<p>But I find this one of the most interesting parts of working in AI.</p>
+<p>You're not building against a static problem. You're building against an opponent who learns.</p>
+<p>And that changes what it means to finish the job.</p>
+<p class="statement">The day our fraud model is truly finished is the day we stop expecting fraudsters to get better.</p>
+  </div>
+  <div class="foot">
+    <a href="../index.html">← All writing</a>
+    <span>Naman Gupta · <a href="mailto:hello@namanbuilds.com">hello@namanbuilds.com</a></span>
+  </div>
+</main>
+<script>
+(function(){var b=document.getElementById('topbar');
+function s(){b.classList.toggle('scrolled',window.scrollY>8)}s();
+window.addEventListener('scroll',s,{passive:true})})();
+</script>
+</body>
+</html>
