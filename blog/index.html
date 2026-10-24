@@ -38,6 +38,12 @@ backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent}
 .bar nav a::after{content:"";position:absolute;left:0;right:0;bottom:11px;height:1px;background:var(--ink);
 transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
 .bar nav a:hover::after{transform:scaleX(1)}
+/* The booking link is a button, not a nav item: filled, and no underline
+   sweeping under a solid pill. */
+.bar nav a.cta{background:var(--ink);color:var(--panel);border-radius:999px;padding:0 17px;
+transition:opacity .2s ease}
+.bar nav a.cta:hover{opacity:.86}
+.bar nav a.cta::after{display:none}
 .wrap{max-width:720px;margin:0 auto;padding:0 24px}
 .lede{padding:54px 0 10px}
 .lede h1{font-family:"Neue Montreal",sans-serif;font-weight:500;font-size:clamp(30px,5vw,44px);
@@ -98,7 +104,7 @@ justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(-
   <nav>
     <a href="index.html">Writing</a>
     <a href="../index.html">Work</a>
-    <a href="../resume/">Resume</a>
+    <a class="cta" href="https://calendly.com/namanbuilds/intro-call" target="_blank" rel="noopener">Book a call</a>
   </nav>
 </div></div>
 <main class="wrap">
