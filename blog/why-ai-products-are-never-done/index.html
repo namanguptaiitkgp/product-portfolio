@@ -204,6 +204,35 @@ justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(-
 (function(){var b=document.getElementById('topbar');
 function s(){b.classList.toggle('scrolled',window.scrollY>8)}s();
 window.addEventListener('scroll',s,{passive:true})})();
+
+/* Calendly in a modal rather than a new tab, so a reader does not lose the
+   post. The link keeps its real href, so without JS — or if Calendly's script
+   fails — it still works as an ordinary link. Loaded on the first click
+   rather than on every page view. */
+(function(){
+  var PREFIX="https://calendly.com/", state="idle", pending=null;
+  function fallback(){ if(pending) window.open(pending,"_blank","noopener"); }
+  function show(){ if(window.Calendly&&pending) Calendly.initPopupWidget({url:pending}); else fallback(); }
+  function load(){
+    state="loading";
+    var css=document.createElement("link");
+    css.rel="stylesheet"; css.href="https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(css);
+    var js=document.createElement("script");
+    js.src="https://assets.calendly.com/assets/external/widget.js";
+    js.onload=function(){state="ready";show()};
+    js.onerror=function(){state="failed";fallback()};
+    document.head.appendChild(js);
+  }
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="'+PREFIX+'"]');
+    if(!a) return;
+    pending=a.href;
+    if(state==="failed") return;
+    e.preventDefault();
+    if(state==="ready") show(); else if(state==="idle") load();
+  });
+})();
 </script>
 </body>
 </html>

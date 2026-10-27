@@ -407,8 +407,13 @@ nav a:hover::after{transform:scaleX(1);}
 .patent-card p{margin:10px 0 0;max-width:620px;font-size:16px;line-height:1.5;color:var(--muted);}
 
 /* ---- Work with me: offer cards ---- */
-.work-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:20px;}
-.work-cta-note{font-size:14.5px;color:var(--muted);max-width:360px;line-height:1.45;}
+/* The button used to sit inline with its note, which left the note wrapping
+   to two narrow lines beside it and the button reading as the tail of the
+   paragraph rather than the thing to do next. Stacked and enlarged, with room
+   above it, it reads as the section's action. */
+.work-cta{display:flex;flex-direction:column;align-items:flex-start;gap:13px;margin-top:30px;}
+.work-cta .btn-primary{font-size:16.5px;padding:16px 30px;}
+.work-cta-note{font-size:15px;color:var(--muted);max-width:460px;line-height:1.5;}
 .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:22px 0 10px;}
 .offer{
   display:flex;flex-direction:column;
@@ -1380,6 +1385,45 @@ header .brand .role{display:none;}
   window.addEventListener('resize', fit, {passive:true});
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
+
+  // Calendly in a modal rather than a new tab. The links keep their real
+  // href, so without JS — or if Calendly's script fails — they still work as
+  // ordinary links. The widget is fetched on the first click rather than on
+  // every page view, since most visitors never open it.
+  (function () {
+    var PREFIX = "https://calendly.com/";
+    var state = "idle", pending = null;
+
+    function fallback() { if (pending) window.open(pending, "_blank", "noopener"); }
+
+    function show() {
+      if (window.Calendly && pending) Calendly.initPopupWidget({ url: pending });
+      else fallback();
+    }
+
+    function load() {
+      state = "loading";
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(css);
+      var js = document.createElement("script");
+      js.src = "https://assets.calendly.com/assets/external/widget.js";
+      js.onload = function () { state = "ready"; show(); };
+      js.onerror = function () { state = "failed"; fallback(); };
+      document.head.appendChild(js);
+    }
+
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="' + PREFIX + '"]');
+      if (!a) return;
+      pending = a.href;
+      if (state === "failed") return;          // let the link behave normally
+      e.preventDefault();
+      if (state === "ready") show();
+      else if (state === "idle") load();
+    });
+  })();
 </script>
 </body>
 </html>
