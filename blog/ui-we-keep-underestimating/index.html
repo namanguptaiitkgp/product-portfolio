@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The UI We Keep Underestimating: What a Baseball Card Study Can Teach SaaS Product Managers — Naman Gupta</title>
+<meta name="description" content="Functionality gets you into the conversation. Experience shapes the perception.">
+<link rel="canonical" href="https://namanbuilds.com/blog/ui-we-keep-underestimating/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://namanbuilds.com/blog/ui-we-keep-underestimating/">
+<meta property="og:title" content="The UI We Keep Underestimating: What a Baseball Card Study Can Teach SaaS Product Managers — Naman Gupta">
+<meta property="og:description" content="Functionality gets you into the conversation. Experience shapes the perception.">
+<meta property="og:image" content="https://namanbuilds.com/blog/assets/ebay-study-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The UI We Keep Underestimating: What a Baseball Card Study Can Teach SaaS Product Managers — Naman Gupta">
+<meta name="twitter:description" content="Functionality gets you into the conversation. Experience shapes the perception.">
+<meta name="twitter:image" content="https://namanbuilds.com/blog/assets/ebay-study-hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23191713'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-weight='bold' font-size='40' fill='%23f4f2ec' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Neue Montreal";src:url("https://framerusercontent.com/assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("https://framerusercontent.com/assets/vEydk8LUwvYV3ZJtsQhKLqsza0.woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Joane";src:url("https://framerusercontent.com/assets/s7QBt6TrbwZwxnd8WeMUW0iXFw.woff2");font-weight:900;font-display:swap}
+:root{--paper:#fff;--panel:#fff;--ink:#191713;--muted:#5f5a4e;--line:rgba(25,23,19,.12);
+--shadow:0 1px 2px rgba(25,23,19,.04),0 18px 48px -22px rgba(25,23,19,.28)}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Neue Montreal","SF Pro Display",-apple-system,sans-serif;
+font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);
+backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent}
+.topbar.scrolled{border-bottom-color:var(--line)}
+.bar{max-width:720px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand .logo{font-family:"Joane",Georgia,serif;font-weight:900;font-style:italic;font-size:30px;line-height:.8}
+.brand .nm{font-size:16px}
+.bar nav{display:flex;gap:20px;font-size:15px}
+.bar nav a{text-decoration:none;position:relative;min-height:44px;display:inline-flex;align-items:center}
+.bar nav a::after{content:"";position:absolute;left:0;right:0;bottom:11px;height:1px;background:var(--ink);
+transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.bar nav a:hover::after{transform:scaleX(1)}
+/* The booking link is a button, not a nav item: filled, and no underline
+   sweeping under a solid pill. */
+.bar nav a.cta{background:var(--ink);color:var(--panel);border-radius:999px;padding:0 17px;
+transition:opacity .2s ease}
+.bar nav a.cta:hover{opacity:.86}
+.bar nav a.cta::after{display:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+.lede{padding:54px 0 10px}
+.lede h1{font-family:"Neue Montreal",sans-serif;font-weight:500;font-size:clamp(30px,5vw,44px);
+line-height:1.08;letter-spacing:-.022em;margin:0}
+.lede h1 em{font-family:"Joane",Georgia,serif;font-style:italic;font-weight:900}
+.lede p{margin:14px 0 0;font-size:17.5px;color:var(--muted);max-width:560px;line-height:1.55}
+.list{padding:30px 0 80px;display:grid;gap:4px}
+.item{display:block;text-decoration:none;padding:24px 0;border-top:1px solid var(--line)}
+.item:last-child{border-bottom:1px solid var(--line)}
+.item .meta{font-family:"SF Pro Display",-apple-system,sans-serif;font-size:12.5px;letter-spacing:.1em;
+text-transform:uppercase;color:var(--muted)}
+.item h2{margin:9px 0 0;font-size:24px;font-weight:500;letter-spacing:-.015em;line-height:1.22}
+.item p{margin:8px 0 0;color:var(--muted);font-size:16px;line-height:1.5}
+.item .more{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-size:14.5px}
+.item:hover h2{text-decoration:underline;text-underline-offset:3px}
+.empty{padding:40px 0 90px;color:var(--muted)}
+article{padding:46px 0 20px}
+article .meta{font-family:"SF Pro Display",-apple-system,sans-serif;font-size:12.5px;letter-spacing:.1em;
+text-transform:uppercase;color:var(--muted)}
+article h1{font-family:"Neue Montreal",sans-serif;font-weight:500;font-size:clamp(28px,4.6vw,40px);
+line-height:1.1;letter-spacing:-.022em;margin:12px 0 0;text-wrap:balance}
+article .sum{margin:14px 0 0;font-size:18px;color:var(--muted);line-height:1.55}
+article hr{border:0;border-top:1px solid var(--line);margin:30px 0}
+.body{padding-bottom:40px}
+.body h2{font-size:25px;font-weight:500;letter-spacing:-.015em;margin:34px 0 0;line-height:1.25}
+.body h3{font-size:20px;font-weight:500;margin:26px 0 0}
+.body p{margin:15px 0 0}
+.body ul,.body ol{margin:15px 0 0;padding-left:22px}
+.body li{margin:0 0 7px}
+.body blockquote{margin:22px 0 0;padding:2px 0 2px 18px;border-left:2px solid var(--line);
+color:var(--muted);font-style:italic}
+.body code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;
+background:color-mix(in srgb,var(--ink) 6%,transparent);padding:2px 5px;border-radius:5px}
+.body p.statement{margin:28px 0 0;font-size:20.5px;font-weight:500;letter-spacing:-.013em;line-height:1.35}
+.body figure,article figure{margin:28px 0 0}
+.body figure img,article figure img{display:block;width:100%;height:auto;border-radius:12px;
+border:1px solid var(--line);background:var(--panel)}
+.body figcaption{margin:10px 0 0;font-size:14.5px;color:var(--muted);line-height:1.45}
+.body a{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.foot{border-top:1px solid var(--line);margin-top:26px;padding:26px 0 80px;display:flex;
+justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(--muted)}
+.foot a{text-decoration:none;border-bottom:1px solid var(--line)}
+@media(max-width:640px){
+  body{font-size:16.5px}
+  .bar{padding:12px 18px}
+  .bar nav{gap:14px;font-size:14px}
+  .brand .nm{display:none}
+  .wrap{padding:0 18px}
+  .lede{padding:34px 0 6px}
+  .body p.statement{font-size:19px}
+}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="topbar" id="topbar"><div class="bar">
+  <a class="brand" href="../../index.html"><span class="logo">N</span><span class="nm">Naman Gupta</span></a>
+  <nav>
+    <a href="../index.html">Writing</a>
+    <a href="../../index.html">Work</a>
+    <a class="cta" href="https://calendly.com/namanbuilds/intro-call" target="_blank" rel="noopener">Book a call</a>
+  </nav>
+</div></div>
+<main class="wrap">
+  <article>
+    <div class="meta">27 October 2026 · 8 min read</div>
+    <h1>The UI We Keep Underestimating: What a Baseball Card Study Can Teach SaaS Product Managers</h1>
+    <p class="sum">Functionality gets you into the conversation. Experience shapes the perception.</p>
+    <figure class="lead"><img src="../assets/ebay-study-hero.webp" alt="" loading="lazy" decoding="async" width="1600" height="838"></figure>
+    <hr>
+  </article>
+  <div class="body">
+<p>As SaaS Product Managers, we spend a lot of time thinking about functionality. We obsess over workflows, edge cases, integrations and whether the product solves the customer's problem. The UI often comes later, treated as something we can polish once the core functionality is ready. This mindset quietly spills into our presentations, websites, product demos and other marketing material, where communicating what the product does takes priority over how we present it.</p>
+<p>Functionality is the foundation of a good product, but UI is how customers experience that functionality. Imagine being an operations manager who spends eight hours a day navigating a poorly designed dashboard. Even if the product does everything you need, how long before that experience starts to frustrate you? Now imagine evaluating a competitor whose product offers similar functionality but feels significantly easier to use. The difference isn't necessarily what the products can do. It's how they make you feel while using them.</p>
+<p>This got me thinking about a question I encountered during Yale University's Introduction to Psychology course: how much can something that shouldn't matter influence a person's decision?</p>
+<h2>A baseball card, a photograph and a surprising result</h2>
+<p>In 2015, Ian Ayres, Mahzarin Banaji and Christine Jolls published a paper in the <em>RAND Journal of Economics</em> titled <em>Race Effects on eBay</em>. The researchers wanted to test whether a racial cue, unrelated to a product's value, could influence what buyers were willing to pay.</p>
+<p>They auctioned baseball cards on eBay through listings that were kept as similar as possible. The titles, descriptions, shipping costs and auction durations were standardised. The key difference was the photograph. In some listings, the card was held by a dark-skinned hand; in others, it was held by a light-skinned hand. The card itself hadn't changed. Its condition, player and rarity remained the same. Only the hand in the photograph was different.</p>
+<figure><img src="../assets/cards-dark-hands.webp" alt="The cards as buyers saw them, photographed in a dark-skinned hand." loading="lazy" decoding="async" width="1030" height="1092"><figcaption>The cards as buyers saw them, photographed in a dark-skinned hand.</figcaption></figure>
+<figure><img src="../assets/cards-light-hands.webp" alt="And the same set of cards in a light-skinned hand. Titles, descriptions, shipping costs and auction durations were held constant across both." loading="lazy" decoding="async" width="1030" height="1091"><figcaption>And the same set of cards in a light-skinned hand. Titles, descriptions, shipping costs and auction durations were held constant across both.</figcaption></figure>
+<p>The results were striking. Cards held by dark-skinned hands sold for an average of $5.73, compared with $6.53 for cards held by light-skinned hands. The researchers' main estimate put the difference at around 20%. Interestingly, the difference was in the price buyers paid, not whether the cards sold.</p>
+<figure><img src="../assets/ebay-listing-dark-hand.webp" alt="A completed listing from the experiment: a 2004 Topps Rollie Fingers autograph, sold for $6.28." loading="lazy" decoding="async" width="1030" height="1185"><figcaption>A completed listing from the experiment: a 2004 Topps Rollie Fingers autograph, sold for $6.28.</figcaption></figure>
+<figure><img src="../assets/ebay-listing-light-hand.webp" alt="Another from the same study: a 1989 Upper Deck Randy Johnson, sold for $6.50. These are two separate auctions rather than a matched pair — the comparison in the paper is across hundreds of listings, not between any two of them." loading="lazy" decoding="async" width="1030" height="1170"><figcaption>Another from the same study: a 1989 Upper Deck Randy Johnson, sold for $6.50. These are two separate auctions rather than a matched pair — the comparison in the paper is across hundreds of listings, not between any two of them.</figcaption></figure>
+<p>The researchers couldn't establish exactly what was going through buyers' minds, and they couldn't completely rule out the possibility that buyers were making assumptions about seller reliability. So the findings need to be interpreted carefully. They don't prove that every buyer reacted the same way or establish a universal discount. But they do suggest that a seemingly irrelevant visual cue can influence a purchasing decision.</p>
+<p>If a photograph of a hand can affect what someone is willing to pay for a baseball card, what other seemingly insignificant details might be shaping our decisions?</p>
+<h2>What this means for SaaS products</h2>
+<p>The study examined racial cues, not user interface design, so it doesn't prove that a better UI will increase conversion by a particular percentage. However, it illustrates something worth considering as product builders: people don't evaluate products independently of how those products are presented.</p>
+<p>We often assume customers make decisions by comparing features, pricing, performance and functionality. In reality, their perception is also shaped by the experience of interacting with a product. Consider two competing SaaS products that solve the same problem, offer similar features and are priced competitively. One has a cluttered dashboard, inconsistent spacing, confusing navigation and workflows that require unnecessary effort. The other feels intuitive, with information that's easy to find and actions that behave as users expect. Which product would you trust more? Which would leave you with a stronger first impression during a sales demo?</p>
+<p>These perceptions don't necessarily reflect the underlying technical quality of either product, yet they can influence how customers judge that quality. For an operations manager, a well-designed interface might signal that the product team understands their daily workflow. For a business leader, a polished demo might create confidence in the company's execution. For a potential customer browsing your website, a confusing page might raise doubts before they've even spoken to your sales team.</p>
+<p>None of these impressions guarantees a purchase decision, but they can influence how a customer interprets everything that follows. When two competitors offer similar capabilities, the experience of using their products can become a meaningful differentiator.</p>
+<h2>Functionality gets you into the conversation. Experience shapes the perception.</h2>
+<p>I think this is where SaaS teams sometimes get their priorities wrong. We measure functionality through feature releases, integrations, workflow coverage and technical capabilities. These are important, especially when building complex enterprise products. But we don't always give the same attention to the experience surrounding those capabilities.</p>
+<p>A feature can technically solve a problem while still making the user work harder than necessary. A dashboard can contain all the right information but leave the user struggling to find what matters. A workflow can support every edge case and still feel unnecessarily complicated for the person using it every day. From the engineering team's perspective, the functionality might be complete. From the customer's perspective, the product might still be frustrating.</p>
+<p>This becomes particularly important in enterprise SaaS, where the buyer and the end user aren't always the same person. A senior executive might approve the purchase based on business outcomes, pricing and security, while an operations team spends thousands of hours interacting with the product over the next few years. If that daily experience is poor, the cost isn't just aesthetic. It can show up in adoption, training requirements, support tickets and the effort required to get work done.</p>
+<p>A product doesn't become good simply because its features work as intended. The experience of using those features matters, too.</p>
+<h2>The same thinking applies beyond the product</h2>
+<p>There's another aspect of this that I find interesting. The way we prioritise functionality over UI inside the product often carries over into how we present the product to the outside world. We focus on explaining what the product does, listing its capabilities and making sure every feature gets mentioned, but sometimes overlook how the presentation itself influences the audience.</p>
+<p>A presentation overloaded with text makes it harder to understand the argument. A website with confusing navigation makes it harder to evaluate the offering. A product demo that jumps between screens without a clear narrative makes it harder to appreciate the value. The information might all be there, but the experience of consuming it is still poor.</p>
+<p>The same principle applies to product design. Having the right information available doesn't guarantee that people will interpret or use it as intended. The way we organise and present that information influences what people notice, how they understand it and what they take away.</p>
+<p>This is also why I think UI deserves attention much earlier in the product development process. It shouldn't be a final layer added after the difficult product decisions have been made. Design is part of how we solve the problem, not just how we make the solution look good.</p>
+<h2>What should Product Managers do differently?</h2>
+<p>I'd start by evaluating the product from the user's daily perspective rather than stopping at whether a feature works. Imagine using the product for eight hours a day. How many clicks does a routine task require? How easy is it to recover from an error? Can users find the information they need without asking for help? These details often determine whether a product feels genuinely useful or merely functional.</p>
+<p>I'd also pay attention to the experience surrounding the product. Your website, sales deck, onboarding flow and product demo all contribute to how customers perceive your offering. They might be owned by different teams, but customers experience them as connected parts of the same journey. A great product can lose credibility if everything around it feels rushed or poorly thought out.</p>
+<p>Most importantly, I'd stop treating assumptions about UI as facts. It's easy to say that customers care only about functionality or that a design improvement is merely cosmetic. But these are hypotheses worth testing. Observe users, study where they struggle, run usability tests and measure whether changes improve task completion, adoption or conversion. And when the results surprise you, investigate why. A change in a metric tells you what happened, not necessarily what caused it.</p>
+<p>The goal isn't to make every screen visually impressive. It's to make the product easier to understand, easier to use and more effective at helping customers accomplish what they came to do.</p>
+<h2>The detail we keep overlooking</h2>
+<p>What stays with me about the eBay study is how small the change was. The researchers didn't change the product, its description or the marketplace. They changed the hand holding the card, and the average price buyers were willing to pay changed, too.</p>
+<p>For me, the lesson isn't that every visual detail has a predictable effect on customer behaviour, nor is it that good UI can compensate for a weak product. It's that the signals surrounding a product can influence how people perceive its value, sometimes in ways they don't consciously recognise.</p>
+<p>As Product Managers, we spend considerable time deciding what our products should do. We should spend just as much time understanding how the experience of using them shapes the way customers judge them. Functionality might solve the problem, but the experience determines how much friction customers encounter along the way.</p>
+<p>The next time we postpone a UI improvement because it doesn't change the underlying functionality, perhaps we should ask ourselves whether we're evaluating the product only from the perspective of the people building it, or also from the perspective of the people who have to use it every day.</p>
+<h3>References</h3>
+<p>Ayres, I., Banaji, M., &amp; Jolls, C. (2015). <em>Race Effects on eBay.</em> RAND Journal of Economics, 46(4), 891–917.</p>
+<p>Research paper: <a href="https://doi.org/10.1111/1756-2171.12115" target="_blank" rel="noopener">doi.org/10.1111/1756-2171.12115</a></p>
+<p>Free PDF: <a href="https://ianayres.yale.edu/sites/default/files/files/Race%20Effects%20on%20eBay.pdf" target="_blank" rel="noopener">ianayres.yale.edu</a></p>
+<p><em>Figures reproduced from the paper.</em></p>
+  </div>
+  <div class="foot">
+    <a href="../index.html">← All writing</a>
+    <span>Naman Gupta · <a href="mailto:hello@namanbuilds.com">hello@namanbuilds.com</a></span>
+  </div>
+</main>
+<script>
+(function(){var b=document.getElementById('topbar');
+function s(){b.classList.toggle('scrolled',window.scrollY>8)}s();
+window.addEventListener('scroll',s,{passive:true})})();
+</script>
+</body>
+</html>
