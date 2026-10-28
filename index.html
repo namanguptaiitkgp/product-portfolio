@@ -353,7 +353,7 @@ nav a:hover::after{transform:scaleX(1);}
 .proof .logos b{font-weight:500;color:var(--ink);}
 .proof .logos .sep{opacity:.45;}
 
-/* ---- Section heading (shared by Work with me / How I work) ---- */
+/* ---- Section heading ---- */
 .sec-head{padding:16px 0 4px;}
 .sec-head .eyebrow{
   font-family:"SF Pro Display",sans-serif;font-size:12.5px;letter-spacing:.18em;
@@ -406,7 +406,7 @@ nav a:hover::after{transform:scaleX(1);}
 }
 .patent-card p{margin:10px 0 0;max-width:620px;font-size:16px;line-height:1.5;color:var(--muted);}
 
-/* ---- Work with me: offer cards ---- */
+/* ---- Work with me ---- */
 /* The button used to sit inline with its note, which left the note wrapping
    to two narrow lines beside it and the button reading as the tail of the
    paragraph rather than the thing to do next. Stacked and enlarged, with room
@@ -414,74 +414,15 @@ nav a:hover::after{transform:scaleX(1);}
 .work-cta{display:flex;flex-direction:column;align-items:flex-start;gap:13px;margin-top:30px;}
 .work-cta .btn-primary{font-size:16.5px;padding:16px 30px;}
 .work-cta-note{font-size:15px;color:var(--muted);max-width:460px;line-height:1.5;}
-.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:22px 0 10px;}
-.offer{
-  display:flex;flex-direction:column;
-  border:1px solid var(--line);border-radius:18px;background:var(--panel);
-  box-shadow:var(--shadow);padding:28px 26px;
-  transition:transform .4s cubic-bezier(.2,.7,.2,1);
-}
-.offer:hover{transform:translateY(-5px);}
-.offer .o-kicker{
-  font-family:"SF Pro Display",sans-serif;font-size:12px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--muted);
-}
-.offer h3{margin:12px 0 0;font-size:22px;font-weight:500;letter-spacing:-.015em;line-height:1.15;}
-.offer .o-for{margin:12px 0 0;font-size:14.5px;line-height:1.45;color:var(--muted);}
-.offer ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:9px;}
-.offer li{position:relative;padding-left:20px;font-size:15px;line-height:1.45;}
-.offer li::before{content:"→";position:absolute;left:0;color:var(--muted);}
-.offer .o-foot{
-  margin-top:auto;padding-top:20px;display:flex;align-items:center;
-  justify-content:flex-start;gap:14px;flex-wrap:wrap;
-}
-.offer .o-time{font-size:13.5px;color:var(--muted);}
 .offer-proof{
   margin:26px 0 18px;padding-top:20px;border-top:1px solid var(--line);
   max-width:860px;font-size:14.5px;line-height:1.55;color:var(--muted);
 }
-.offer-rates{margin:22px 0 0;font-size:15.5px;}
-.offer-rates a{
-  border-bottom:1px solid var(--line);padding-bottom:2px;
-  transition:border-color .25s ease;
-}
-.offer-rates a:hover{border-bottom-color:var(--ink);}
-
-/* ---- Testimonials ---- */
-.quotes{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:22px 0 10px;}
-.quote{
-  margin:0;display:flex;flex-direction:column;
-  border:1px solid var(--line);border-radius:18px;background:var(--panel);
-  box-shadow:var(--shadow);padding:28px 26px;
-  transition:transform .4s cubic-bezier(.2,.7,.2,1);
-}
-.quote:hover{transform:translateY(-5px);}
-.quote blockquote{margin:0;font-size:16px;line-height:1.55;font-weight:400;}
-/* The opening quote mark is decoration: zero line-height keeps it from
-   pushing the first line of the quote down. */
-.quote blockquote::before{
-  content:"\201C";font-family:"Joane",Georgia,serif;font-weight:900;font-style:italic;
-  font-size:46px;line-height:0;color:var(--muted);display:block;height:22px;
-}
-.quote figcaption{margin-top:auto;padding-top:20px;display:flex;flex-direction:column;gap:3px;}
-.quote .q-name{font-size:15.5px;font-weight:500;}
-.quote .q-role{font-size:14px;color:var(--muted);}
-
 .closer-alt{
   margin:22px auto 0;max-width:56ch;font-size:15px;line-height:1.55;color:var(--muted);
 }
 .closer-alt a{border-bottom:1px solid var(--line);transition:border-color .25s ease;}
 .closer-alt a:hover{border-bottom-color:var(--ink);}
-
-/* ---- How I work ---- */
-.how{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:26px 0 8px;}
-.how .step{border-top:1px solid var(--line);padding-top:18px;}
-.how .step .num{
-  font-family:"Joane",serif;font-weight:900;font-style:italic;
-  font-size:30px;line-height:1;color:var(--muted);
-}
-.how .step h3{margin:12px 0 0;font-size:19px;font-weight:500;letter-spacing:-.01em;}
-.how .step p{margin:9px 0 0;font-size:15.5px;line-height:1.5;color:var(--muted);}
 
 
 /* ---- Closing CTA ---- */
@@ -575,7 +516,6 @@ nav a:hover::after{transform:scaleX(1);}
 footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
 
 @media(max-width:900px){
-  .offers,.how,.quotes{grid-template-columns:1fr;}
   .proof .stats{grid-template-columns:repeat(2,1fr);gap:22px;padding:24px;}
 }
 
@@ -585,7 +525,7 @@ footer{padding:70px 0 90px;color:var(--muted);font-size:14px;display:flex;justif
 }
 
 @media(max-width:480px){
-  .hero-sub,.desc,.summary dd,.offer li{font-size:16px;}
+  .hero-sub,.desc,.summary dd{font-size:16px;}
   footer{font-size:15px;}
 }
 
@@ -799,7 +739,7 @@ header .brand .role{display:none;}
             <h1 class="hero-head">I turn <span class="stories">ambiguous</span> business problems into products that <span class="stories">work in the real world</span>.</h1>
             <p class="hero-sub">Seven years across fintech, lending, logistics and marketplaces — building products from the first decision through to real-world scale.</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#book">Let’s talk <span class="arr">↗</span></a>
+              <a class="btn btn-primary" href="call/">Let’s talk <span class="arr">→</span></a>
               <a class="btn btn-ghost" href="#cases">Explore my work</a>
               <a class="btn btn-ghost" href="resume/">View resume</a>
             </div>
@@ -1187,120 +1127,10 @@ header .brand .role{display:none;}
     <p>Sometimes you need someone experienced to help decide what to build. Sometimes the product exists but users aren’t getting through it. And sometimes a feature looks promising until you examine what happens when it gets something wrong. Fixed scope or ongoing, your call.</p>
       <div class="work-cta">
         <a class="btn btn-primary" href="call/">Book a call <span class="arr">→</span></a>
-        <span class="work-cta-note">Rates, what a week or a month covers, and how we contract — then book when you’re ready.</span>
+        <span class="work-cta-note">Rates, what a week or a month covers, how we contract, and what people I’ve worked with say — all on one page.</span>
       </div>
-  </section>
-  <section class="wrap" id="book">
-    <div class="offers">
-      <div class="offer">
-        <span class="o-kicker">One month</span>
-        <h3>Product Discovery &amp; Strategy</h3>
-        <p class="o-for">For teams entering a new market, launching a product line, or unsure what to build next.</p>
-        <ul>
-          <li>Customer and funnel research with root causes, not opinions</li>
-          <li>Market-entry and competitor review</li>
-          <li>Prioritised roadmap with clear success metrics</li>
-          <li>Backlog-ready specs your team can pick up</li>
-        </ul>
-        <div class="o-foot">
-          <span class="o-time">$1,500 fixed</span>
-        </div>
-      </div>
-
-      <div class="offer">
-        <span class="o-kicker">One week</span>
-        <h3>Funnel &amp; Growth Diagnostics</h3>
-        <p class="o-for">For products where users drop off — onboarding, quote-to-booking, checkout, KYC.</p>
-        <ul>
-          <li>Step-by-step drop-off map of your live funnel</li>
-          <li>Root-cause analysis with data and user evidence</li>
-          <li>Ranked fix list, effort vs impact</li>
-          <li>Experiment plan to prove the fixes</li>
-        </ul>
-        <div class="o-foot">
-          <span class="o-time">$400 fixed</span>
-        </div>
-      </div>
-
-      <div class="offer">
-        <span class="o-kicker">Monthly</span>
-        <h3>Fractional Product Lead / AI Advisory</h3>
-        <p class="o-for">For founders without a senior PM, or teams making their first big AI bet.</p>
-        <ul>
-          <li>Weekly working sessions on live product decisions</li>
-          <li>Roadmap, prioritisation and spec reviews</li>
-          <li>AI feature scoping: eval sets, build-vs-buy, kill criteria</li>
-          <li>Hiring input for your first product hires</li>
-        </ul>
-        <div class="o-foot">
-          <span class="o-time">$1,500 per month</span>
-        </div>
-      </div>
-    </div>
-    <p class="offer-rates"><a href="call/">See what each block covers, and how we contract <span aria-hidden="true">→</span></a></p>
     <p class="offer-proof">Built and scaled products across fintech, lending, logistics and identity — Ninjacart (Walmart-backed), Cogoport, Capital One (US patent), Digio — and currently consulting for a Dubai-based freight-tech marketplace.</p>
   </section>
-
-  <!-- How I work -->
-  <section class="wrap sec-head">
-    <span class="eyebrow">How I work</span>
-    <h2>Understand the problem. Make the call. Leave something usable.</h2>
-  </section>
-  <section class="wrap">
-    <div class="how">
-      <div class="step">
-        <div class="num">01</div>
-        <h3>Find the real problem</h3>
-        <p>One call to work out where the real cost sits — good users dropping out, a roadmap pulling in three directions, or engineering time going into something a vendor already solved.</p>
-      </div>
-      <div class="step">
-        <div class="num">02</div>
-        <h3>Decide with evidence</h3>
-        <p>I write the spec from your data and your users, with the failure modes and success metrics attached, so "is it working?" has an answer that isn't an opinion.</p>
-      </div>
-      <div class="step">
-        <div class="num">03</div>
-        <h3>Make it actionable</h3>
-        <p>You get the artefacts your team builds from — specs, metrics, a prioritised list — not a slide deck that needs translating.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="wrap sec-head" id="testimonials">
-    <span class="eyebrow">What people say</span>
-    <h2>From the people I reported to and worked beside.</h2>
-  </section>
-  <section class="wrap">
-    <div class="quotes">
-      <figure class="quote">
-        <blockquote>Naman worked at Ninjacart as a Senior Product Manager on Ninja Global,
-          building products from the ground up and working closely with our trade-finance team.
-          He’s great at taking messy real-world problems and turning them into products that ops,
-          sales and risk teams actually use. He works seamlessly across teams, bringing tech,
-          business and ground ops onto the same page, and is always generous with his time when
-          someone needs help. Hands-on with data, quick to ask the hard questions, and always
-          shipping. Any team building 0→1 products would be lucky to have him.</blockquote>
-        <figcaption>
-          <span class="q-name">Sharath Loganathan</span>
-          <span class="q-role">Co-Founder, Ninjacart</span>
-        </figcaption>
-      </figure>
-
-      <figure class="quote">
-        <blockquote>I worked with Naman at Cogoport, where he was an Associate Product Manager
-          on our freight marketplace. He picked up a complex logistics domain quickly, spent real
-          time with the sales team, customers and ops to understand their problems, and turned
-          that into clear specs the team could ship. Structured, proactive and always great to
-          work with.</blockquote>
-        <figcaption>
-          <span class="q-name">Ankit Gupta</span>
-          <span class="q-role">AVP, Cogoport</span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
   <!-- Closing CTA -->
   <section class="closer">
     <div class="wrap">
@@ -1323,7 +1153,7 @@ header .brand .role{display:none;}
     <span><a href="mailto:hello@namanbuilds.com">hello@namanbuilds.com</a> · India</span>
   </footer>
 
-  <a class="hire-fab" href="#book" aria-label="Hire me for a project — jump to the booking section">
+  <a class="hire-fab" href="call/" aria-label="Hire me for a project — rates and booking">
     Hire me for a project <span class="arr" aria-hidden="true">↗</span>
   </a>
 </main>
@@ -1337,7 +1167,7 @@ header .brand .role{display:none;}
     const hero = document.querySelector('.hero');
     if(!fab || !hero || !('IntersectionObserver' in window)) return;
 
-    const hideWhenSeen = [document.getElementById('book'), document.querySelector('footer')].filter(Boolean);
+    const hideWhenSeen = [document.getElementById('work'), document.querySelector('footer')].filter(Boolean);
     const onScreen = new Set();
     let pastHero = false;
     const sync = () => fab.classList.toggle('is-visible', pastHero && onScreen.size === 0);
