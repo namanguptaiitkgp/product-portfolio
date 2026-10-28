@@ -308,7 +308,7 @@ def shell(title, desc, canonical, body, depth, image=None):
   <nav>
     <a href="{up}index.html">Writing</a>
     <a href="{up}../index.html">Work</a>
-    <a class="cta" href="https://calendly.com/namanbuilds/intro-call" target="_blank" rel="noopener">Book a call</a>
+    <a class="cta" href="{up}../call/">Book a call</a>
   </nav>
 </div></div>
 {body}
