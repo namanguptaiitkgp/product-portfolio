@@ -178,11 +178,27 @@ window.addEventListener('scroll',s,{passive:true})})();
   var PREFIX="https://calendly.com/", state="idle", pending=null;
   function fallback(){ if(pending) window.open(pending,"_blank","noopener"); }
   function show(){ if(window.Calendly&&pending) Calendly.initPopupWidget({url:pending}); else fallback(); }
+  /* Calendly ships the popup as width:80%;min-width:900px;max-height:700px.
+     Its own layout needs more than that: pick a date and the time column
+     spills past the card's right edge, and the foot of the calendar is cut
+     off with no scrollbar to say so. Appended straight after their
+     stylesheet, so these win on source order as well as on !important. The
+     <=975px block is theirs, restated because our rule would otherwise
+     beat it and flatten the mobile sheet. */
+  var FIT =
+    ".calendly-overlay .calendly-popup{" +
+      "width:calc(100% - 48px)!important;min-width:1000px!important;max-width:1120px!important;" +
+      "height:calc(100% - 48px)!important;max-height:860px!important}" +
+    "@media(max-width:975px){.calendly-overlay .calendly-popup{" +
+      "width:100%!important;max-width:none!important;height:auto!important;" +
+      "max-height:none!important}}";
   function load(){
     state="loading";
     var css=document.createElement("link");
     css.rel="stylesheet"; css.href="https://assets.calendly.com/assets/external/widget.css";
     document.head.appendChild(css);
+    var fit=document.createElement("style"); fit.textContent=FIT;
+    document.head.appendChild(fit);
     var js=document.createElement("script");
     js.src="https://assets.calendly.com/assets/external/widget.js";
     js.onload=function(){state="ready";show()};
