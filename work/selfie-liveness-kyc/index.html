@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selfie &amp; Liveness KYC — Digio | Naman Gupta case study</title>
+<meta name="description" content="Owning the selfie and liveness KYC service at Digio behind 200K+ customer onboardings a day — spoof detection, real-time capture guidance, and per-client risk thresholds.">
+<link rel="canonical" href="https://namanbuilds.com/work/selfie-liveness-kyc/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://namanbuilds.com/work/selfie-liveness-kyc/">
+<meta property="og:title" content="Selfie &amp; Liveness KYC — Digio | Naman Gupta case study">
+<meta property="og:description" content="Owning the selfie and liveness KYC service at Digio behind 200K+ customer onboardings a day — spoof detection, real-time capture guidance, and per-client risk thresholds.">
+<meta property="og:image" content="https://namanbuilds.com/assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Selfie &amp; Liveness KYC — Digio">
+<meta name="twitter:description" content="Owning the selfie and liveness KYC service at Digio behind 200K+ customer onboardings a day — spoof detection, real-time capture guidance, and per-client risk thresholds.">
+<meta name="twitter:image" content="https://namanbuilds.com/assets/og-preview.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Selfie and liveness KYC — holding the line between fraud and friction.",
+  "description": "Owning the selfie and liveness KYC service at Digio behind 200K+ customer onboardings a day — spoof detection, real-time capture guidance, and per-client risk thresholds.",
+  "url": "https://namanbuilds.com/work/selfie-liveness-kyc/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://namanbuilds.com/work/selfie-liveness-kyc/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Naman Gupta",
+    "url": "https://namanbuilds.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Naman Gupta",
+    "url": "https://namanbuilds.com/"
+  },
+  "about": [
+    "Digio",
+    "Product management",
+    "Fintech"
+  ],
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://namanbuilds.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Work",
+      "item": "https://namanbuilds.com/work/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Selfie & Liveness KYC",
+      "item": "https://namanbuilds.com/work/selfie-liveness-kyc/"
+    }
+  ]
+}
+</script>
+<style>
+*{box-sizing:border-box}
+:root{--paper:rgb(187,210,190);--panel:#fffdf9;--ink:#191713;--muted:#5f5a4e;--line:rgba(25,23,19,.12)}
+@font-face{font-family:"Neue Montreal";src:url("/ninja-credit/assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("/ninja-credit/assets/vEydk8LUwvYV3ZJtsQhKLqsza0.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Joane";src:url("/ninja-credit/assets/s7QBt6TrbwZwxnd8WeMUW0iXFw.woff2") format("woff2");font-weight:900;font-display:swap}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font-family:"Neue Montreal",-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+ font-size:17px;line-height:1.62;}
+.shell{max-width:760px;margin:0 auto;padding:28px 20px 80px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px;font-size:14px}
+.top a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.top a:hover{border-bottom-color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px 30px 40px}
+.eyebrow{margin:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:"Joane","Neue Montreal",serif;font-weight:900;font-size:clamp(28px,5vw,40px);line-height:1.14;margin:0 0 16px;letter-spacing:-.01em}
+.lede{font-size:19px;line-height:1.55;color:var(--ink);margin:0 0 22px}
+.meta{margin:0 0 26px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:500}
+.deck{display:inline-block;margin:0 0 30px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;
+ text-decoration:none;color:var(--ink);font-size:14px;background:transparent}
+.deck:hover{border-color:var(--ink)}
+h2{font-family:"Joane","Neue Montreal",serif;font-weight:900;font-size:clamp(21px,3.4vw,27px);line-height:1.2;margin:40px 0 12px;letter-spacing:-.005em}
+h3{font-size:17px;font-weight:500;margin:28px 0 8px;letter-spacing:.005em}
+p{margin:0 0 14px}
+ul{margin:0 0 16px;padding-left:20px}
+li{margin:0 0 7px}
+figure{margin:20px 0 24px}
+figure img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:#fff}
+figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:22px 0 26px;padding:0}
+.stats div{border-top:1px solid var(--line);padding-top:12px}
+.stats dt{font-family:"Joane","Neue Montreal",serif;font-weight:900;font-size:24px;line-height:1.1;margin:0}
+.stats dd{margin:5px 0 0;font-size:13px;color:var(--muted)}
+.pairs{margin:18px 0 26px;padding:0}
+.pairs div{display:grid;grid-template-columns:minmax(130px,.5fr) 1fr;gap:6px 18px;padding:11px 0;border-top:1px solid var(--line)}
+.pairs dt{margin:0;font-weight:500}
+.pairs dd{margin:0;color:var(--muted)}
+.foot{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.foot a{color:var(--ink)}
+@media (max-width:560px){.shell{padding:20px 14px 60px}.card{padding:24px 18px 30px;border-radius:14px}
+ .pairs div{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="top">
+    <a href="/">← Naman Gupta</a>
+    <a href="/work/">All case studies</a>
+  </nav>
+  <main class="card">
+    <article>
+      <p class="eyebrow">Case study · Digio</p>
+      <h1>Selfie and liveness KYC — holding the line between fraud and friction.</h1>
+      <p class="lede">A liveness check has two ways to fail: let a fraudster through, or turn away a real customer. I owned the line between them.</p>
+      <p class="meta"><b>Role</b> Senior Product Manager — identity verification &nbsp;·&nbsp; <b>Period</b> 2024–present</p>
+      <a class="deck" href="/cinematic/index_2_light.html">View the interactive case study ↗</a>
+<h2>2 lakh selfies a day. A fraudster hides in one of them.</h2>
+<p>Open a bank account, take out a loan, or sign up for a payments wallet, and at some point the app asks you to take a selfie. That selfie is how the system checks you&#x27;re a real, live person — not someone using stolen details. But a camera is easy to fool: a printed photo, a replayed selfie, a silicone mask, an AI-generated face piped into a webcam — all show a face; none is a live person.</p>
+<figure><img src="/cinematic/assets/spoof-printed-photo.webp" alt="Printed photo" loading="lazy" decoding="async"><figcaption>Printed photo</figcaption></figure>
+<figure><img src="/cinematic/assets/spoof-screen-replay.webp" alt="Screen replay" loading="lazy" decoding="async"><figcaption>Screen replay</figcaption></figure>
+<figure><img src="/cinematic/assets/spoof-face-not-visible.webp" alt="Face Not Visible" loading="lazy" decoding="async"><figcaption>Face Not Visible</figcaption></figure>
+<figure><img src="/cinematic/assets/as.webp" alt="AI-generated face" loading="lazy" decoding="async"><figcaption>AI-generated face</figcaption></figure>
+<h2>One service. Any device, any room, any hour.</h2>
+<p>No one takes their KYC selfie in a studio. It&#x27;s a crowded branch under fluorescent glare, the sofa at nine at night, or a field with one bar of signal. And it can&#x27;t only work on a flagship phone in good light — it has to hold on a ₹8,000 Android in a dim kitchen, on a patchy network, across every skin tone and camera the country can throw at it. We don&#x27;t control any of that. One capture layer — native and web — has to, and it still has to hand liveness a frame worth checking.</p>
+<h3>Whatever it runs on.</h3>
+<h3>Whatever light it&#x27;s in.</h3>
+<h3>Whatever signal it gets.</h3>
+<h3>Whatever it captures.</h3>
+<h2>Stop the spoof before the camera turns on.</h2>
+<p>A whole class of attackers don&#x27;t bother holding up a photo. They install software that pretends to be a camera and pipes whatever they want into the browser or the app. The Selfie SDK detects this at the very first moment of the session — before a single frame is even captured.</p>
+<h2>Real-time guidance. In their language. At their speed.</h2>
+<p>The frontend talks to the user in real time. It tells them which way to turn, when to come closer, when the lighting won&#x27;t do — in the language they actually read. And it tunes how many checks to run based on the internet connection they actually have, so a 4G user in a Tier-3 town doesn&#x27;t get the same heavy pipeline as a fibre user in a metro.</p>
+<figure><img src="/cinematic/assets/frame-look.webp" alt="Look straight at the camera" loading="lazy" decoding="async"><figcaption>Look straight at the camera</figcaption></figure>
+<h2>Too far is suspicious. Too close is too.</h2>
+<p>A face the right size in the frame is a face we can analyse. Too small means we&#x27;re looking at a room, not a person — and rooms are where spoofing devices hide. Too close means we lose the geometry we need to verify pose, alignment, and the boundary between the user and what&#x27;s behind them.</p>
+<figure><img src="/cinematic/assets/frame-too-far.webp" alt="Face too far from the camera" loading="lazy" decoding="async"><figcaption>Face too far from the camera</figcaption></figure>
+<p>Face drifted off-axis — we nudge the user to move right before capture.</p>
+<figure><img src="/cinematic/assets/logo-jio.webp" alt="Jio BlackRock" loading="lazy" decoding="async"><figcaption>Jio BlackRock</figcaption></figure>
+<figure><img src="/cinematic/assets/frame-ready.webp" alt="Face correctly framed and ready" loading="lazy" decoding="async"><figcaption>Face correctly framed and ready</figcaption></figure>
+<p>The acceptable band — balanced, analysable, ready to capture.</p>
+<figure><img src="/cinematic/assets/logo-muthoot.svg" alt="Muthoot Finance" loading="lazy" decoding="async"><figcaption>Muthoot Finance</figcaption></figure>
+<figure><img src="/cinematic/assets/frame-too-close.webp" alt="Face too close to the camera" loading="lazy" decoding="async"><figcaption>Face too close to the camera</figcaption></figure>
+<p>Face fills the frame — we ask the user to ease back so the edges return.</p>
+<h2>We see more than the user thinks we see.</h2>
+<p>The user only sees their own face, neatly framed inside the circular viewport. Behind that small circle, the SDK is quietly capturing a wider frame and a short video. A genuine user doesn&#x27;t care. A fraudster does — because the wider frame and the post-capture video catch the things they thought they had hidden: the phone bezel beside the face, the fingers gripping the spoofing device, the bedroom wall they didn&#x27;t expect us to record.</p>
+<figure><img src="/cinematic/assets/capture-shown.webp" alt="What the user sees — face in the circle" loading="lazy" decoding="async"><figcaption>What the user sees — face in the circle</figcaption></figure>
+<figure><img src="/cinematic/assets/capture-wider.webp" alt="What the system actually captures — wider frame revealing the screen" loading="lazy" decoding="async"><figcaption>What the system actually captures — wider frame revealing the screen</figcaption></figure>
+<p>Plus a 1-second video — multiple frames sampled where networks are fast and fraud is common.</p>
+<h2>Many checks. One verdict.</h2>
+<p>Once the selfie reaches the backend, it doesn&#x27;t face a single magic model that says &quot;yes&quot; or &quot;no&quot;. It enters a sequence of independent checks — each one looking for a different kind of failure or fraud. We start with the cheapest, most common reasons a selfie should be rejected — no face, blurred, partial — and only spend compute on the deeper attack-detection models on submissions that have already cleared those gates.</p>
+<h2>Every spoof leaves a fingerprint.</h2>
+<p>Each kind of attack betrays itself in a slightly different way. A printed photo has paper edges and ink halftones. A phone-replay has a bezel and a pixel grid. A deepfake has telltale morphing artifacts. An AI-generated face has the wrong kind of perfection.</p>
+<p>An attacker rarely needs a perfect forgery. Blend a leaked ID photo with a cooperative live face and search the mix until the synthetic frame clears the match gate.</p>
+<figure><img src="/cinematic/assets/df-srcA.webp" alt="Source A face" loading="lazy" decoding="async"><figcaption>Source A face</figcaption></figure>
+<figure><img src="/cinematic/assets/df-srcB.webp" alt="Source B face" loading="lazy" decoding="async"><figcaption>Source B face</figcaption></figure>
+<figure><img src="/cinematic/assets/df-synth.webp" alt="Synthetic blended face" loading="lazy" decoding="async"><figcaption>Synthetic blended face</figcaption></figure>
+<h2>Before we judge a face, we find its parts.</h2>
+<p>Underneath the whole pipeline sits a localization model. It doesn&#x27;t just say “a face is here” — it locates the face and each region inside it: the eyes, the nose, the mouth, the chin. Every box is a model output with its own confidence. This map is what powers the rest: it tells check_eyes where the eyes are, tells occlusion which region to inspect, and tells the cropper exactly where to cut.</p>
+<figure><img src="/cinematic/assets/feat-all.webp" alt="Facial feature detection with all regions boxed and labelled with confidence scores" loading="lazy" decoding="async"><figcaption>Facial feature detection with all regions boxed and labelled with confidence scores</figcaption></figure>
+<figure><img src="/cinematic/assets/feat-face.webp" alt="Face detection" loading="lazy" decoding="async"><figcaption>Face detection</figcaption></figure>
+<figure><img src="/cinematic/assets/feat-eyeL.webp" alt="Left Eye detection" loading="lazy" decoding="async"><figcaption>Left Eye detection</figcaption></figure>
+<figure><img src="/cinematic/assets/feat-eyeR.webp" alt="Right Eye detection" loading="lazy" decoding="async"><figcaption>Right Eye detection</figcaption></figure>
+<figure><img src="/cinematic/assets/feat-nose.webp" alt="Nose detection" loading="lazy" decoding="async"><figcaption>Nose detection</figcaption></figure>
+<figure><img src="/cinematic/assets/feat-mouth.webp" alt="Mouth detection" loading="lazy" decoding="async"><figcaption>Mouth detection</figcaption></figure>
+<figure><img src="/cinematic/assets/feat-chin.webp" alt="Chin detection" loading="lazy" decoding="async"><figcaption>Chin detection</figcaption></figure>
+<h2>Every attempt leaves an audit report.</h2>
+<p>Every capture is logged — the timestamped attempt, its verdict, and the frames behind the decision. The accepted frame is stored with a full chain of custody: who authorised it, when, and where — down to GPS coordinates — so any attempt can be reconstructed and defended when the regulator asks.</p>
+<figure><img src="/cinematic/assets/audit-frame.webp" alt="Stored selfie capture with timestamp" loading="lazy" decoding="async"><figcaption>Stored selfie capture with timestamp</figcaption></figure>
+<h2>Your rules. Your language. Your risk.</h2>
+<p>The same product runs inside a Tier-1 NBFC with a low risk appetite and inside a Tier-3 lender that needs to ship fast. We don&#x27;t ship one fixed pipeline. Every check is independently configurable, every guidance message can be reworded or translated, every retry policy is yours to set.</p>
+    </article>
+    <p class="foot">Written by <a href="/">Naman Gupta</a>, Senior Product Manager at Digio.
+      <a href="/resume/">Résumé</a> · <a href="/work/">All case studies</a> · <a href="/call/">Book a call</a></p>
+  </main>
+</div>
+</body>
+</html>

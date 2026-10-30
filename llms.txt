@@ -1,0 +1,44 @@
+# Naman Gupta
+
+> Senior Product Manager at Digio, based in India. Seven years building fintech,
+> lending, supply-chain and marketplace products end to end — from an app launch at
+> national scale to using AI to automate customer support. Holder of US Patent
+> 12387059 B2, granted at Capital One for identifying zones of interest in text
+> transcripts using deep learning.
+
+Currently owns the onboarding and verification stack behind 200K+ customer
+onboardings a day at Digio, including the no-code builder clients use to assemble
+their own KYC journeys. Previously built Ninjacart's cross-border trade-finance
+business 0→1 to roughly $350M in annual disbursals, and led Invoice Discounting at
+Cogoport to $20M+ of credit under management. Dual Degree (Integrated BSc. & MSc.)
+in Mathematics & Computing from IIT Kharagpur.
+
+The pages below are plain HTML and contain the full text of each case study. The
+interactive versions of the same case studies render through client-side
+JavaScript, so prefer these.
+
+## Case studies
+
+- [Case studies](https://namanbuilds.com/work/): Index of product case studies in fintech, lending, identity verification and marketplaces.
+- [Ninja Credit — cross-border agri-trade lending built 0→1 (Ninjacart)](https://namanbuilds.com/work/ninja-credit/): Built Ninjacart's cross-border trade-finance business from nothing to ~$350M of annual disbursals in two months, cutting NPA from 6% to 2%. Covers the pivot from marketplace to financing, the modular credit flow, the document-chase fix that cut turnaround 75%, and the P&L I owned.
+- [Selfie and liveness KYC at Digio](https://namanbuilds.com/work/selfie-liveness-kyc/): Owning the selfie and liveness verification service behind 200K+ customer onboardings a day — injection-attack defence, real-time capture guidance, face-match thresholds, and per-client risk configuration.
+- [KYC funnel drop-off recovery (DigiStudio)](https://namanbuilds.com/work/funnel-drop-off-recovery/): A retargeting module inside Digio's KYC orchestration platform: step-level drop-off analytics, targeted reminder campaigns, and an impact dashboard measuring what the nudge recovered.
+- [Ninja Connect — chat-based commerce and ERP (Ninjacart)](https://namanbuilds.com/ninja-connect/tradedesk.html): A communication-first commerce platform where agri buyers and sellers negotiate, order and settle in one thread. Shipped in two months; became the back engine of Ninjacart's trade.
+
+## About
+
+- [Naman Gupta — Senior Product Manager](https://namanbuilds.com/): Homepage. Who I am, the products I've shipped, and the numbers behind them.
+- [Résumé](https://namanbuilds.com/resume/): Full résumé: Digio, Ninjacart, Cogoport, Capital One. US Patent 12387059 B2.
+- [Book a call](https://namanbuilds.com/call/): Rates and how I work with teams.
+
+## Writing
+
+- [Writing](https://namanbuilds.com/blog/): Essays on product, AI and design.
+- [Why AI Products Are Never Done](https://namanbuilds.com/blog/why-ai-products-are-never-done/): Building fraud detection means building against an opponent who learns.
+- [The UI We Keep Underestimating](https://namanbuilds.com/blog/ui-we-keep-underestimating/): What a baseball-card study says about interfaces people actually read.
+
+## Contact
+
+- Email: guptanaman1992@gmail.com
+- LinkedIn: https://www.linkedin.com/in/gupta-naman-iitkgp/
+- Patent: https://patents.google.com/patent/US12387059B2/en

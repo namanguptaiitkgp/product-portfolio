@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ninja Credit — Ninjacart (Walmart-backed) | Naman Gupta case study</title>
+<meta name="description" content="How I built Ninja Global&#x27;s cross-border agri-trade lending business 0→1 at Ninjacart — ~$350M of annual disbursals, NPA cut from 6% to 2%, and a modular credit flow reused across PODs.">
+<link rel="canonical" href="https://namanbuilds.com/work/ninja-credit/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://namanbuilds.com/work/ninja-credit/">
+<meta property="og:title" content="Ninja Credit — Ninjacart (Walmart-backed) | Naman Gupta case study">
+<meta property="og:description" content="How I built Ninja Global&#x27;s cross-border agri-trade lending business 0→1 at Ninjacart — ~$350M of annual disbursals, NPA cut from 6% to 2%, and a modular credit flow reused across PODs.">
+<meta property="og:image" content="https://namanbuilds.com/assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ninja Credit — Ninjacart (Walmart-backed)">
+<meta name="twitter:description" content="How I built Ninja Global&#x27;s cross-border agri-trade lending business 0→1 at Ninjacart — ~$350M of annual disbursals, NPA cut from 6% to 2%, and a modular credit flow reused across PODs.">
+<meta name="twitter:image" content="https://namanbuilds.com/assets/og-preview.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Ninja Global — cross-border agri-trade lending, built 0→1.",
+  "description": "How I built Ninja Global's cross-border agri-trade lending business 0→1 at Ninjacart — ~$350M of annual disbursals, NPA cut from 6% to 2%, and a modular credit flow reused across PODs.",
+  "url": "https://namanbuilds.com/work/ninja-credit/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://namanbuilds.com/work/ninja-credit/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Naman Gupta",
+    "url": "https://namanbuilds.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Naman Gupta",
+    "url": "https://namanbuilds.com/"
+  },
+  "about": [
+    "Ninjacart (Walmart-backed)",
+    "Product management",
+    "Fintech"
+  ],
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://namanbuilds.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Work",
+      "item": "https://namanbuilds.com/work/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ninja Credit",
+      "item": "https://namanbuilds.com/work/ninja-credit/"
+    }
+  ]
+}
+</script>
+<style>
+*{box-sizing:border-box}
+:root{--paper:rgb(187,210,190);--panel:#fffdf9;--ink:#191713;--muted:#5f5a4e;--line:rgba(25,23,19,.12)}
+@font-face{font-family:"Neue Montreal";src:url("/ninja-credit/assets/EN0wrjjcgDdG3SMgxfEI19PNHRs.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("/ninja-credit/assets/vEydk8LUwvYV3ZJtsQhKLqsza0.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Joane";src:url("/ninja-credit/assets/s7QBt6TrbwZwxnd8WeMUW0iXFw.woff2") format("woff2");font-weight:900;font-display:swap}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font-family:"Neue Montreal",-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+ font-size:17px;line-height:1.62;}
+.shell{max-width:760px;margin:0 auto;padding:28px 20px 80px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px;font-size:14px}
+.top a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.top a:hover{border-bottom-color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px 30px 40px}
+.eyebrow{margin:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:"Joane","Neue Montreal",serif;font-weight:900;font-size:clamp(28px,5vw,40px);line-height:1.14;margin:0 0 16px;letter-spacing:-.01em}
+.lede{font-size:19px;line-height:1.55;color:var(--ink);margin:0 0 22px}
+.meta{margin:0 0 26px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:500}
+.deck{display:inline-block;margin:0 0 30px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;
+ text-decoration:none;color:var(--ink);font-size:14px;background:transparent}
+.deck:hover{border-color:var(--ink)}
+h2{font-family:"Joane","Neue Montreal",serif;font-weight:900;font-size:clamp(21px,3.4vw,27px);line-height:1.2;margin:40px 0 12px;letter-spacing:-.005em}
+h3{font-size:17px;font-weight:500;margin:28px 0 8px;letter-spacing:.005em}
+p{margin:0 0 14px}
+ul{margin:0 0 16px;padding-left:20px}
+li{margin:0 0 7px}
+figure{margin:20px 0 24px}
+figure img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:#fff}
+figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:22px 0 26px;padding:0}
+.stats div{border-top:1px solid var(--line);padding-top:12px}
+.stats dt{font-family:"Joane","Neue Montreal",serif;font-weight:900;font-size:24px;line-height:1.1;margin:0}
+.stats dd{margin:5px 0 0;font-size:13px;color:var(--muted)}
+.pairs{margin:18px 0 26px;padding:0}
+.pairs div{display:grid;grid-template-columns:minmax(130px,.5fr) 1fr;gap:6px 18px;padding:11px 0;border-top:1px solid var(--line)}
+.pairs dt{margin:0;font-weight:500}
+.pairs dd{margin:0;color:var(--muted)}
+.foot{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.foot a{color:var(--ink)}
+@media (max-width:560px){.shell{padding:20px 14px 60px}.card{padding:24px 18px 30px;border-radius:14px}
+ .pairs div{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="top">
+    <a href="/">← Naman Gupta</a>
+    <a href="/work/">All case studies</a>
+  </nav>
+  <main class="card">
+    <article>
+      <p class="eyebrow">Case study · Ninjacart (Walmart-backed)</p>
+      <h1>Ninja Global — cross-border agri-trade lending, built 0→1.</h1>
+      <p class="lede">Retailers with no credit history still needed working capital. We underwrote them on what they actually bought.</p>
+      <p class="meta"><b>Role</b> Product Manager — Ninja Global, 0→1 &nbsp;·&nbsp; <b>Period</b> 2022–2024</p>
+      <a class="deck" href="/ninja-global-deck/Ninja%20Global%20Case%20Study.html">View the interactive case study ↗</a>
+<dl class="stats"><div><dt>≈$350M</dt><dd>annual disbursals (≈₹2,800–2,900 Cr)</dd></div><div><dt>6% → 2%</dt><dd>NPA, over the book</dd></div></dl>
+<figure><img src="/ninja-global-deck/assets/GGT4X9i5irXN0IcSWeFZhIkANzc.webp" alt="Selfie KYC" loading="lazy" decoding="async"><figcaption>Selfie KYC</figcaption></figure>
+<figure><img src="/ninja-global-deck/assets/SDXNbEq3XmQkR8eXhdh6VpZyVBA.png" alt="Credit limit" loading="lazy" decoding="async"><figcaption>Credit limit</figcaption></figure>
+<figure><img src="/ninja-global-deck/assets/fyCQiZw0o2QenigDVtSbBMCzJdY.webp" alt="Loan calculator" loading="lazy" decoding="async"><figcaption>Loan calculator</figcaption></figure>
+<h2>Guaranteed demand — but no capital to fund the trade.</h2>
+<p>Ninjacart, India&#x27;s largest domestic agri platform, launched Ninja Global to move into international agri trade, and I was brought in to build it 0→1 with full P&amp;L ownership.The real mandate wasn&#x27;t a feature — it was finding product-market fit in a market we didn&#x27;t yet serve. My first hypothesis was a marketplace play: match importers and exporters across borders, verify trade partners, and earn a commission on matchmaking. It onboarded well, buttraders wouldn&#x27;t pay for discovery — matchmaking wasn&#x27;t the real pain. Talking to traders in India, Malaysia and Vietnam, the urgent need was clear: capital. Exporters pay suppliers up front but wait 30–90 days for the importer&#x27;s balance, and banks won&#x27;t finance perishable, MSME-scale trade. That capital-timing gap became the product.</p>
+<h2>Two personas — the same broken capital cycle.</h2>
+<figure><img src="/ninja-global-deck/assets/hosur-market.webp" alt="Hosur market visit" loading="lazy" decoding="async"><figcaption>Hosur market visit</figcaption></figure>
+<h2>We bet on networking. The data said financing.</h2>
+<p>Networking onboarded but wouldn&#x27;t monetise — no one paid commission for matchmaking. Interviews in India / Malaysia / Vietnam said the pain was capital → I re-pointed the roadmap, then sequenced the build by effort vs impact under hard constraints.</p>
+<h2>One modular credit flow. Onboarding to a real limit.</h2>
+<p>One flow, reused across PODs — onboarding → disbursal → repayment.</p>
+<h2>Getting the user and setting the limit</h2>
+<figure><img src="/ninja-global-deck/assets/ml8peHKGaKd2u6hTC60ZuCqgS3o.webp" alt="A clean entry point" loading="lazy" decoding="async"><figcaption>A clean entry point</figcaption></figure>
+<p>Clear entry — Credit is very important part of offerings that the company provides and its very crucial to have it straight up on a clean spot, without having the user navigate too much.</p>
+<p>This approach has been followed across Ninjacart platforms enabling the credit</p>
+<h3>Friendly, trustworthy landing</h3>
+<p>Straight after onboarding you land on a focused home — only the parts that matter, the clutter stripped out.</p>
+<figure><img src="/ninja-global-deck/assets/5luMULrnkN29ud93RsITZuJ70.png" alt="Friendly, trustworthy landing" loading="lazy" decoding="async"><figcaption>Friendly, trustworthy landing</figcaption></figure>
+<p>Know your potential limit — This was done because it was observed by AB testing that showing your limit at the end of onboarding made the users feel a sense of disappointment and gave a sense of untrustworthiness because most of the times the limit that a user gets allocated based on a rule engine considering multiple factors usually always ends up being less than the maximum possible amount that can be taken.</p>
+<p>Therefore, resetting and showing the potential limit based on the income level sets the expectation of the user straight right from the start helping build a sense of trust and transparency for the user.</p>
+<h3>Let&#x27;s take a selfie</h3>
+<p>Liveness + selfie KYC in seconds — the lightest possible identity step before we ever ask for a document.</p>
+<figure><img src="/ninja-global-deck/assets/selfie_image.webp" alt="Let&#x27;s take a selfie" loading="lazy" decoding="async"><figcaption>Let&#x27;s take a selfie</figcaption></figure>
+<h3>Knowing the applicant</h3>
+<p>Two paths: self-upload for the savvy, and an assisted flow run by a TradeDesk agent for users who aren&#x27;t.</p>
+<figure><img src="/ninja-global-deck/assets/IQitstd5p8txc5Y8gfFvRGtZTOg.webp" alt="Knowing the applicant" loading="lazy" decoding="async"><figcaption>Knowing the applicant</figcaption></figure>
+<h3>Few more business details</h3>
+<p>A few business documents and details let us assess the business and arrive at the real limit and credit-worthiness. We split the flow two ways — self-upload for the savvy, and an assisted, agent-led upload powered by the TradeDesk for everyone else.</p>
+<figure><img src="/ninja-global-deck/assets/flow-splitting.webp" alt="Few more business details" loading="lazy" decoding="async"><figcaption>Few more business details</figcaption></figure>
+<h3>Getting the last details, gracefully</h3>
+<p>Dynamic drop-off screens adapt if the user leaves mid-way and nudge them back to finish. The address auto-fetches from the map instead of being typed, and bank details are confirmed before disbursal — fewer fields, fewer errors.</p>
+<figure><img src="/ninja-global-deck/assets/flow-additional.webp" alt="Getting the last details, gracefully" loading="lazy" decoding="async"><figcaption>Getting the last details, gracefully</figcaption></figure>
+<h3>Sign and takeaway the cash</h3>
+<p>The journey is done and the limit has been set. The user can just sign and takeaway the money with a few clicks.</p>
+<figure><img src="/ninja-global-deck/assets/sign_cash_image.webp" alt="Sign and takeaway the cash" loading="lazy" decoding="async"><figcaption>Sign and takeaway the cash</figcaption></figure>
+<h3>Your potential limit — up front</h3>
+<p>A/B-won: showing the potential limit at the start built trust, where revealing it only at the end felt like a let-down.</p>
+<figure><img src="/ninja-global-deck/assets/FfIHXUFzAeSDTLpVuoxOnINPl4.webp" alt="Your potential limit — up front" loading="lazy" decoding="async"><figcaption>Your potential limit — up front</figcaption></figure>
+<h3>From a clean entry to a real, approved limit — underwriting done.</h3>
+<h2>Financing a trade needs trade-specific docs. So we stopped chasing them.</h2>
+<p>A loan request rides on a specific trade — and every trade carries its own documents.</p>
+<p>Optimizing for speed — The flow was designed with keeping in mind the primary focus which is to help the user take a loan quickly. The user should be able to take a loan as quickly as possible without having to think too much about the steps.</p>
+<h3>The chase lived in chat</h3>
+<p>A customer raises a loan request against a trade — but ops receives a thin request, realises something&#x27;s missing, and has no direct line to the customer. The chase runs through sales, documents land scattered across chat threads, and nothing routes them back to ops.</p>
+<figure><img src="/ninja-global-deck/assets/VQyokcJMJ4uOe3syqFfMlEiJk.webp" alt="The Trade Chat — communication where a lot is at stake" loading="lazy" decoding="async"><figcaption>The Trade Chat — communication where a lot is at stake</figcaption></figure>
+<h3>Ask up front — inline with the request</h3>
+<p>The first screen offers one clear choice — “Yes, I&#x27;ll upload it myself” or “No, I need some assistance” — and the supporting docs are requested then and there, with explicit guidance on what&#x27;s needed and why. The case arrives underwriting-ready instead of triggering a chase.</p>
+<figure><img src="/ninja-global-deck/assets/doc-choice.webp" alt="Voluntary upfront document submission, inline with the loan request" loading="lazy" decoding="async"><figcaption>Voluntary upfront document submission, inline with the loan request</figcaption></figure>
+<h3>Incomplete? Ops fires a templated request</h3>
+<p>For requests that still come in thin, ops sends a predefined document checklist + message template straight to the customer — “loan on hold pending X” — replacing the sales → chat → ticket detour. Docs land directly in a structured pipeline ops pulls from, not buried in a thread.</p>
+<figure><img src="/ninja-global-deck/assets/doc-chat.webp" alt="Ops-triggered templated document request with direct notification" loading="lazy" decoding="async"><figcaption>Ops-triggered templated document request with direct notification</figcaption></figure>
+<h3>Every document tagged to a party</h3>
+<p>The Ninjacart agent assigns each request as a task tagged to a specific member of the trade — packing pictures, CRO docs, financials all land against the right party. A clean, tagged pipeline into ops instead of an untracked thread — the moat that cut hold time by ~75%.</p>
+<h3>Every charge, shown before you commit</h3>
+<p>A loan calculator lays out the borrow amount, tenure, interest and processing fee up front — and reviewing it never touches your credit score. The customer sees the exact total disbursal before a single click, then gets the money in an instant.</p>
+<figure><img src="/ninja-global-deck/assets/loan-calculator.webp" alt="Loan calculator — interest and processing fee shown transparently before disbursal" loading="lazy" decoding="async"><figcaption>Loan calculator — interest and processing fee shown transparently before disbursal</figcaption></figure>
+<h3>From a chase across chat to a request that arrives underwriting-ready — and a loan taken in full transparency.</h3>
+<h2>Repayment — every due, one surface.</h2>
+<p>A digital-only lender can&#x27;t knock on doors — so the repayment experience makes paying on time the path of least resistance.</p>
+<figure><img src="/ninja-global-deck/assets/5aXxhF5uLYoh2ZAfJfvxOJDqG5E.webp" alt="Payments — the repayment surface" loading="lazy" decoding="async"><figcaption>Payments — the repayment surface</figcaption></figure>
+<h2>The first months taught us the model — then we compounded it.</h2>
+<p>Early disbursals surfaced three failure modes. Each insight became a fix, each fix became a system — and that&#x27;s what let us scale disbursals 10× while cutting NPA 6% → 2%.</p>
+<h2>The rules shaped the design.</h2>
+<dl class="pairs"><div><dt>RBI / FEMA / customs</dt><dd>→ Escrow + single-purpose routing; export-first sequencing.</dd></div><div><dt>Walmart / US policy</dt><dd>→ Corridor exclusions → concentrate on India–SE Asia.</dd></div><div><dt>Digital-only</dt><dd>→ No on-ground collections → the behavioural tiered-release model.</dd></div><div><dt>Capital</dt><dd>→ Prove PMF on corpus before unlocking funding.</dd></div></dl>
+<h2>The P&amp;L I owned — tracked daily.</h2>
+<dl class="stats"><div><dt>Conversion · CAC</dt><dd>funnel efficiency</dd></div><div><dt>Utilisation · SLA</dt><dd>&lt;12-hr decisioning</dd></div><div><dt>Book</dt><dd>disbursal · AUM · ticket · tenor</dd></div><div><dt>Risk · NIM</dt><dd>yield − cost − provisions</dd></div></dl>
+<h2>0 → ₹15 Cr / month — in two months.</h2>
+<dl class="stats"><div><dt>Malaysia</dt><dd>first international trade-finance partnerships</dd></div></dl>
+<figure><img src="/ninja-global-deck/assets/5aXxhF5uLYoh2ZAfJfvxOJDqG5E.webp" alt="Payments — repayment surface" loading="lazy" decoding="async"><figcaption>Payments — repayment surface</figcaption></figure>
+<figure><img src="/ninja-global-deck/assets/sOFZTUfT03wnxZmCGIPWPswm6Vo.webp" alt="Marvel Award — Q4 FY 2023-24" loading="lazy" decoding="async"><figcaption>Marvel Award — Q4 FY 2023-24</figcaption></figure>
+    </article>
+    <p class="foot">Written by <a href="/">Naman Gupta</a>, Senior Product Manager at Digio.
+      <a href="/resume/">Résumé</a> · <a href="/work/">All case studies</a> · <a href="/call/">Book a call</a></p>
+  </main>
+</div>
+</body>
+</html>
