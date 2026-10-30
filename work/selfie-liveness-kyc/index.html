@@ -103,6 +103,8 @@ li{margin:0 0 7px}
 figure{margin:20px 0 24px}
 figure img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:#fff}
 figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
+.brand{margin:22px 0 0}
+.brand img{height:22px;width:auto;display:block;border:0;border-radius:0;background:none}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:22px 0 26px;padding:0}
 .stats div{border-top:1px solid var(--line);padding-top:12px}
 .stats dt{font-family:"Joane","Neue Montreal",serif;font-weight:900;font-size:24px;line-height:1.1;margin:0}
@@ -146,15 +148,17 @@ figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
 <p>A whole class of attackers don&#x27;t bother holding up a photo. They install software that pretends to be a camera and pipes whatever they want into the browser or the app. The Selfie SDK detects this at the very first moment of the session — before a single frame is even captured.</p>
 <h2>Real-time guidance. In their language. At their speed.</h2>
 <p>The frontend talks to the user in real time. It tells them which way to turn, when to come closer, when the lighting won&#x27;t do — in the language they actually read. And it tunes how many checks to run based on the internet connection they actually have, so a 4G user in a Tier-3 town doesn&#x27;t get the same heavy pipeline as a fibre user in a metro.</p>
+<p class="brand"><img src="/cinematic/assets/logo-groww.webp" alt="Groww" loading="lazy" decoding="async"></p>
 <figure><img src="/cinematic/assets/frame-look.webp" alt="Look straight at the camera" loading="lazy" decoding="async"><figcaption>Look straight at the camera</figcaption></figure>
 <h2>Too far is suspicious. Too close is too.</h2>
 <p>A face the right size in the frame is a face we can analyse. Too small means we&#x27;re looking at a room, not a person — and rooms are where spoofing devices hide. Too close means we lose the geometry we need to verify pose, alignment, and the boundary between the user and what&#x27;s behind them.</p>
+<p class="brand"><img src="/cinematic/assets/logo-groww.webp" alt="Groww" loading="lazy" decoding="async"></p>
 <figure><img src="/cinematic/assets/frame-too-far.webp" alt="Face too far from the camera" loading="lazy" decoding="async"><figcaption>Face too far from the camera</figcaption></figure>
 <p>Face drifted off-axis — we nudge the user to move right before capture.</p>
-<figure><img src="/cinematic/assets/logo-jio.webp" alt="Jio BlackRock" loading="lazy" decoding="async"><figcaption>Jio BlackRock</figcaption></figure>
+<p class="brand"><img src="/cinematic/assets/logo-jio.webp" alt="Jio BlackRock" loading="lazy" decoding="async"></p>
 <figure><img src="/cinematic/assets/frame-ready.webp" alt="Face correctly framed and ready" loading="lazy" decoding="async"><figcaption>Face correctly framed and ready</figcaption></figure>
 <p>The acceptable band — balanced, analysable, ready to capture.</p>
-<figure><img src="/cinematic/assets/logo-muthoot.svg" alt="Muthoot Finance" loading="lazy" decoding="async"><figcaption>Muthoot Finance</figcaption></figure>
+<p class="brand"><img src="/cinematic/assets/logo-muthoot.svg" alt="Muthoot Finance" loading="lazy" decoding="async"></p>
 <figure><img src="/cinematic/assets/frame-too-close.webp" alt="Face too close to the camera" loading="lazy" decoding="async"><figcaption>Face too close to the camera</figcaption></figure>
 <p>Face fills the frame — we ask the user to ease back so the edges return.</p>
 <h2>We see more than the user thinks we see.</h2>
